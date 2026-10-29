@@ -5,6 +5,7 @@ const EMPTY = { name: '', country: '', contactName: '', email: '', website: '' }
 export default function Partners({ partners, setPartners }) {
   const [form, setForm] = useState(EMPTY);
   const [query, setQuery] = useState('');
+  const [error, setError] = useState('');
 
   const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -13,11 +14,12 @@ export default function Partners({ partners, setPartners }) {
     const name = form.name.trim();
     if (!name) return;
     if (partners.some((p) => p.name.toLowerCase() === name.toLowerCase())) {
-      alert('This university is already in your partner list.');
+      setError('This university is already in your partner list.');
       return;
     }
     setPartners([{ id: crypto.randomUUID(), ...form, name, addedAt: new Date().toISOString() }, ...partners]);
     setForm(EMPTY);
+    setError('');
   };
 
   const remove = (id) => setPartners(partners.filter((p) => p.id !== id));
@@ -53,6 +55,7 @@ export default function Partners({ partners, setPartners }) {
             Website
             <input name="website" type="url" placeholder="https://" value={form.website} onChange={update} />
           </label>
+          {error && <p className="error">{error}</p>}
           <button className="btn primary" type="submit">Add partner</button>
         </form>
 
