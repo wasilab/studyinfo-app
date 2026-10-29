@@ -1,36 +1,85 @@
-export const SOLUTIONS = [
+export const NAV = [
+  ['services', 'What we do'],
+  ['process', 'How it works'],
+  ['partners', 'Who it is for'],
+  ['faq', 'FAQ'],
+];
+
+export const SERVICES = [
   {
+    icon: 'file',
     title: 'Student file submission',
-    text: 'Agencies and education partners send us their student files in one structured format. We check them for completeness and pass them to the right university, so applications are not delayed by missing documents.',
+    text: 'Agencies send student files to us in one consistent format. We check every document before it moves on, so no application stalls on a missing transcript.',
   },
   {
+    icon: 'building',
     title: 'Partner university onboarding',
-    text: 'Universities join our network and tell us which programmes, intakes and entry requirements they are recruiting for. We add them to the platform and keep their details current.',
+    text: 'Universities join our network and share their programmes, intakes and entry requirements. We keep those details current on their behalf.',
   },
   {
-    title: 'Matching students to programmes',
-    text: 'We compare each student profile with the requirements of our partner universities and suggest programmes that fit, saving your team hours of manual research.',
+    icon: 'match',
+    title: 'Programme matching',
+    text: 'We compare each student profile against partner requirements and shortlist programmes the student can realistically be admitted to.',
   },
   {
+    icon: 'track',
     title: 'Application tracking',
-    text: 'Every file has a clear status from submission to decision. Partners always know where an application stands without chasing email threads.',
+    text: 'Each file carries a clear status from receipt to decision. Agencies and universities see the same picture without chasing email threads.',
   },
 ];
 
 export const STEPS = [
-  { title: 'Join as a partner', text: 'Register your agency, school or university with us and tell us what you need.' },
-  { title: 'Send your student files', text: 'Agencies share student profiles and documents with us through a single, consistent process.' },
-  { title: 'We review and match', text: 'Our team checks each file and matches it to suitable partner universities and programmes.' },
-  { title: 'Universities respond', text: 'Partner universities review the applications and you follow progress until a decision is made.' },
+  { title: 'Partner with us', text: 'Agencies and universities agree terms with us and join our partner network.' },
+  { title: 'Submit student files', text: 'Agencies share student profiles and documents through one structured process.' },
+  { title: 'We verify and match', text: 'Our team checks each file for completeness and matches it to suitable programmes.' },
+  { title: 'Universities decide', text: 'Applications reach admissions ready to assess, and every party follows progress to the offer.' },
 ];
 
 export const AUDIENCES = [
   {
-    title: 'For recruitment agencies',
-    points: ['One place to submit all student files', 'Access to a growing network of universities', 'Less paperwork and fewer follow-ups'],
+    label: 'Recruitment agencies',
+    title: 'Place more students with less paperwork',
+    points: [
+      'One submission process for every partner university',
+      'Programme shortlists based on real entry requirements',
+      'A single status view for all your applications',
+    ],
   },
   {
-    title: 'For universities',
-    points: ['Receive complete, well-prepared applications', 'Reach students in the markets you target', 'A single point of contact for agency partners'],
+    label: 'Universities',
+    title: 'Receive applications that are ready to assess',
+    points: [
+      'Files checked for completeness before they arrive',
+      'Access to agency partners in the markets you target',
+      'One point of contact instead of dozens of inboxes',
+    ],
+  },
+];
+
+export const CHECKLIST = [
+  ['Passport', 'Valid for the full length of study'],
+  ['Academic transcripts', 'Certified copies with grading scale'],
+  ['English test score', 'IELTS, TOEFL, PTE or equivalent'],
+  ['Statement of purpose', 'Tailored to the chosen programme'],
+  ['Reference letters', 'Usually two, academic or professional'],
+  ['CV', 'Required for most postgraduate courses'],
+];
+
+export const FAQ = [
+  {
+    q: 'Who can submit student files?',
+    a: 'Registered recruitment agencies and education partners that have signed a partnership agreement with us.',
+  },
+  {
+    q: 'How does a university become a partner?',
+    a: 'Contact us with the programmes and intakes you recruit for. We agree the terms, add your university to our network and start sending matched applications.',
+  },
+  {
+    q: 'What happens if a file is incomplete?',
+    a: 'We return it to the agency with a list of exactly what is missing, before it reaches any university.',
+  },
+  {
+    q: 'Which intakes do you support?',
+    a: 'All intakes our partner universities offer, most commonly the September and January intakes.',
   },
 ];
