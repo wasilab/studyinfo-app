@@ -103,7 +103,7 @@ export function jsonLd(seo: Seo) {
     logo: `${SITE_URL}/logo-512.png`,
     email: CONTACT_EMAIL,
     telephone: CONTACT_PHONE_LINK.replace('tel:', ''),
-    address: { '@type': 'PostalAddress', addressLocality: CONTACT_ADDRESS.split(',')[0].trim(), addressCountry: 'BD' },
+    address: { '@type': 'PostalAddress', streetAddress: CONTACT_ADDRESS, addressLocality: 'Sylhet', addressCountry: 'BD' },
     contactPoint: { '@type': 'ContactPoint', contactType: 'sales', email: CONTACT_EMAIL, telephone: CONTACT_PHONE_LINK.replace('tel:', '') },
   };
   const graph: object[] = [
