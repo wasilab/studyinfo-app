@@ -23,7 +23,7 @@ export function PostMeta({ post }: { post: Post }) {
 }
 
 export function Now() {
-  usePageMeta('Now', 'Practical guidance for international education agencies, and notes on how StudyInfo works.');
+  usePageMeta();
   const [filter, setFilter] = useState<Filter>('All');
   const [query, setQuery] = useState('');
 

@@ -43,7 +43,7 @@ export function Footer() {
         </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 text-[12px] text-ink-3">
           <p>
-            © {new Date().getFullYear()} {BRAND}. All rights reserved.
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {BRAND}. All rights reserved.
           </p>
           <p>Send student files · Add your universities · One network</p>
         </div>

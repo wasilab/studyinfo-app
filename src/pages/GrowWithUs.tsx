@@ -61,7 +61,7 @@ function ChapterSection({ chapter, children }: { chapter: Chapter; children: Rea
 }
 
 export function GrowWithUs() {
-  usePageMeta('Grow with Us', GROW.hero.lead);
+  usePageMeta();
   const { hash } = useLocation();
   const { hero, agenda, send, universities, toolkit, demo } = GROW;
 

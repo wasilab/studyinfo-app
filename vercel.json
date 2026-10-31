@@ -1,3 +1,15 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "studyinfo.app" }],
+      "destination": "https://www.studyinfo.app/:path",
+      "permanent": true
+    },
+    { "source": "/intake", "destination": "/send-files", "permanent": true },
+    { "source": "/ai", "destination": "/toolkit", "permanent": true },
+    { "source": "/partners", "destination": "/network", "permanent": true },
+    { "source": "/pricing", "destination": "/", "permanent": true }
+  ]
 }

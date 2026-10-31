@@ -1,16 +1,23 @@
-import { useEffect, useRef, useState, type PointerEvent } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore, type PointerEvent } from 'react';
 
 const REDUCED = '(prefers-reduced-motion: reduce)';
 
+/** A layout effect in the browser; a plain effect during the build-time render, where layout effects can't run. */
+export const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
+function subscribeReducedMotion(onChange: () => void) {
+  const mq = window.matchMedia(REDUCED);
+  mq.addEventListener('change', onChange);
+  return () => mq.removeEventListener('change', onChange);
+}
+
+/** True when the visitor asks for reduced motion. Pre-rendered HTML assumes motion; the browser then corrects it. */
 export function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(() => typeof window !== 'undefined' && window.matchMedia(REDUCED).matches);
-  useEffect(() => {
-    const mq = window.matchMedia(REDUCED);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return reduced;
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia(REDUCED).matches,
+    () => false,
+  );
 }
 
 /**

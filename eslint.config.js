@@ -22,4 +22,9 @@ export default tseslint.config(
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
+  {
+    // The build-time render entry never runs in the browser, so fast refresh doesn't apply to it.
+    files: ['src/entry-server.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
 );

@@ -7,7 +7,7 @@ import { SEND_FILES } from '../content/send-files';
 import { usePageMeta } from '../lib/usePageMeta';
 
 export function SendFiles() {
-  usePageMeta('Send student files', SEND_FILES.blocks[0].text);
+  usePageMeta();
   const [submit, check, checklist] = SEND_FILES.blocks;
 
   return (

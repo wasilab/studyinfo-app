@@ -19,7 +19,7 @@ const CATALOG_FACTS: { icon: IconName; title: string; text: string }[] = [
 ];
 
 export function Network() {
-  usePageMeta('How it works', NETWORK.hero.lead);
+  usePageMeta();
   const { hero, parties, journey, anonymity, catalog, faq } = NETWORK;
 
   return (

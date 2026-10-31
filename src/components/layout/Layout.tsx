@@ -11,8 +11,9 @@ export function Layout() {
   // Fade pages in on navigation, but not on the first load (the hero has its own entrance).
   if (!navigated && pathname !== firstPath) setNavigated(true);
 
+  // New pages start at the top, except links to a section (#id): the browser and the page scroll to those.
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (!window.location.hash) window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);
 
   return (

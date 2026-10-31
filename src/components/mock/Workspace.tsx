@@ -1,6 +1,6 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { EXAMPLE_FILES, REQUIRED_DOCUMENTS, STATUSES, type Status } from '../../content/files';
-import { useOnScreen, usePrefersReducedMotion } from '../../lib/motion';
+import { useIsomorphicLayoutEffect, useOnScreen, usePrefersReducedMotion } from '../../lib/motion';
 import { Icon, type IconName } from '../ui/Icon';
 import { LogoMark } from '../ui/Logo';
 import { StatusIcon } from '../ui/StatusIcon';
@@ -48,7 +48,7 @@ export function Workspace() {
   // FLIP: when a row changes group, glide it from its old position to the new one.
   const listRef = useRef<HTMLDivElement>(null);
   const positions = useRef(new Map<string, number>());
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const rows = listRef.current?.querySelectorAll<HTMLElement>('[data-row]') ?? [];
     rows.forEach((row) => {
       const id = row.dataset.row!;

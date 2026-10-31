@@ -5,7 +5,7 @@ import { usePageMeta } from '../lib/usePageMeta';
 import { WordReveal } from '../components/ui/WordReveal';
 
 export function NotFound() {
-  usePageMeta('Page not found', 'This page does not exist.');
+  usePageMeta();
 
   return (
     <section className="py-28 md:py-40">

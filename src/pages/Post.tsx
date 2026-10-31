@@ -13,7 +13,7 @@ export function Post() {
   const { slug } = useParams();
   const index = POSTS.findIndex((p) => p.slug === slug);
   const post = POSTS[index];
-  usePageMeta(post ? post.title : 'Page not found', post ? post.excerpt : 'This page does not exist.');
+  usePageMeta();
 
   if (!post) return <NotFound />;
   const more = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);

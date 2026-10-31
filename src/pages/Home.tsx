@@ -12,7 +12,7 @@ import { contactLink } from '../content/site';
 import { usePageMeta } from '../lib/usePageMeta';
 
 export function Home() {
-  usePageMeta(null, HERO.lead);
+  usePageMeta();
 
   return (
     <>

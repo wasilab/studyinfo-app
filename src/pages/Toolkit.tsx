@@ -7,7 +7,7 @@ import { TOOLKIT } from '../content/toolkit';
 import { usePageMeta } from '../lib/usePageMeta';
 
 export function Toolkit() {
-  usePageMeta('Agency toolkit', TOOLKIT.blocks[0].text);
+  usePageMeta();
   const [crm, recommendations, students, marketing, brand] = TOOLKIT.blocks;
 
   return (

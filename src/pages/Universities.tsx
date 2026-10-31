@@ -7,7 +7,7 @@ import { UNIVERSITIES } from '../content/universities';
 import { usePageMeta } from '../lib/usePageMeta';
 
 export function Universities() {
-  usePageMeta('Add your universities', UNIVERSITIES.blocks[0].text);
+  usePageMeta();
   const [request, received, commission] = UNIVERSITIES.blocks;
 
   return (

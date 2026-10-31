@@ -11,7 +11,7 @@ import { TRACKING } from '../content/tracking';
 import { usePageMeta } from '../lib/usePageMeta';
 
 export function Tracking() {
-  usePageMeta('Case tracking', TRACKING.blocks[0].text);
+  usePageMeta();
   const [steps, thread, commission] = TRACKING.blocks;
 
   return (

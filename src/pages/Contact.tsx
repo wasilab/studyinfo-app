@@ -29,11 +29,12 @@ const FIELD =
   'h-10 w-full rounded-lg bg-canvas px-3 text-[14px] text-ink ring-1 ring-line-2 outline-none ring-inset placeholder:text-ink-3 focus:ring-2 focus:ring-accent';
 
 export function Contact() {
-  usePageMeta('Contact', 'Talk to the StudyInfo team about joining the network, sending student files or adding your universities.');
+  usePageMeta();
   const [params] = useSearchParams();
   const requested = params.get('type');
 
-  const [type, setType] = useState<EnquiryType>(isType(requested) ? requested : 'join');
+  // Starts at the default so it matches the pre-rendered page; the effect below applies ?type= right after.
+  const [type, setType] = useState<EnquiryType>('join');
   const [form, setForm] = useState({ name: '', email: '', organisation: '', country: '', message: '' });
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);

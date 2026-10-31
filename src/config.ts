@@ -1,4 +1,6 @@
 export const BRAND = 'StudyInfo';
+/** The live address of the site, without a trailing slash. Used for canonical links, the sitemap and social previews. */
+export const SITE_URL = 'https://www.studyinfo.app';
 export const CONTACT_EMAIL = 'contact@studyinfo.app';
 export const CONTACT_PHONE = '+880 1814-297793';
 export const CONTACT_PHONE_LINK = 'tel:+8801814297793';

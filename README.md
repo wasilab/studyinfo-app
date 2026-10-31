@@ -7,7 +7,7 @@ npm install
 npm run dev
 ```
 
-`npm run build` type-checks and builds to `dist/`, `npm run lint` runs ESLint, and `npm run preview` serves the build locally.
+`npm run build` type-checks, builds to `dist/` and pre-renders every page (see SEO below). `npm run lint` runs ESLint, and `npm run preview` serves the build locally.
 
 ## Pages
 
@@ -51,8 +51,24 @@ Animations switch off for visitors who ask for reduced motion, and nothing is hi
   - An animated FAQ on How it works.
   - Button press feedback, and hover lifts on feature illustrations.
 
+## SEO
+
+Every page is pre-rendered to static HTML at build time, so search engines and social apps (WhatsApp, LinkedIn, Facebook, X) get the full content and each page's own tags without running JavaScript. React then takes over the page in the browser.
+
+- **Titles, descriptions and structured data:** `src/content/seo.ts`. Every page has its own title and description, a canonical link on `SITE_URL`, Open Graph and X (Twitter) tags, and schema.org data (Organization and WebSite on every page, FAQPage on How it works, BlogPosting on each guide). New pages and guides need an entry there; guides are picked up automatically.
+- **Live address:** `SITE_URL` in `src/config.ts` (`https://www.studyinfo.app`). Canonical links, the sitemap and social previews all use it.
+- **How it is built:** `npm run build` runs `vite build`, renders each route with `src/entry-server.tsx`, and `scripts/prerender.mjs` writes `dist/<page>/index.html`, `dist/404.html`, `dist/sitemap.xml` and `dist/robots.txt`.
+- **Images:** `public/og-image.png` (1200×630 social preview), `public/apple-touch-icon.png` and `public/logo-512.png` (the logo for search results).
+- **After deploying:** add the site to Google Search Console and Bing Webmaster Tools, and submit `https://www.studyinfo.app/sitemap.xml`.
+
 ## Hosting
 
-The site uses client-side routing, so the host must serve `index.html` for every path. `public/_redirects` (Netlify) and `vercel.json` (Vercel) already do this. The site is not deployed anywhere yet.
+The build is plain static files. `public/_redirects` (Netlify) and `vercel.json` (Vercel) already:
+
+- redirect `studyinfo.app` to `www.studyinfo.app`;
+- send the old addresses `/intake`, `/ai`, `/partners` and `/pricing` to their new pages with permanent (301) redirects;
+- answer unknown addresses with `404.html` and a real 404 status.
+
+On another host, serve each folder's `index.html` for its path (for example `/send-files` → `send-files/index.html`) and use `404.html` for unknown paths. The site is not deployed anywhere yet.
 
 The contact form has no backend: it opens the visitor's email app with the message addressed to the contact email. Connect it to a form service when you have one.
