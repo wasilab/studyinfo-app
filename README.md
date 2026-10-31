@@ -19,6 +19,7 @@ npm run dev
 | `/tracking` | Case steps, the three-party thread and commission status |
 | `/toolkit` | CRM, recommendations, AI tools, marketing and the branded portal |
 | `/network` | How the network works, anonymity and FAQ |
+| `/grow-with-us` | Sales page for our team: send files, add universities, the toolkit, and Try Demo |
 | `/now`, `/now/:slug` | Guides and notes |
 | `/contact` | Contact form (opens the visitor's email app), phone, WhatsApp and address |
 
@@ -27,6 +28,7 @@ The old routes `/intake`, `/ai`, `/partners` and `/pricing` redirect to `/send-f
 ## Where to edit
 
 - Brand name, email, phone, WhatsApp link and address: `src/config.ts`
+- Demo app link for every "Try Demo" button: `DEMO_URL` in `src/config.ts`. While it is empty, the buttons open the contact form with "Book a demo" selected.
 - Page copy: `src/content/*.ts`
 - Example data shown in the product illustrations: `src/content/files.ts`
 - Colours, fonts and animations: the `@theme` block in `src/index.css`. The site uses a deep navy palette: page and panel colours are `--color-canvas`, `--color-surface` and `--color-surface-2`; text is `--color-ink` to `--color-ink-3`; the accent is `--color-accent`.

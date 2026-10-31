@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode, Ref } from 'react';
 import { CHECKLIST, REQUIRED_DOCUMENTS } from '../../content/files';
-import { useInView, type InViewState } from '../../lib/motion';
+import { enter, useInView, type InViewState } from '../../lib/motion';
 import { Icon, type IconName } from '../ui/Icon';
 import { LogoMark } from '../ui/Logo';
 import { StatusIcon } from '../ui/StatusIcon';
@@ -15,11 +15,6 @@ function MiniCard({ children, className = '', innerRef }: { children: ReactNode;
   );
 }
 
-/**
- * Classes for an in-view entrance: the start state is applied instantly while 'armed', and the
- * transition only runs once the element is 'in' view.
- */
-const enter = (state: InViewState, transition: string) => (state === 'in' ? transition : '');
 const pop = (state: InViewState) =>
   state === 'armed' ? 'scale-50 opacity-0' : `${enter(state, 'transition-[opacity,scale] duration-500 ease-out-expo')} scale-100 opacity-100`;
 

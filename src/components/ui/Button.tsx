@@ -22,6 +22,8 @@ interface ButtonProps {
   children: ReactNode;
   to?: string;
   href?: string;
+  /** Opens an `href` link in a new tab. */
+  external?: boolean;
   variant?: Variant;
   size?: Size;
   type?: 'button' | 'submit';
@@ -29,7 +31,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-export function Button({ children, to, href, variant = 'primary', size = 'md', type = 'button', className = '', onClick }: ButtonProps) {
+export function Button({ children, to, href, external = false, variant = 'primary', size = 'md', type = 'button', className = '', onClick }: ButtonProps) {
   const cls = `${BASE} ${VARIANTS[variant]} ${SIZES[size]} ${className}`;
   if (to) {
     return (
@@ -40,7 +42,7 @@ export function Button({ children, to, href, variant = 'primary', size = 'md', t
   }
   if (href) {
     return (
-      <a href={href} className={cls} onClick={onClick}>
+      <a href={href} className={cls} onClick={onClick} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
         {children}
       </a>
     );

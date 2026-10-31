@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router';
 import { Layout } from './components/layout/Layout';
 import { Contact } from './pages/Contact';
+import { GrowWithUs } from './pages/GrowWithUs';
 import { Home } from './pages/Home';
 import { Network } from './pages/Network';
 import { NotFound } from './pages/NotFound';
@@ -29,6 +30,7 @@ export function App() {
         <Route path="tracking" element={<Tracking />} />
         <Route path="toolkit" element={<Toolkit />} />
         <Route path="network" element={<Network />} />
+        <Route path="grow-with-us" element={<GrowWithUs />} />
         <Route path="now" element={<Now />} />
         <Route path="now/:slug" element={<Post />} />
         <Route path="contact" element={<Contact />} />

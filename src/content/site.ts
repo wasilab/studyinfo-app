@@ -1,4 +1,5 @@
 import type { IconName } from '../components/ui/Icon';
+import { DEMO_URL } from '../config';
 
 export interface NavLink {
   to: string;
@@ -27,16 +28,21 @@ export const NAV: NavLink[] = [
 /** Shown in the top bar beside "Join the network", and in the mobile menu. */
 export const GROW_LINK: NavLink = { to: '/grow-with-us', label: 'Grow with Us' };
 
-export type EnquiryType = 'files' | 'universities' | 'join' | 'other';
+export type EnquiryType = 'files' | 'universities' | 'join' | 'demo' | 'other';
 
 export const ENQUIRY_TYPES: Record<EnquiryType, { label: string; subject: string }> = {
   join: { label: 'Join the network', subject: 'Joining the StudyInfo network' },
+  demo: { label: 'Book a demo', subject: 'Booking a StudyInfo demo' },
   files: { label: 'Send student files', subject: 'Sending student files' },
   universities: { label: 'Add our universities', subject: 'Adding our universities' },
   other: { label: 'Ask a question', subject: 'General enquiry' },
 };
 
 export const contactLink = (type: EnquiryType) => `/contact?type=${type}`;
+
+/** Where "Try Demo" goes: the demo app in a new tab, or the contact form until `DEMO_URL` is set. */
+export const demoLink = (): { href: string; external: true } | { to: string } =>
+  DEMO_URL ? { href: DEMO_URL, external: true } : { to: contactLink('demo') };
 
 /** The row of product pages near the end of each page. */
 export const EXPLORE: { to: string; title: string; label: string }[] = [

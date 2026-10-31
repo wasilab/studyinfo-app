@@ -49,6 +49,12 @@ export function useInView<T extends Element>(threshold = 0.3) {
   return [ref, state] as const;
 }
 
+/**
+ * Classes for an in-view entrance: the start state is applied instantly while 'armed', and the
+ * transition only runs once the element is 'in' view.
+ */
+export const enter = (state: InViewState, transition: string) => (state === 'in' ? transition : '');
+
 /** True while the element is on screen; used to pause ambient animation when it is not. */
 export function useOnScreen<T extends Element>(rootMargin = '0px') {
   const ref = useRef<T>(null);
