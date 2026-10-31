@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(4,1fr)]">
           <div className="flex flex-col gap-3">
             <Link to="/" aria-label={`${BRAND} home`} className="w-fit">
-              <LogoMark size={26} />
+              <LogoMark size={24} />
             </Link>
             <p className="max-w-[15rem] text-[13px] leading-relaxed text-ink-3">The network for international education agencies.</p>
           </div>
