@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router';
 import { Container } from '../components/ui/Container';
 import { Cover } from '../components/ui/Cover';
-import { CtaSection } from '../components/ui/CtaSection';
+import { CtaSection } from '../components/ui/Closers';
 import { Icon } from '../components/ui/Icon';
 import { POSTS } from '../content/posts';
 import { usePageMeta } from '../lib/usePageMeta';
@@ -19,15 +19,18 @@ export function Post() {
 
   return (
     <>
+      <div aria-hidden="true" className="read-progress fixed inset-x-0 top-[calc(env(safe-area-inset-top,0px)+4rem)] z-40 h-0.5 bg-accent" />
       <article className="pt-12 pb-20 md:pt-20 md:pb-28">
         <Container>
           <div className="mx-auto flex max-w-[720px] flex-col">
             <Link to="/now" className="group mb-10 inline-flex w-fit items-center gap-1.5 text-sm text-ink-3 hover:text-ink">
               <Icon name="chevron" size={14} className="rotate-180 transition-transform group-hover:-translate-x-0.5" /> Now
             </Link>
-            <PostMeta post={post} />
-            <h1 className="mt-4 text-[2.4rem] leading-[1.08] font-medium tracking-[-0.035em] md:text-5xl">{post.title}</h1>
-            <p className="mt-5 text-lg leading-relaxed text-ink-2">{post.excerpt}</p>
+            <div className="animate-enter">
+              <PostMeta post={post} />
+            </div>
+            <h1 className="mt-4 animate-enter text-[2.4rem] leading-[1.08] font-medium tracking-[-0.035em] [animation-delay:80ms] md:text-5xl">{post.title}</h1>
+            <p className="mt-5 animate-enter text-lg leading-relaxed text-ink-2 [animation-delay:160ms]">{post.excerpt}</p>
             <Cover variant={index} className="mt-10 aspect-[16/8] rounded-2xl ring-1 ring-line" />
             <div className="mt-6">
               {post.body.map((block, i) => {

@@ -60,6 +60,11 @@ export const PARTNERS = {
     { title: 'We verify and match', text: 'AI and our team check each document and match the student to suitable programmes.' },
     { title: 'Submit and track', text: 'We submit to partner universities and every party follows the file to a decision.' },
   ],
+  hub: {
+    title: 'One partner between agencies and universities',
+    text: 'Agencies send student files to one place. Universities receive applications from one place. We keep both sides informed.',
+    panel: { title: 'One point of contact', text: 'Universities deal with StudyInfo, not dozens of agency inboxes.' },
+  },
   // Add real partner logos and stories here. Each section stays hidden while its list is empty.
   logos: [] as PartnerLogo[],
   stories: [] as PartnerStory[],

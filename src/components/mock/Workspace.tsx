@@ -93,7 +93,7 @@ export function Workspace() {
             <ul className="flex flex-col gap-1.5">
               {CHECKLIST.map((d) => (
                 <li key={d.name} className="flex items-center gap-2 text-ink-2">
-                  <Icon name="check" size={13} className="text-accent" />
+                  <Icon name="check" size={13} className="text-success" />
                   {d.name}
                 </li>
               ))}

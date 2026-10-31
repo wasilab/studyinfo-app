@@ -1,17 +1,48 @@
+import type { Block } from './blocks';
+
 export const INTAKE = {
   hero: {
     label: 'Intake',
     title: 'Every student file, checked before it moves',
-    lead: 'Agency partners send student files to StudyInfo through one structured process. AI checks each document on arrival, and our admissions team reviews every file before it goes anywhere.',
   },
-  flow: [
-    { title: 'Agency submits', text: 'The agency partner sends the student file in our standard format.' },
-    { title: 'AI pre-check', text: 'AI reads each document and flags anything missing, inconsistent or out of date.' },
-    { title: 'Admissions review', text: 'Our team reviews the findings and confirms the file is complete.' },
-    { title: 'Ready to match', text: 'Verified files move on to programme matching and submission.' },
-  ],
-  missing: {
-    title: 'When something is missing, the agency knows exactly what',
-    text: 'Incomplete files never sit in a queue. We return them to the agency with a precise list of what to send, and the file picks up where it left off when the documents arrive.',
-  },
+  blocks: [
+    {
+      title: 'Student file intake, fully structured',
+      text: 'Agency partners send student files to StudyInfo through one process. AI reads each document on arrival, and our admissions team reviews every file.',
+      link: { to: '/ai', label: 'AI document checks' },
+      panel: {
+        title: 'Every file checked on arrival',
+        text: 'Each new file is read by AI and queued for our admissions team, so problems are found as soon as the file arrives.',
+      },
+      features: [
+        { title: 'Completeness check', text: 'Passport, transcripts, English test, statement of purpose, references and CV.' },
+        { title: 'Clear requests', text: 'Incomplete files go back to the agency with an exact list of what is missing.' },
+        { title: 'One format for every university', text: 'The same submission process, whichever partner university the student applies to.' },
+        { title: 'Always a clear status', text: 'Every file carries one status, from received to decision.' },
+      ],
+    },
+    {
+      title: 'What a complete student file includes',
+      text: 'Requirements vary by programme. We confirm the exact list with each partner university and check every file against it.',
+      link: { to: '/now/what-a-complete-student-file-includes', label: 'Read the guide' },
+      panel: {
+        title: 'Six documents, checked every time',
+        text: 'The documents most admissions teams ask for, and what we look for in each one.',
+      },
+      features: [],
+    },
+    {
+      title: 'Nothing sits in a queue',
+      text: 'When something is missing, the agency knows exactly what to send, and the file continues as soon as it arrives.',
+      link: { to: '/tracking', label: 'Tracking' },
+      panel: {
+        title: 'Requests an agency can act on',
+        text: 'A precise list of missing documents, instead of a vague rejection weeks later.',
+      },
+      features: [
+        { title: 'Validity checked too', text: 'Passports and test results are checked against the dates that matter.' },
+        { title: 'Picks up where it left off', text: 'When the missing documents arrive, the file goes straight back into review.' },
+      ],
+    },
+  ] satisfies Block[],
 };

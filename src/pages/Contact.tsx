@@ -60,7 +60,7 @@ export function Contact() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-14 pb-20 md:pt-24 md:pb-28">
+    <section className="relative overflow-clip pt-14 pb-20 md:pt-24 md:pb-28">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(60%_60%_at_50%_0%,rgb(14_15_17/0.045),transparent_70%)]" />
       <Container className="relative">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-20">

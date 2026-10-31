@@ -7,7 +7,7 @@ npm install
 npm run dev
 ```
 
-`npm run build` type-checks and builds to `dist/`; `npm run preview` serves the build locally.
+`npm run build` type-checks and builds to `dist/`, `npm run lint` runs ESLint, and `npm run preview` serves the build locally.
 
 ## Pages
 
@@ -16,6 +16,7 @@ npm run dev
 | `/` | Home |
 | `/intake` | How student files are taken in and checked |
 | `/ai` | AI document checks and programme matching |
+| `/tracking` | Submission and one shared application status |
 | `/partners` | Agency partners and partner universities |
 | `/pricing` | Free for agencies, custom terms for universities |
 | `/now`, `/now/:slug` | Guides and notes |
@@ -27,7 +28,16 @@ npm run dev
 - Page copy: `src/content/*.ts`
 - Partner logos and stories: `src/content/partners.ts` (each section appears once its list has entries)
 - Example data shown in the product illustrations: `src/content/files.ts`
-- Colours and fonts: the `@theme` block in `src/index.css`
+- Colours, fonts and animations: the `@theme` block in `src/index.css` (the accent colour is `--color-accent`)
+- Statements shown in the coloured cards and the product links near the end of each page: `src/content/site.ts`
+
+## Motion
+
+Animations are CSS only and switch off for visitors who ask for reduced motion.
+
+- Hero text fades in on load (`animate-enter`), and each product page has an animated backdrop (`src/components/ui/HeroBackdrop.tsx`).
+- Sections fade in as they scroll into view through the `reveal` class, which uses scroll-driven animations. Browsers without support show the content straight away.
+- A `reveal` element measures scrolling from its nearest scrollable ancestor, and `overflow-hidden` makes an element scrollable. Wrap revealed content in `overflow-clip` instead, or the reveal never finishes.
 
 ## Hosting
 

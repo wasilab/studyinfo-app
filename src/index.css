@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* White, Linear-style system: near-black ink on white, hairline borders, one green accent. */
+/* White, Linear-style system: near-black ink on white, hairline borders, an indigo accent. */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -12,19 +12,127 @@
   --color-line-2: #d8d9dd;
   --color-subtle: #f8f8f9;
   --color-muted: #f1f1f3;
-  --color-accent: #0b7a5f;
-  --color-accent-soft: #e6f2ed;
+  --color-accent: #5b5bd6;
+  --color-accent-hover: #4b4bc4;
+  --color-accent-soft: #eeeefc;
+  --color-success: #0b7a5f;
+  --color-success-soft: #e6f2ed;
+  --color-tint-lavender: #efeefd;
+  --color-tint-sky: #e9f3fe;
 
   /* Application statuses, used by the product illustrations. */
   --color-st-received: #9a9fa8;
   --color-st-review: #d97706;
   --color-st-missing: #dc3d43;
   --color-st-verified: #0b7a5f;
-  --color-st-submitted: #4f5bd5;
+  --color-st-submitted: #5b5bd6;
   --color-st-decision: #0b7a5f;
 
   --shadow-window: 0 0 0 1px rgb(14 15 17 / 0.07), 0 2px 4px rgb(14 15 17 / 0.04), 0 28px 56px -16px rgb(14 15 17 / 0.16);
   --shadow-card: 0 0 0 1px rgb(14 15 17 / 0.07), 0 1px 2px rgb(14 15 17 / 0.04);
+  --shadow-lift: 0 0 0 1px rgb(14 15 17 / 0.07), 0 8px 24px -8px rgb(14 15 17 / 0.14);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Page-load entrance for hero text. */
+  --animate-enter: enter 0.9s var(--ease-out-expo) both;
+  @keyframes enter {
+    from {
+      opacity: 0;
+      translate: 0 14px;
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+      filter: blur(0);
+    }
+  }
+
+  /* The home page's product window settling into place. */
+  --animate-tilt-in: tilt-in 1.4s var(--ease-out-expo) 0.25s both;
+  @keyframes tilt-in {
+    from {
+      opacity: 0;
+      transform: perspective(2200px) rotateX(16deg) translateY(48px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(2200px) rotateX(0deg) translateY(0) scale(1);
+    }
+  }
+
+  /* Ambient motion for hero backdrops and illustrations. */
+  --animate-drift: drift 48s linear infinite alternate;
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-14%, -4%, 0);
+    }
+  }
+  --animate-rise: rise 36s linear infinite alternate;
+  @keyframes rise {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(0, -18%, 0);
+    }
+  }
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.95;
+    }
+  }
+  --animate-float: float 6s ease-in-out infinite;
+  @keyframes float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -6px;
+    }
+  }
+  --animate-dash: dash 1.4s linear infinite;
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -20;
+    }
+  }
+  --animate-ping-soft: ping-soft 2.4s var(--ease-out-expo) infinite;
+  @keyframes ping-soft {
+    from {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    to {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+  --animate-caret: caret 1.1s steps(1) infinite;
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+  --animate-slide: slide 30s linear infinite alternate;
+  @keyframes slide {
+    from {
+      transform: translate3d(-6%, 0, 0);
+    }
+    to {
+      transform: translate3d(6%, 0, 0);
+    }
+  }
 }
 
 @layer base {
@@ -39,6 +147,7 @@
     background: #ffffff;
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-feature-settings: "cv01", "ss03";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -75,6 +184,45 @@
   @media (width >= 48rem) {
     padding-left: max(2rem, env(safe-area-inset-left, 0px));
     padding-right: max(2rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* Fades and lifts an element in as it scrolls into view. Driven by scroll position, not JS,
+   so content is always visible where scroll-driven animations are unsupported. */
+@utility reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 240px;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Reading progress bar driven by page scroll. */
+@utility read-progress {
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  @supports (animation-timeline: scroll()) {
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes grow-x {
+  to {
+    transform: scaleX(1);
   }
 }
 

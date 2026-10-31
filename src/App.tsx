@@ -9,6 +9,7 @@ import { Now } from './pages/Now';
 import { Partners } from './pages/Partners';
 import { Post } from './pages/Post';
 import { Pricing } from './pages/Pricing';
+import { Tracking } from './pages/Tracking';
 
 export function App() {
   return (
@@ -17,6 +18,7 @@ export function App() {
         <Route index element={<Home />} />
         <Route path="intake" element={<Intake />} />
         <Route path="ai" element={<Ai />} />
+        <Route path="tracking" element={<Tracking />} />
         <Route path="partners" element={<Partners />} />
         <Route path="pricing" element={<Pricing />} />
         <Route path="now" element={<Now />} />

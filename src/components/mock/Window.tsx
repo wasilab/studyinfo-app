@@ -36,10 +36,11 @@ export function Avatar({ name }: { name: string }) {
   );
 }
 
-export function Chip({ children, tone = 'plain' }: { children: ReactNode; tone?: 'plain' | 'good' | 'warn' | 'bad' | 'info' }) {
+export function Chip({ children, tone = 'plain' }: { children: ReactNode; tone?: 'plain' | 'good' | 'warn' | 'bad' | 'info' | 'accent' }) {
   const tones = {
     plain: 'bg-muted text-ink-2',
-    good: 'bg-accent-soft text-accent',
+    good: 'bg-success-soft text-success',
+    accent: 'bg-accent-soft text-accent',
     warn: 'bg-amber-50 text-amber-700',
     bad: 'bg-red-50 text-red-700',
     info: 'bg-indigo-50 text-indigo-700',

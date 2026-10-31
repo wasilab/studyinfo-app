@@ -100,7 +100,7 @@ export function SubmissionMock() {
           <li key={name} className="flex items-center gap-2.5 px-3 py-2 text-[12px]">
             <Icon name="paperclip" size={13} className="text-ink-3" />
             <span className="min-w-0 flex-1 truncate font-mono text-[11px] text-ink-2">{name}</span>
-            <Icon name="check" size={13} className="text-accent" />
+            <Icon name="check" size={13} className="text-success" />
           </li>
         ))}
       </ul>
@@ -188,7 +188,7 @@ export function FileCheckMock() {
       <ul className="mx-4 divide-y divide-line rounded-lg ring-1 ring-line">
         {FINDINGS.map((f) => (
           <li key={f.doc} className="flex items-center gap-2.5 px-3 py-2.5 text-[12.5px]">
-            {f.tone === 'good' && <Icon name="check" size={14} className="text-accent" />}
+            {f.tone === 'good' && <Icon name="check" size={14} className="text-success" />}
             {f.tone === 'warn' && <span className="grid size-3.5 place-items-center rounded-full bg-amber-500 text-[9px] font-bold text-white">!</span>}
             {f.tone === 'bad' && <Icon name="close" size={14} className="text-red-600" />}
             <span className="min-w-0 flex-1 truncate text-ink">{f.doc}</span>
