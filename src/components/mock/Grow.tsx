@@ -92,7 +92,7 @@ export function FileJourney() {
 /* ---------------------------------------------------------------- 2.0 Add your universities */
 
 /** Animated dashed arrow between columns. Points down when the columns stack. */
-function Connector() {
+export function Connector() {
   return (
     <svg viewBox="0 0 120 16" className="mx-auto h-4 w-8 rotate-90 lg:w-24 lg:rotate-0" fill="none" aria-hidden="true">
       <line x1="0" y1="8" x2="112" y2="8" strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash stroke-accent/60" />

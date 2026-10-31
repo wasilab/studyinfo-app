@@ -53,6 +53,11 @@ const PAGES: Record<string, { title: string; description: string }> = {
     description:
       'Three ways to grow: share commission on files you send, receive files for your universities and win more leads with the agency toolkit. Try the demo.',
   },
+  '/about': {
+    title: `About ${BRAND} · A Partnership for Education Agencies`,
+    description:
+      'StudyInfo is a partnership: Tablab Research builds and runs the technology, and Global Desire Education runs the network under an exclusive license.',
+  },
   '/now': {
     title: `Guides for International Education Agencies · ${BRAND}`,
     description:
@@ -107,7 +112,14 @@ export function jsonLd(seo: Seo) {
   ];
   const url = absoluteUrl(seo.path);
   if (!seo.noindex) {
-    graph.push({ '@type': 'WebPage', '@id': `${url}#webpage`, url, name: seo.title, description: seo.description, isPartOf: { '@id': `${SITE_URL}/#website` } });
+    graph.push({
+      '@type': seo.path === '/about' ? 'AboutPage' : 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: seo.title,
+      description: seo.description,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+    });
   }
   if (seo.path === '/network') {
     graph.push({

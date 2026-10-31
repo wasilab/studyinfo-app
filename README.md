@@ -20,6 +20,7 @@ npm run dev
 | `/toolkit` | CRM, recommendations, AI tools, marketing and the branded portal |
 | `/network` | How the network works, anonymity and FAQ |
 | `/grow-with-us` | Sales page for our team: send files, add universities, the toolkit, and Try Demo |
+| `/about` | The problem we solve, mission and vision, and the Tablab Research and Global Desire Education partnership |
 | `/now`, `/now/:slug` | Guides and notes |
 | `/contact` | Contact form (opens the visitor's email app), phone, WhatsApp and address |
 

@@ -21,7 +21,7 @@ export const PRODUCT_MENU: ProductLink[] = [
 
 export const NAV: NavLink[] = [
   { to: '/network', label: 'How it works' },
-  { to: '/now', label: 'Now' },
+  { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -79,6 +79,7 @@ export const FOOTER: { title: string; links: NavLink[] }[] = [
   {
     title: 'Company',
     links: [
+      { to: '/about', label: 'About' },
       { to: '/toolkit', label: 'Agency toolkit' },
       { to: '/now', label: 'Now' },
       { to: contactLink('join'), label: 'Join the network' },

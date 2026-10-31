@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router';
 import { Layout } from './components/layout/Layout';
+import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { GrowWithUs } from './pages/GrowWithUs';
 import { Home } from './pages/Home';
@@ -31,6 +32,7 @@ export function App() {
         <Route path="toolkit" element={<Toolkit />} />
         <Route path="network" element={<Network />} />
         <Route path="grow-with-us" element={<GrowWithUs />} />
+        <Route path="about" element={<About />} />
         <Route path="now" element={<Now />} />
         <Route path="now/:slug" element={<Post />} />
         <Route path="contact" element={<Contact />} />
