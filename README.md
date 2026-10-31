@@ -28,6 +28,7 @@ The old routes `/intake`, `/ai`, `/partners` and `/pricing` redirect to `/send-f
 ## Where to edit
 
 - Brand name, email, phone, WhatsApp link and address: `src/config.ts`
+- Logo: `src/components/ui/Logo.tsx`, with copies of the same shapes in `public/logo.svg` (for use outside the site) and `public/favicon.svg` (browser tab). Change all three together.
 - Demo app link for every "Try Demo" button: `DEMO_URL` in `src/config.ts`. While it is empty, the buttons open the contact form with "Book a demo" selected.
 - Page copy: `src/content/*.ts`
 - Example data shown in the product illustrations: `src/content/files.ts`

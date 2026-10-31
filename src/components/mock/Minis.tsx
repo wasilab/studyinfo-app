@@ -638,7 +638,7 @@ export function MiniHub() {
       ))}
       <span className="absolute top-1/2 left-1/2 grid size-[52px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl bg-surface shadow-lift">
         <span className="absolute inset-0 animate-ping-soft rounded-2xl bg-accent/20" />
-        <LogoMark size={28} />
+        <LogoMark size={30} />
       </span>
     </div>
   );

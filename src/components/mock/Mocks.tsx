@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { EXAMPLE_FILES, REQUIRED_DOCUMENTS, type ExampleFile } from '../../content/files';
 import type { MockName } from '../../content/home';
 import { Icon, type IconName } from '../ui/Icon';
-import { LogoMark } from '../ui/Logo';
 import { Chip, FileRow, StatusChip, Window } from './Window';
 
 const byId = (id: string) => EXAMPLE_FILES.find((f) => f.id === id)!;
@@ -464,7 +463,7 @@ export function PostMock() {
         <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[linear-gradient(150deg,#1e2a5a,#3b4db3_55%,#6e8bff)] p-4">
           <div className="absolute -right-8 -bottom-8 size-40 rounded-full bg-white/10" />
           <span className="flex items-center gap-1.5 text-[10px] font-medium text-white/80">
-            <LogoMark size={14} /> Your agency
+            <span className="grid size-3.5 place-items-center rounded-[4px] bg-white/90 text-[8px] font-bold text-[#3b4db3]">Y</span> Your agency
           </span>
           <p className="mt-6 text-[19px] leading-tight font-semibold text-white">Study in Canada this September</p>
           <p className="mt-2 text-[11px] text-white/75">Programmes, costs and scholarships</p>

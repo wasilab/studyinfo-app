@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { EXPLORE, STATEMENTS, contactLink, type Statement } from '../../content/site';
 import { Arrow, Button } from './Button';
 import { Container } from './Container';
-import { LogoMark } from './Logo';
+import { LogoGlyph, LogoMark } from './Logo';
 
 /** Row of the four product pages, divided by hairlines. */
 export function ExploreRow() {
@@ -38,15 +38,12 @@ function StatementCard({ statement, tone }: { statement: Statement; tone: 'neutr
   } as const;
   return (
     <figure className={`group reveal relative isolate flex min-h-[280px] flex-col justify-between gap-12 overflow-hidden rounded-2xl p-7 ring-1 md:min-h-[340px] md:p-9 ${tones[tone]}`}>
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="absolute -right-12 -bottom-16 -z-10 size-80 text-ink/[0.08] transition-transform duration-1000 ease-out-expo group-hover:scale-105 group-hover:rotate-6">
-        {[0.5, 2.25, 4].map((inset) => (
-          <rect key={inset} x={inset} y={inset} width={24 - inset * 2} height={24 - inset * 2} rx={6 - inset / 2} stroke="currentColor" strokeWidth="0.12" />
-        ))}
-        <path d="M7.5 9h9M7.5 12h9M7.5 15h5.5" stroke="currentColor" strokeWidth="0.12" strokeLinecap="round" />
+      <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" className="absolute -right-12 -bottom-16 -z-10 size-80 text-ink/[0.08] transition-transform duration-1000 ease-out-expo group-hover:scale-105 group-hover:rotate-6">
+        <LogoGlyph strokeWidth={0.16} dot={0.6} />
       </svg>
       <blockquote className="max-w-xl text-[1.5rem] leading-[1.22] font-medium tracking-[-0.025em] text-ink md:text-[1.75rem]">{statement.text}</blockquote>
       <figcaption className="flex items-center gap-3">
-        <LogoMark size={26} />
+        <LogoMark size={28} />
         <span className="text-[13px] leading-tight">
           <span className="block font-medium text-ink">StudyInfo standard</span>
           <span className="text-ink-3">{statement.label}</span>
