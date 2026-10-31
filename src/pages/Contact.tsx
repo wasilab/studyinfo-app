@@ -2,9 +2,9 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router';
 import { Button } from '../components/ui/Button';
 import { Container } from '../components/ui/Container';
-import { Icon } from '../components/ui/Icon';
+import { Icon, type IconName } from '../components/ui/Icon';
 import { Label } from '../components/ui/Section';
-import { CONTACT_EMAIL } from '../config';
+import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_LINK, CONTACT_WHATSAPP } from '../config';
 import { ENQUIRY_TYPES, type EnquiryType } from '../content/site';
 import { mailto } from '../lib/mailto';
 import { usePageMeta } from '../lib/usePageMeta';
@@ -13,17 +13,27 @@ import { WordReveal } from '../components/ui/WordReveal';
 const TYPES = Object.keys(ENQUIRY_TYPES) as EnquiryType[];
 const isType = (v: string | null): v is EnquiryType => v !== null && v in ENQUIRY_TYPES;
 
-const NEXT_STEPS = ['We read your message and reply by email.', 'We agree partnership terms with you.', 'You start sending or receiving student files.'];
+const NEXT_STEPS = [
+  'We read your message and get back to you.',
+  'We talk through how your agency will use the network.',
+  'You start sending student files, receiving them, or both.',
+];
+
+const CHANNELS: { icon: IconName; label: string; value: string; href?: string; external?: boolean }[] = [
+  { icon: 'phone', label: 'Phone', value: CONTACT_PHONE, href: CONTACT_PHONE_LINK },
+  { icon: 'message', label: 'WhatsApp', value: 'Message us on WhatsApp', href: CONTACT_WHATSAPP, external: true },
+  { icon: 'pin', label: 'Office', value: CONTACT_ADDRESS },
+];
 
 const FIELD =
   'h-10 w-full rounded-lg bg-canvas px-3 text-[14px] text-ink ring-1 ring-line-2 outline-none ring-inset placeholder:text-ink-3 focus:ring-2 focus:ring-accent';
 
 export function Contact() {
-  usePageMeta('Contact', 'Talk to the StudyInfo partnerships team about submitting student files or becoming an agency or university partner.');
+  usePageMeta('Contact', 'Talk to the StudyInfo team about joining the network, sending student files or adding your universities.');
   const [params] = useSearchParams();
   const requested = params.get('type');
 
-  const [type, setType] = useState<EnquiryType>(isType(requested) ? requested : 'agency');
+  const [type, setType] = useState<EnquiryType>(isType(requested) ? requested : 'join');
   const [form, setForm] = useState({ name: '', email: '', organisation: '', country: '', message: '' });
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -68,24 +78,54 @@ export function Contact() {
           <div className="flex flex-col gap-6">
             <Label>Contact</Label>
             <h1 className="text-[2.6rem] leading-[1.04] font-medium tracking-[-0.04em] sm:text-[3.4rem]">
-              <WordReveal text="Talk to our partnerships team" />
+              <WordReveal text="Talk to the StudyInfo team" />
             </h1>
             <p className="max-w-md text-[17px] leading-relaxed text-ink-2">
-              Tell us who you are and what you need. We’ll reply by email with the next steps.
+              Tell us about your agency: the students you hold, the universities you work with, or both. We’ll get back to you with the next steps.
             </p>
 
-            <div className="mt-2 rounded-xl bg-subtle p-5 ring-1 ring-line">
-              <p className="text-[13px] text-ink-3">Prefer email?</p>
-              <div className="mt-1.5 flex items-center justify-between gap-3">
-                <span className="min-w-0 font-medium break-all select-all">{CONTACT_EMAIL}</span>
+            <div className="mt-2 divide-y divide-line rounded-xl bg-subtle ring-1 ring-line">
+              <div className="flex items-center gap-3.5 p-4 sm:px-5">
+                <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-surface text-ink-2 ring-1 ring-line">
+                  <Icon name="mail" size={15} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[12px] text-ink-3">Email</span>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="block font-medium break-all transition-colors hover:text-accent">
+                    {CONTACT_EMAIL}
+                  </a>
+                </span>
                 <button
                   type="button"
                   onClick={copyEmail}
+                  aria-label={copied ? 'Email address copied' : 'Copy email address'}
                   className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md bg-surface-2 px-2.5 text-[12.5px] ring-1 ring-line-2 hover:bg-muted"
                 >
                   <Icon name={copied ? 'check' : 'copy'} size={13} /> {copied ? 'Copied' : 'Copy'}
                 </button>
               </div>
+              {CHANNELS.map((c) => (
+                <div key={c.label} className="flex items-center gap-3.5 p-4 sm:px-5">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-surface text-ink-2 ring-1 ring-line">
+                    <Icon name={c.icon} size={15} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[12px] text-ink-3">{c.label}</span>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        className="group inline-flex items-center gap-1 font-medium transition-colors hover:text-accent"
+                      >
+                        {c.value}
+                        {c.external && <Icon name="arrowUpRight" size={13} className="text-ink-3 transition-colors group-hover:text-accent" />}
+                      </a>
+                    ) : (
+                      <span className="block font-medium">{c.value}</span>
+                    )}
+                  </span>
+                </div>
+              ))}
             </div>
 
             <div className="mt-2">
@@ -171,7 +211,7 @@ export function Contact() {
                     rows={5}
                     value={form.message}
                     onChange={update('message')}
-                    placeholder="For example: the countries you recruit from, or the programmes you want to fill."
+                    placeholder="For example: the countries your students come from, or the universities you work with."
                     className={`${FIELD} h-auto resize-y py-2.5 leading-relaxed`}
                   />
                 </label>

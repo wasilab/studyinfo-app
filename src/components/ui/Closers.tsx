@@ -67,10 +67,10 @@ export function StatementCards({ pick = [0, 1], tone = 'lavender' }: { pick?: [n
         </div>
         <div className="reveal mt-6 flex flex-wrap items-center justify-between gap-3 text-[13px] text-ink-3">
           <p>
-            StudyInfo accepts <span className="text-ink">student files, agency partners and partner universities.</span>
+            StudyInfo connects <span className="text-ink">agencies that hold students with agencies that hold universities.</span>
           </p>
-          <Link to="/partners" className="group inline-flex items-center gap-1.5 transition-colors hover:text-ink">
-            Partners <Arrow size={12} />
+          <Link to="/network" className="group inline-flex items-center gap-1.5 transition-colors hover:text-ink">
+            How it works <Arrow size={12} />
           </Link>
         </div>
       </Container>
@@ -79,7 +79,7 @@ export function StatementCards({ pick = [0, 1], tone = 'lavender' }: { pick?: [n
 }
 
 /** Centred closing call to action. */
-export function CtaSection({ title = ['Every file complete.', 'Every partner informed.'] }: { title?: [string, string] }) {
+export function CtaSection({ title = ['Place every student.', 'Fill every university.'] }: { title?: [string, string] }) {
   return (
     <section className="relative isolate overflow-clip border-t border-line py-28 md:py-40">
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(45%_70%_at_50%_100%,rgb(110_139_255/0.18),transparent_70%)]" />
@@ -94,8 +94,8 @@ export function CtaSection({ title = ['Every file complete.', 'Every partner inf
           {title[1]}
         </h2>
         <div className="reveal flex flex-wrap justify-center gap-3">
-          <Button to={contactLink('agency')}>Become a partner</Button>
-          <Button to="/contact" variant="secondary">
+          <Button to={contactLink('join')}>Join the network</Button>
+          <Button to={contactLink('other')} variant="secondary">
             Contact us
           </Button>
         </div>

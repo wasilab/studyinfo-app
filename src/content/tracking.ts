@@ -2,35 +2,43 @@ import type { Block } from './blocks';
 
 export const TRACKING = {
   hero: {
-    label: 'Tracking',
-    title: 'One status from submission to decision',
+    label: 'Case tracking',
+    title: 'Every step, from document check to commission',
   },
   blocks: [
     {
-      title: 'Applications ready to assess',
-      text: 'We submit each application to partner universities in the format their admissions team expects, so nothing is delayed by paperwork.',
-      link: { to: '/intake', label: 'Intake' },
+      title: 'Everyone moves their own steps',
+      text: 'The applying agency moves the university-side steps: applied, offers, conditions and CAS. The student agency moves offer acceptance, payment and visa. A step set by the wrong party is refused.',
+      link: { to: '/network', label: 'How it works' },
       panel: {
-        title: 'University-ready packages',
-        text: 'Documents ordered and named the way each admissions team asks.',
+        title: 'One case, clear ownership',
+        text: 'Each step shows who moves it, and every move is recorded in the case history.',
       },
       features: [
-        { title: 'Checked twice', text: 'An AI check and a human review before anything is sent.' },
-        { title: 'One point of contact', text: 'Universities deal with StudyInfo, not dozens of agency inboxes.' },
+        { title: 'Offers, conditions and CAS', text: 'The applying agency records the university’s side as it happens.' },
+        { title: 'Payment and visa', text: 'The student agency keeps its own steps up to date.' },
       ],
     },
     {
-      title: 'One status for every application',
-      text: 'Agencies and universities see the same status for every file, from receipt to decision, without chasing email threads.',
-      link: { to: '/partners', label: 'Partners' },
+      title: 'One thread, three parties',
+      text: 'The student agency, the applying agency and our team talk in one thread on the case, with attachments and read receipts.',
       panel: {
-        title: 'Everyone sees the same board',
-        text: 'The agency, the university and our team follow every file on one status.',
+        title: 'Role labels, never names',
+        text: 'Every message shows Student agency, Applying agency or StudyInfo team, and nothing else.',
       },
       features: [
-        { title: 'Every stage visible', text: 'Received, in review, verified, submitted and decision.' },
-        { title: 'Fewer follow-ups', text: 'Nobody has to chase an email thread to find out where a file is.' },
+        { title: 'Unread badges and notifications', text: 'See which cases have new messages at a glance.' },
+        { title: 'Attachments on the case', text: 'Share documents in the thread, kept with the case.' },
       ],
+    },
+    {
+      title: 'Commission, tracked to the end',
+      text: 'After the final step, the commission step tracks the agency commission as pending, claimed or received. Students never see it.',
+      panel: {
+        title: 'Commission status',
+        text: 'Visible to both agencies and our team.',
+      },
+      features: [],
     },
   ] satisfies Block[],
 };

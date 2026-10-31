@@ -40,7 +40,7 @@ export function HeroBackdrop({ variant }: { variant: Backdrop }) {
   );
 }
 
-const CARD_STATUSES: Status[] = ['review', 'verified', 'submitted', 'missing', 'received', 'decision'];
+const CARD_STATUSES: Status[] = ['check', 'forwarded', 'offer', 'returned', 'submitted', 'commission'];
 
 function Cards() {
   const cards = Array.from({ length: 30 }, (_, i) => {
@@ -66,13 +66,13 @@ function Cards() {
 }
 
 const INBOX_ROWS: { status: Status; id: string; text: string }[] = [
-  { status: 'missing', id: 'SI-2042', text: 'English test score missing' },
-  { status: 'review', id: 'SI-2041', text: 'AI check: 6 of 6 documents' },
-  { status: 'received', id: 'SI-2045', text: 'Waiting for checks' },
-  { status: 'verified', id: 'SI-2043', text: 'Ready for matching' },
-  { status: 'review', id: 'SI-2049', text: 'Transcript grading scale found' },
-  { status: 'missing', id: 'SI-2051', text: 'Second reference letter' },
-  { status: 'verified', id: 'SI-2052', text: 'Names match across documents' },
+  { status: 'returned', id: 'SI-2042', text: 'English test result expired' },
+  { status: 'check', id: 'SI-2041', text: 'Document check in progress' },
+  { status: 'submitted', id: 'SI-2045', text: 'Waiting for document check' },
+  { status: 'forwarded', id: 'SI-2043', text: 'Forwarded to an applying agency' },
+  { status: 'offer', id: 'SI-2044', text: 'Conditional offer uploaded' },
+  { status: 'returned', id: 'SI-2051', text: 'Passport copy unclear' },
+  { status: 'commission', id: 'SI-2046', text: 'Commission claimed' },
 ];
 
 function Inbox() {
@@ -97,7 +97,7 @@ function Inbox() {
 
 function Particles() {
   const rand = seeded(7);
-  const colors = ['bg-accent', 'bg-accent', 'bg-success', 'bg-ink-3', 'bg-st-review'];
+  const colors = ['bg-accent', 'bg-accent', 'bg-success', 'bg-ink-3', 'bg-st-check'];
   const dots = Array.from({ length: 90 }, () => ({
     x: 30 + rand() * 72,
     y: rand() * 100,

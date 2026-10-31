@@ -34,8 +34,8 @@ export function HowItWorks() {
       <Container>
         <SectionHeader
           label={<Label>How it works</Label>}
-          title="From first file to final decision"
-          text="Four steps, one partner. Follow a student file from the agency to the university’s decision."
+          title="From student file to commission"
+          text="Follow one student file from the agency that holds the student, through our team, to the agency that applies."
         />
         <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16">
           <div className="relative min-w-0">

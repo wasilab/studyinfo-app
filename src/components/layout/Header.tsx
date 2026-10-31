@@ -108,13 +108,13 @@ export function Header() {
         <span aria-hidden="true" className="mx-2 hidden h-4 w-px bg-line-2 md:block" />
         <div className="ml-auto flex items-center gap-2 md:ml-0">
           <span className="hidden lg:block">
-            <Button to={contactLink('files')} variant="ghost" size="sm">
-              Submit files
+            <Button to="/send-files" variant="ghost" size="sm">
+              Send student files
             </Button>
           </span>
           <span className="hidden sm:block">
-            <Button to={contactLink('agency')} size="sm">
-              Become a partner
+            <Button to={contactLink('join')} size="sm">
+              Join the network
             </Button>
           </span>
           <button
@@ -149,9 +149,9 @@ export function Header() {
               </NavLink>
             ))}
             <div className="flex flex-col gap-2 pt-4 pb-2">
-              <Button to={contactLink('agency')}>Become a partner</Button>
-              <Button to={contactLink('files')} variant="secondary">
-                Submit student files
+              <Button to={contactLink('join')}>Join the network</Button>
+              <Button to="/send-files" variant="secondary">
+                Send student files
               </Button>
             </div>
           </Container>

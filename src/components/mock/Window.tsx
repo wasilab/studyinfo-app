@@ -57,7 +57,7 @@ export function StatusChip({ file }: { file: Pick<ExampleFile, 'status'> }) {
   );
 }
 
-export function FileRow({ file, active = false, note = true }: { file: ExampleFile; active?: boolean; note?: boolean }) {
+export function FileRow({ file, active = false, note = true, unread = 0 }: { file: ExampleFile; active?: boolean; note?: boolean; unread?: number }) {
   return (
     <div className={`flex h-10 items-center gap-3 px-4 text-[12.5px] ${active ? 'bg-muted/70' : ''}`}>
       <StatusIcon status={file.status} />
@@ -65,6 +65,11 @@ export function FileRow({ file, active = false, note = true }: { file: ExampleFi
       <span className="min-w-0 flex-1 truncate text-ink">{file.programme}</span>
       {note && <span className="hidden max-w-[38%] truncate text-ink-3 sm:block">{file.note}</span>}
       <span className="hidden shrink-0 text-ink-3 xl:block">{file.intake}</span>
+      {unread > 0 && (
+        <span className="grid h-4 min-w-4 shrink-0 place-items-center rounded-full bg-accent px-1 text-[10px] font-semibold text-canvas tabular-nums" aria-label={`${unread} unread`}>
+          {unread}
+        </span>
+      )}
       <span className="shrink-0 rounded border border-line px-1 font-mono text-[10px] text-ink-2">{file.country}</span>
       <Avatar name={file.student} />
     </div>

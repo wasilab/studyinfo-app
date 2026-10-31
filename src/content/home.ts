@@ -1,6 +1,6 @@
 import type { IconName } from '../components/ui/Icon';
 
-export type MockName = 'intake' | 'match' | 'submission' | 'board';
+export type MockName = 'submission' | 'check' | 'received' | 'thread';
 
 export interface Chapter {
   num: string;
@@ -9,112 +9,134 @@ export interface Chapter {
   title: string;
   text: string;
   mock: MockName;
-  points: { num: string; title: string; text: string }[];
+  points: { title: string; text: string }[];
 }
 
 export const HERO = {
-  pill: { label: 'AI document checks, reviewed by our team', to: '/ai' },
-  title: 'The admissions partner for agencies and universities',
-  lead: 'StudyInfo accepts student files from agency partners, checks every document with AI and our admissions team, and submits complete applications to partner universities.',
+  pill: { label: 'An anonymous network for agencies · every file checked by our team', to: '/network' },
+  title: 'Place every student. Fill every university.',
+  lead: 'StudyInfo is the network for international education agencies. Send your students’ files to agencies that can apply where you can’t, add your universities to receive verified files from across the network, and share the commission.',
 };
 
-export const ACCEPT: { title: string; text: string; to: string }[] = [
-  { title: 'Student files', text: 'From agency partners, in one consistent format.', to: '/intake' },
-  { title: 'Agency partners', text: 'Recruitment agencies and education consultants.', to: '/partners' },
-  { title: 'Partner universities', text: 'Universities and colleges recruiting internationally.', to: '/partners' },
+export const WAYS: { icon: IconName; title: string; text: string; to: string; cta: string }[] = [
+  {
+    icon: 'send',
+    title: 'Have students?',
+    text: 'Send their files through StudyInfo. Our team checks the documents and forwards each file to an agency that can apply.',
+    to: '/send-files',
+    cta: 'Send student files',
+  },
+  {
+    icon: 'building',
+    title: 'Have university partners?',
+    text: 'Add your universities to the catalog and receive verified student files from agencies across the network.',
+    to: '/universities',
+    cta: 'Add your universities',
+  },
+  {
+    icon: 'match',
+    title: 'Have both?',
+    text: 'Use both sides of the network from one account: send some files, receive others.',
+    to: '/network',
+    cta: 'How it works',
+  },
 ];
 
 export const INTRO = {
-  statement: 'One partner from first file to final decision.',
-  rest: 'We check every document, match each student to programmes they can be admitted to, and keep agencies and universities looking at the same status.',
+  statement: 'A student who fits a university you can’t apply to is no longer a lost student.',
+  rest: 'Send the file through StudyInfo, and an agency with the university relationship applies for you. Both agencies share the commission, and neither ever sees the other’s name.',
   pillars: [
-    { icon: 'shield', title: 'Verified before submission', text: 'No file reaches a university until every required document is present and checked.' },
-    { icon: 'sparkle', title: 'AI-assisted, human-reviewed', text: 'AI reads each document and suggests programmes. Our team signs off on every file.' },
-    { icon: 'track', title: 'One shared status', text: 'Agencies and universities follow each application from receipt to decision.' },
+    { icon: 'shield', title: 'Checked by our team', text: 'A person on our team checks every file before it is forwarded.' },
+    { icon: 'lock', title: 'Anonymous by design', text: 'Agencies see role labels only, never each other’s name, logo or contacts.' },
+    { icon: 'coins', title: 'Commission shared', text: 'The university’s commission is shared between the two agencies.' },
   ] satisfies { icon: IconName; title: string; text: string }[],
 };
 
 export const CHAPTERS: Chapter[] = [
   {
     num: '1.0',
-    label: 'Intake',
-    to: '/intake',
-    title: 'Every file, checked on arrival',
-    text: 'Agency partners send student files through one structured process. Each file is checked for completeness before anything else happens.',
-    mock: 'intake',
+    label: 'Submit',
+    to: '/send-files',
+    title: 'Send the student’s file',
+    text: 'Open the programme, confirm the application and submit. StudyInfo builds a Student Application PDF from the required documents.',
+    mock: 'submission',
     points: [
-      { num: '1.1', title: 'Completeness check', text: 'Passport, transcripts, English test, statement of purpose, references and CV.' },
-      { num: '1.2', title: 'Clear requests', text: 'Incomplete files go back to the agency with an exact list of what is missing.' },
-      { num: '1.3', title: 'One format', text: 'The same submission process for every partner university.' },
+      { title: 'One application PDF', text: 'Profile, passport, transcripts, English score and university fields in one file.' },
+      { title: 'No agency branding', text: 'The PDF carries no agency name, so your student stays yours.' },
+      { title: 'Withdraw any time', text: 'You can withdraw a file at any point.' },
     ],
   },
   {
     num: '2.0',
-    label: 'AI matching',
-    to: '/ai',
-    title: 'Programmes the student can get into',
-    text: 'AI compares each student profile with partner entry requirements and explains every suggestion. Our admissions team confirms the shortlist.',
-    mock: 'match',
+    label: 'Document check',
+    to: '/send-files',
+    title: 'Our team checks every document',
+    text: 'A person on our team reviews the file. If something is wrong, it comes back to you with a reason and a note to fix and resubmit.',
+    mock: 'check',
     points: [
-      { num: '2.1', title: 'Requirement checks', text: 'Grades, English scores and intake dates against each programme.' },
-      { num: '2.2', title: 'Reasons, not scores', text: 'Every suggestion says why it fits or what is missing.' },
-      { num: '2.3', title: 'Human sign-off', text: 'A member of our team reviews every shortlist.' },
+      { title: 'Clear reasons', text: 'Every returned file carries a reason and a note.' },
+      { title: 'Resubmit when ready', text: 'Fix the file and send it again. Each resubmission is checked afresh.' },
+      { title: 'Students kept informed', text: 'Your student sees “Under review by our team”, nothing more.' },
     ],
   },
   {
     num: '3.0',
-    label: 'Submission',
-    title: 'Applications ready to assess',
-    text: 'We submit each application to partner universities in the format their admissions team expects, so nothing is delayed by paperwork.',
-    mock: 'submission',
+    label: 'Apply',
+    to: '/universities',
+    title: 'An agency with the relationship applies',
+    text: 'We forward the verified file to an applying agency, by default the university’s owner agency. It applies, uploads the offer letter and moves the university-side steps.',
+    mock: 'received',
     points: [
-      { num: '3.1', title: 'University-ready packages', text: 'Documents ordered and named the way each admissions team asks.' },
-      { num: '3.2', title: 'Checked twice', text: 'An AI check and a human review before anything is sent.' },
-      { num: '3.3', title: 'One point of contact', text: 'Universities deal with StudyInfo, not dozens of agency inboxes.' },
+      { title: 'Offer letters on the case', text: 'Conditional and unconditional offers are uploaded to the case.' },
+      { title: 'The right party, every step', text: 'Each step can only be moved by the party that owns it.' },
+      { title: 'Reassigned if needed', text: 'Our team can move a file to another applying agency.' },
     ],
   },
   {
     num: '4.0',
-    label: 'Tracking',
-    title: 'One status for every application',
-    text: 'Agencies and universities see the same status for every file, from receipt to decision, without chasing email threads.',
-    mock: 'board',
+    label: 'Track and share',
+    to: '/tracking',
+    title: 'Follow the case. Share the commission.',
+    text: 'All three parties talk in one thread on the case. When the case completes, the commission step tracks the agency commission.',
+    mock: 'thread',
     points: [
-      { num: '4.1', title: 'Shared view', text: 'The same status for the agency, the university and our team.' },
-      { num: '4.2', title: 'Every stage', text: 'Received, in review, verified, submitted and decision.' },
-      { num: '4.3', title: 'Fewer follow-ups', text: 'Nobody has to chase an email thread to find out where a file is.' },
+      { title: 'One thread, three parties', text: 'Messages and attachments, labelled by role only.' },
+      { title: 'Commission status', text: 'Pending, claimed and received, visible to agencies, never to students.' },
+      { title: 'A full history', text: 'Every move is recorded in the case history.' },
     ],
   },
 ];
 
 export const AUDIENCES = [
   {
-    label: 'For agencies',
-    title: 'Place more students with less paperwork',
+    label: 'For student agencies',
+    title: 'Place students at universities you can’t apply to',
     points: [
-      'One submission process for every partner university',
-      'Programme shortlists based on real entry requirements',
-      'A single status view for all your applications',
+      'Send files through one process, in one format',
+      'Every file checked by our team before it moves',
+      'Share the university’s commission with the applying agency',
     ],
-    cta: { label: 'Become an agency partner', type: 'agency' as const },
-    note: 'Free to join',
+    cta: { label: 'Send student files', to: '/send-files' },
+    note: 'You have students',
   },
   {
-    label: 'For universities',
-    title: 'Receive applications that are ready to assess',
+    label: 'For applying agencies',
+    title: 'Receive verified files for your universities',
     points: [
-      'Files checked for completeness before they arrive',
-      'Access to agency partners in the markets you target',
-      'One point of contact instead of dozens of inboxes',
+      'Add your universities through a simple request',
+      'Receive files already checked by our team',
+      'Share the commission on every placement',
     ],
-    cta: { label: 'Become a partner university', type: 'university' as const },
-    note: 'Custom terms',
+    cta: { label: 'Add your universities', to: '/universities' },
+    note: 'You have universities',
   },
 ];
 
-export const STANDARDS: { title: string; text: string }[] = [
-  { title: 'Complete before submission', text: 'No file reaches a university until every required document is present and checked.' },
-  { title: 'Student data handled with care', text: 'Student information is used only for their applications and shared only with the universities they apply to.' },
-  { title: 'Verified partners only', text: 'We work with agencies and universities that have agreed partnership terms with us.' },
-  { title: 'One transparent status', text: 'Agencies and universities see the same application status at every stage.' },
+export const TOOLKIT_TEASER: { icon: IconName; title: string; text: string }[] = [
+  { icon: 'users', title: 'Student CRM', text: 'Every student journey, from first enquiry to visa.' },
+  { icon: 'match', title: 'Programme recommendations', text: 'A match score and admission chance for every programme.' },
+  { icon: 'message', title: 'AI sales chatbot', text: 'Answers WhatsApp and Messenger enquiries, day and night.' },
+  { icon: 'image', title: 'AI content marketing', text: 'Posters, short videos and captions, ready for your approval.' },
+  { icon: 'chart', title: 'Daily ad boost', text: 'Your best post, boosted every day within your budget.' },
+  { icon: 'globe', title: 'Your own portal', text: 'Your brand, on your own domain.' },
 ];

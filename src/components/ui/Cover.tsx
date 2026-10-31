@@ -55,7 +55,7 @@ function Motif({ variant }: { variant: number }) {
             const heights = [118, 82, 106, 106];
             const x = 116 + i * 46;
             return Array.from({ length: Math.round(heights[i] / 6) }, (_, j) => (
-              <line key={`${i}-${j}`} x1={x} y1={190 - j * 6} x2={x + 28} y2={190 - j * 6} className={i === 1 ? 'stroke-st-review' : 'stroke-ink/30'} />
+              <line key={`${i}-${j}`} x1={x} y1={190 - j * 6} x2={x + 28} y2={190 - j * 6} className={i === 1 ? 'stroke-st-check' : 'stroke-ink/30'} />
             ));
           })}
           <line x1="96" y1="96" x2="304" y2="96" strokeDasharray="5 5" className="stroke-ink/70" />

@@ -1,17 +1,15 @@
 import { Link } from 'react-router';
 import { Workspace } from '../components/mock/Workspace';
+import { HowItWorks } from '../components/sections/HowItWorks';
 import { Arrow, Button } from '../components/ui/Button';
 import { CtaSection, ExploreRow, StatementCards } from '../components/ui/Closers';
 import { Container } from '../components/ui/Container';
-import { Icon, type IconName } from '../components/ui/Icon';
+import { Icon } from '../components/ui/Icon';
 import { Label, SectionHeader } from '../components/ui/Section';
 import { WordReveal } from '../components/ui/WordReveal';
-import { HowItWorks } from '../components/sections/HowItWorks';
-import { ACCEPT, AUDIENCES, HERO, INTRO } from '../content/home';
+import { AUDIENCES, HERO, INTRO, TOOLKIT_TEASER, WAYS } from '../content/home';
 import { contactLink } from '../content/site';
 import { usePageMeta } from '../lib/usePageMeta';
-
-const ACCEPT_ICONS: IconName[] = ['file', 'users', 'building'];
 
 export function Home() {
   usePageMeta(null, HERO.lead);
@@ -28,10 +26,10 @@ export function Home() {
           <div className="flex flex-col gap-7">
             <Link
               to={HERO.pill.to}
-              className="group border-beam inline-flex w-fit animate-enter items-center gap-2 rounded-full bg-surface/70 py-1 pr-3 pl-1 text-[13px] text-ink-2 ring-1 ring-line backdrop-blur transition-colors hover:text-ink hover:ring-line-2"
+              className="group border-beam inline-flex w-fit max-w-full animate-enter items-center gap-2 rounded-full bg-surface/70 py-1 pr-3 pl-1 text-[13px] text-ink-2 ring-1 ring-line backdrop-blur transition-colors hover:text-ink hover:ring-line-2"
             >
-              <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11.5px] font-medium text-accent">AI</span>
-              {HERO.pill.label}
+              <span className="shrink-0 rounded-full bg-accent-soft px-2 py-0.5 text-[11.5px] font-medium text-accent">Network</span>
+              <span className="truncate">{HERO.pill.label}</span>
               <Arrow size={12} />
             </Link>
             <h1 className="max-w-5xl text-[2.75rem] leading-[1.02] font-medium tracking-[-0.04em] sm:text-6xl md:text-[4.75rem]">
@@ -39,10 +37,10 @@ export function Home() {
             </h1>
             <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
               <p className="max-w-xl animate-enter text-[17px] leading-relaxed text-ink-2 [animation-delay:160ms] md:text-lg">{HERO.lead}</p>
-              <div className="flex animate-enter flex-wrap items-center gap-3 [animation-delay:240ms]">
-                <Button to={contactLink('agency')}>Become a partner</Button>
-                <Button to={contactLink('files')} variant="secondary">
-                  Submit student files <Arrow />
+              <div className="flex shrink-0 animate-enter flex-wrap items-center gap-3 [animation-delay:240ms]">
+                <Button to={contactLink('join')}>Join the network</Button>
+                <Button to="/send-files" variant="secondary">
+                  Send student files <Arrow />
                 </Button>
               </div>
             </div>
@@ -56,24 +54,24 @@ export function Home() {
       <section className="py-20 md:py-24">
         <Container>
           <p className="reveal text-center text-[15px] text-ink-2">
-            <span className="font-medium text-ink">We accept</span> student files, agency partners and partner universities.
+            <span className="font-medium text-ink">One network, two sides.</span> Use either, or both.
           </p>
           <div className="mt-10 grid gap-3 md:grid-cols-3">
-            {ACCEPT.map((a, i) => (
+            {WAYS.map((w) => (
               <Link
-                key={a.title}
-                to={a.to}
-                className="group reveal flex items-start gap-4 rounded-2xl bg-surface/60 p-5 ring-1 ring-line transition-[box-shadow,background-color] duration-300 hover:bg-surface hover:shadow-lift"
+                key={w.title}
+                to={w.to}
+                className="group reveal flex flex-col gap-4 rounded-2xl bg-surface/60 p-6 ring-1 ring-line transition-[box-shadow,background-color] duration-300 hover:bg-surface hover:shadow-lift"
               >
-                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-subtle text-ink ring-1 ring-line transition-colors group-hover:text-accent">
-                  <Icon name={ACCEPT_ICONS[i]} size={18} />
+                <span className="grid size-10 place-items-center rounded-xl bg-subtle text-ink ring-1 ring-line transition-colors group-hover:text-accent">
+                  <Icon name={w.icon} size={18} />
                 </span>
-                <span className="flex-1">
-                  <span className="flex items-center justify-between text-[15px] font-medium tracking-[-0.01em]">
-                    {a.title}
-                    <Arrow size={13} />
-                  </span>
-                  <span className="mt-1 block text-sm text-ink-2">{a.text}</span>
+                <span className="flex flex-col gap-1.5">
+                  <span className="text-[17px] font-medium tracking-[-0.015em]">{w.title}</span>
+                  <span className="text-sm leading-relaxed text-ink-2">{w.text}</span>
+                </span>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-1 text-[13px] text-ink-3 transition-colors group-hover:text-ink">
+                  {w.cta} <Arrow size={12} />
                 </span>
               </Link>
             ))}
@@ -105,9 +103,9 @@ export function Home() {
       <section className="py-20 md:py-28">
         <Container>
           <SectionHeader
-            title="Built for both sides of admissions"
-            text="Agencies send complete files. Universities receive applications that are ready to assess."
-            link={{ to: '/pricing', label: 'Pricing' }}
+            title="Built for both sides of the network"
+            text="Agencies with students send files. Agencies with universities receive them. Many agencies do both."
+            link={{ to: '/network', label: 'How it works' }}
           />
           <div className="mt-12 grid gap-3 md:grid-cols-2">
             {AUDIENCES.map((a, i) => (
@@ -115,7 +113,7 @@ export function Home() {
                 key={a.label}
                 className={`reveal flex flex-col gap-6 rounded-2xl p-7 ring-1 md:p-9 ${i === 0 ? 'bg-tint-lavender ring-accent/10' : 'bg-subtle ring-line'}`}
               >
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center justify-between gap-3">
                   <Label>{a.label}</Label>
                   <span className="rounded-full bg-surface px-2.5 py-0.5 text-[12px] text-ink-2 ring-1 ring-line">{a.note}</span>
                 </div>
@@ -123,17 +121,40 @@ export function Home() {
                 <ul className="flex flex-col gap-3 text-[15px] text-ink-2">
                   {a.points.map((p) => (
                     <li key={p} className="flex gap-2.5">
-                      <Icon name="check" size={16} className="mt-0.5 text-accent" />
+                      <Icon name="check" size={16} className="mt-0.5 shrink-0 text-accent" />
                       {p}
                     </li>
                   ))}
                 </ul>
                 <div className="mt-auto pt-2">
-                  <Button to={contactLink(a.cta.type)} variant={i === 0 ? 'primary' : 'secondary'}>
+                  <Button to={a.cta.to} variant={i === 0 ? 'primary' : 'secondary'}>
                     {a.cta.label} <Arrow />
                   </Button>
                 </div>
               </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 md:py-28">
+        <Container>
+          <SectionHeader
+            title="More than a network"
+            text="Around the network sits a full toolkit, so your agency can find, convert and manage its students in one place."
+            link={{ to: '/toolkit', label: 'Agency toolkit' }}
+          />
+          <div className="mt-12 grid gap-px overflow-clip rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {TOOLKIT_TEASER.map((t) => (
+              <Link key={t.title} to="/toolkit" className="group bg-canvas transition-colors hover:bg-subtle">
+                <span className="reveal flex h-full flex-col gap-3 p-6 md:p-7">
+                  <span className="grid size-9 place-items-center rounded-lg bg-surface text-ink-2 ring-1 ring-line transition-colors group-hover:text-accent">
+                    <Icon name={t.icon} size={16} />
+                  </span>
+                  <span className="text-[15px] font-medium tracking-[-0.01em] text-ink">{t.title}</span>
+                  <span className="text-sm leading-relaxed text-ink-2">{t.text}</span>
+                </span>
+              </Link>
             ))}
           </div>
         </Container>

@@ -23,7 +23,7 @@ export function PostMeta({ post }: { post: Post }) {
 }
 
 export function Now() {
-  usePageMeta('Now', 'Practical guidance for agencies and universities, and notes on how StudyInfo works.');
+  usePageMeta('Now', 'Practical guidance for international education agencies, and notes on how StudyInfo works.');
   const [filter, setFilter] = useState<Filter>('All');
   const [query, setQuery] = useState('');
 
@@ -42,7 +42,7 @@ export function Now() {
             <WordReveal text="Now" />
           </h1>
           <p className="mt-4 max-w-xl animate-enter text-[17px] text-ink-2 [animation-delay:80ms]">
-            Practical guidance for agencies and universities, and notes on how we work.
+            Practical guidance for agencies, and notes on how StudyInfo works.
           </p>
           <div className="mt-10 flex animate-enter flex-col gap-4 border-b border-line pb-5 [animation-delay:160ms] sm:flex-row sm:items-center sm:justify-between">
             <div role="tablist" aria-label="Filter by category" className="flex flex-wrap gap-1">
