@@ -34,8 +34,8 @@ export function HeroBackdrop({ variant }: { variant: Backdrop }) {
         {variant === 'network' && <Network />}
       </div>
       {/* Fades the artwork out behind the text in the bottom-left. */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,#fff_6%,rgb(255_255_255/0.7)_38%,rgb(255_255_255/0)_72%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff_8%,rgb(255_255_255/0.55)_40%,rgb(255_255_255/0)_70%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-canvas)_6%,rgb(10_16_34/0.75)_38%,rgb(10_16_34/0)_72%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-canvas)_8%,rgb(10_16_34/0.6)_40%,rgb(10_16_34/0)_70%)]" />
     </div>
   );
 }
@@ -51,7 +51,7 @@ function Cards() {
     <div className="absolute top-[-30%] left-[18%] h-[190%] w-[150%] [transform:perspective(1400px)_rotateX(54deg)_rotateZ(-20deg)]">
       <div className="grid animate-drift grid-cols-5 gap-5">
         {cards.map((c) => (
-          <div key={c.id} className="flex flex-col gap-2 rounded-xl bg-white p-4 text-[13px] shadow-card">
+          <div key={c.id} className="flex flex-col gap-2 rounded-xl bg-surface p-4 text-[13px] shadow-card">
             <div className="flex items-center gap-2">
               <StatusIcon status={c.status} />
               <span className="font-mono text-[11px] text-ink-3">{c.id}</span>
@@ -82,7 +82,7 @@ function Inbox() {
         {[...INBOX_ROWS, ...INBOX_ROWS].map((r, i) => (
           <div
             key={i}
-            className="flex items-center gap-5 rounded-2xl bg-white/80 px-6 py-5 shadow-card"
+            className="flex items-center gap-5 rounded-2xl bg-surface/80 px-6 py-5 shadow-card"
             style={{ filter: `blur(${(i % 3) * 0.6}px)`, opacity: 1 - (i % 4) * 0.12 }}
           >
             <StatusIcon status={r.status} className="size-6" />
@@ -109,7 +109,7 @@ function Particles() {
   }));
   return (
     <div className="absolute inset-0">
-      <div className="absolute top-[-20%] right-[-10%] size-[640px] rounded-full bg-[radial-gradient(circle,rgb(91_91_214/0.12),transparent_65%)]" />
+      <div className="absolute top-[-20%] right-[-10%] size-[640px] rounded-full bg-[radial-gradient(circle,rgb(110_139_255/0.20),transparent_65%)]" />
       {dots.map((d, i) => (
         <span
           key={i}
@@ -140,9 +140,9 @@ function Board() {
     <div className="absolute top-[-35%] left-[25%] h-[180%] w-[110%] [transform:perspective(1200px)_rotateX(58deg)_rotateZ(-24deg)]">
       <div className="grid animate-slide grid-cols-5 gap-6">
         {columns.map((col, i) => (
-          <div key={i} className="flex flex-col gap-4 rounded-2xl bg-muted/70 p-4">
+          <div key={i} className="flex flex-col gap-4 rounded-2xl bg-surface/50 p-4">
             {col.map((bar, j) => (
-              <div key={j} className="flex items-center gap-3 rounded-lg bg-white p-3 shadow-card">
+              <div key={j} className="flex items-center gap-3 rounded-lg bg-surface p-3 shadow-card">
                 <StatusIcon status={bar.status} />
                 <span className="h-2 rounded-full bg-line-2" style={{ width: `${bar.width}%` }} />
               </div>

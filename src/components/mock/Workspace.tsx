@@ -69,7 +69,7 @@ export function Workspace() {
       ref={figureRef}
       role="img"
       aria-label="Example StudyInfo workspace: student files grouped by status, an AI document check and an admissions review."
-      className="relative overflow-hidden rounded-xl bg-white text-left shadow-window"
+      className="relative overflow-hidden rounded-xl bg-surface text-left shadow-window"
     >
       <div className="grid h-[420px] md:h-[540px] md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[200px_minmax(0,1fr)_290px]">
         <aside className="hidden flex-col gap-0.5 border-r border-line bg-subtle p-3 text-[12.5px] md:flex">
@@ -77,7 +77,7 @@ export function Workspace() {
             <LogoMark size={18} /> StudyInfo
           </div>
           {NAV.map((n) => (
-            <div key={n.label} className={`flex items-center gap-2 rounded-md px-2 py-1.5 ${n.active ? 'bg-white text-ink shadow-card' : 'text-ink-2'}`}>
+            <div key={n.label} className={`flex items-center gap-2 rounded-md px-2 py-1.5 ${n.active ? 'bg-surface-2 text-ink shadow-card' : 'text-ink-2'}`}>
               <Icon name={n.icon} size={14} />
               {n.label}
             </div>
@@ -112,13 +112,13 @@ export function Workspace() {
           <div ref={listRef} className="relative min-h-0 flex-1 overflow-hidden">
             {groups.map((g) => (
               <div key={g.id}>
-                <div data-row={`group-${g.id}`} className="relative flex h-8 items-center gap-2 bg-subtle px-4 text-[12px] font-medium text-ink-2">
+                <div data-row={`group-${g.id}`} className="relative flex h-8 items-center gap-2 bg-surface-2 px-4 text-[12px] font-medium text-ink-2">
                   <StatusIcon status={g.id} />
                   {g.label}
                   <span className="font-normal text-ink-3 tabular-nums">{g.files.length}</span>
                 </div>
                 {g.files.map((f) => (
-                  <div key={f.id} data-row={f.id} className={`relative bg-white ${f.id === SELECTED && phase === 2 && animate ? 'z-10 animate-flash' : ''}`}>
+                  <div key={f.id} data-row={f.id} className={`relative bg-surface ${f.id === SELECTED && phase === 2 && animate ? 'z-10 animate-flash' : ''}`}>
                     <FileRow file={f} active={f.id === SELECTED} />
                   </div>
                 ))}
@@ -194,9 +194,9 @@ export function Workspace() {
       {phase === 2 && (
         <div
           key={`toast-${cycle}`}
-          className={`absolute right-4 bottom-4 z-20 flex items-center gap-3 rounded-xl bg-white py-3 pr-4 pl-3 text-[12.5px] shadow-lift ${animate ? 'animate-toast' : ''}`}
+          className={`absolute right-4 bottom-4 z-20 flex items-center gap-3 rounded-xl bg-surface-2 py-3 pr-4 pl-3 text-[12.5px] shadow-lift ${animate ? 'animate-toast' : ''}`}
         >
-          <span className="grid size-6 place-items-center rounded-full bg-success text-white">
+          <span className="grid size-6 place-items-center rounded-full bg-success text-canvas">
             <Icon name="check" size={13} />
           </span>
           <span>
@@ -205,7 +205,7 @@ export function Workspace() {
           </span>
         </div>
       )}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-[linear-gradient(to_bottom,rgb(255_255_255/0),#fff)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-[linear-gradient(to_bottom,rgb(10_16_34/0),var(--color-canvas))]" />
     </figure>
   );
 }

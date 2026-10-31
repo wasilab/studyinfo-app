@@ -31,7 +31,7 @@ export function Pricing() {
   return (
     <>
       <section className="relative isolate overflow-clip pt-20 pb-14 text-center md:pt-28 md:pb-20">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(50%_60%_at_50%_0%,rgb(91_91_214/0.10),transparent_70%)]" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(50%_60%_at_50%_0%,rgb(110_139_255/0.18),transparent_70%)]" />
         <Container className="flex flex-col items-center gap-5">
           <p className="animate-enter text-[13px] font-medium text-ink-2">Pricing</p>
           <h1 className="text-[2.75rem] leading-[1.02] font-medium tracking-[-0.04em] sm:text-6xl md:text-[4.5rem]">
@@ -48,7 +48,7 @@ export function Pricing() {
           {PLANS.map((p) => (
             <article
               key={p.name}
-              className={`relative flex flex-col gap-7 overflow-hidden rounded-2xl p-7 md:p-9 ${p.featured ? 'border-beam bg-white shadow-window' : 'bg-subtle ring-1 ring-line'}`}
+              className={`relative flex flex-col gap-7 overflow-hidden rounded-2xl p-7 md:p-9 ${p.featured ? 'border-beam bg-surface shadow-window' : 'bg-subtle ring-1 ring-line'}`}
             >
               <div className="flex flex-col gap-1.5">
                 <h2 className="text-[15px] font-medium tracking-[-0.01em]">{p.name}</h2>

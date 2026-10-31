@@ -33,8 +33,8 @@ export function ExploreRow() {
 function StatementCard({ statement, tone }: { statement: Statement; tone: 'neutral' | 'lavender' | 'sky' }) {
   const tones = {
     neutral: 'bg-subtle ring-line',
-    lavender: 'bg-tint-lavender ring-accent/10',
-    sky: 'bg-[linear-gradient(160deg,var(--color-tint-sky),var(--color-tint-lavender)_70%,#fdf2f4)] ring-accent/10',
+    lavender: 'bg-tint-lavender ring-accent/25',
+    sky: 'bg-[linear-gradient(160deg,rgb(56_189_248/0.12),rgb(110_139_255/0.12)_60%,rgb(236_72_153/0.08))] ring-accent/25',
   } as const;
   return (
     <figure className={`group reveal relative isolate flex min-h-[280px] flex-col justify-between gap-12 overflow-hidden rounded-2xl p-7 ring-1 md:min-h-[340px] md:p-9 ${tones[tone]}`}>
@@ -82,7 +82,7 @@ export function StatementCards({ pick = [0, 1], tone = 'lavender' }: { pick?: [n
 export function CtaSection({ title = ['Every file complete.', 'Every partner informed.'] }: { title?: [string, string] }) {
   return (
     <section className="relative isolate overflow-clip border-t border-line py-28 md:py-40">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(45%_70%_at_50%_100%,rgb(91_91_214/0.10),transparent_70%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(45%_70%_at_50%_100%,rgb(110_139_255/0.18),transparent_70%)]" />
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-line)_1px,transparent_1px)] [mask-image:radial-gradient(60%_60%_at_50%_100%,black,transparent)] bg-[size:56px_56px] opacity-60"

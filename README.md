@@ -28,7 +28,7 @@ npm run dev
 - Page copy: `src/content/*.ts`
 - Partner logos and stories: `src/content/partners.ts` (each section appears once its list has entries)
 - Example data shown in the product illustrations: `src/content/files.ts`
-- Colours, fonts and animations: the `@theme` block in `src/index.css` (the accent colour is `--color-accent`)
+- Colours, fonts and animations: the `@theme` block in `src/index.css`. The site uses a deep navy palette: page and panel colours are `--color-canvas`, `--color-surface` and `--color-surface-2`; text is `--color-ink` to `--color-ink-3`; the accent is `--color-accent`.
 - Statements shown in the coloured cards and the product links near the end of each page: `src/content/site.ts`
 
 ## Motion

@@ -24,7 +24,7 @@ export function Ai() {
           <SectionHeader title="How we use AI" text="AI makes our checks faster and more consistent. It does not make admissions decisions." />
           <div className="mt-12 grid gap-px overflow-clip rounded-2xl border border-line bg-line md:grid-cols-3">
             {AI.principles.map((p, i) => (
-              <div key={p.title} className="bg-white">
+              <div key={p.title} className="bg-canvas">
                 <div className="reveal flex flex-col gap-2 p-7">
                   <span className="font-mono text-[12px] text-ink-3">0{i + 1}</span>
                   <h3 className="text-[15px] font-medium tracking-[-0.01em]">{p.title}</h3>

@@ -1,36 +1,45 @@
 @import "tailwindcss";
 
-/* White, Linear-style system: near-black ink on white, hairline borders, an indigo accent. */
+/* Deep navy system: cool-white text on navy, translucent hairlines, a blue-indigo accent. */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --color-ink: #0e0f11;
-  --color-ink-2: #4a4e56;
-  --color-ink-3: #6e737c;
-  --color-line: #e8e8eb;
-  --color-line-2: #d8d9dd;
-  --color-subtle: #f8f8f9;
-  --color-muted: #f1f1f3;
-  --color-accent: #5b5bd6;
-  --color-accent-hover: #4b4bc4;
-  --color-accent-soft: #eeeefc;
-  --color-success: #0b7a5f;
-  --color-success-soft: #e6f2ed;
-  --color-tint-lavender: #efeefd;
-  --color-tint-sky: #e9f3fe;
+  /* Surfaces, from the page background up to raised menus. */
+  --color-canvas: #0a1022;
+  --color-subtle: #0d1530;
+  --color-surface: #111a33;
+  --color-surface-2: #172241;
+  --color-muted: #1c2747;
+
+  --color-ink: #eef2ff;
+  --color-ink-2: #a9b4cc;
+  --color-ink-3: #7d89a4;
+  --color-line: rgb(255 255 255 / 0.09);
+  --color-line-2: rgb(255 255 255 / 0.15);
+  --color-accent: #6e8bff;
+  --color-accent-hover: #8ba2ff;
+  --color-accent-soft: rgb(110 139 255 / 0.14);
+  --color-success: #34d399;
+  --color-success-soft: rgb(52 211 153 / 0.13);
+  --color-warn: #fbbf24;
+  --color-warn-soft: rgb(251 191 36 / 0.12);
+  --color-danger: #f87171;
+  --color-danger-soft: rgb(248 113 113 / 0.12);
+  --color-tint-lavender: rgb(110 139 255 / 0.1);
+  --color-tint-sky: rgb(56 189 248 / 0.08);
 
   /* Application statuses, used by the product illustrations. */
-  --color-st-received: #9a9fa8;
-  --color-st-review: #d97706;
-  --color-st-missing: #dc3d43;
-  --color-st-verified: #0b7a5f;
-  --color-st-submitted: #5b5bd6;
-  --color-st-decision: #0b7a5f;
+  --color-st-received: #7d89a4;
+  --color-st-review: #f5a524;
+  --color-st-missing: #f87171;
+  --color-st-verified: #34d399;
+  --color-st-submitted: #6e8bff;
+  --color-st-decision: #34d399;
 
-  --shadow-window: 0 0 0 1px rgb(14 15 17 / 0.07), 0 2px 4px rgb(14 15 17 / 0.04), 0 28px 56px -16px rgb(14 15 17 / 0.16);
-  --shadow-card: 0 0 0 1px rgb(14 15 17 / 0.07), 0 1px 2px rgb(14 15 17 / 0.04);
-  --shadow-lift: 0 0 0 1px rgb(14 15 17 / 0.07), 0 8px 24px -8px rgb(14 15 17 / 0.14);
+  --shadow-window: 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.05), 0 30px 60px -20px rgb(0 0 0 / 0.7);
+  --shadow-card: 0 0 0 1px rgb(255 255 255 / 0.08), 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-lift: 0 0 0 1px rgb(255 255 255 / 0.1), 0 14px 32px -10px rgb(0 0 0 / 0.6);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -111,14 +120,14 @@
       transform: scaleX(1);
     }
   }
-  /* No fill mode: the row returns to its own background afterwards. */
+  /* Highlights a moved row, fading back into the solid surface so it never turns see-through. */
   --animate-flash: flash 1.8s ease-out;
   @keyframes flash {
     from {
-      background-color: var(--color-accent-soft);
+      background-color: color-mix(in oklab, var(--color-accent) 26%, var(--color-surface));
     }
     to {
-      background-color: transparent;
+      background-color: var(--color-surface);
     }
   }
 
@@ -210,6 +219,8 @@
 
 @layer base {
   html {
+    color-scheme: dark;
+    background: var(--color-canvas);
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     /* Keeps content clear of phone system bars (the viewport uses viewport-fit=cover). */
@@ -217,7 +228,7 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   body {
-    background: #ffffff;
+    background: var(--color-canvas);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-feature-settings: "cv01", "ss03";
@@ -232,7 +243,7 @@
     inset: 0 0 auto;
     height: env(safe-area-inset-top, 0px);
     z-index: 60;
-    background: #ffffff;
+    background: var(--color-canvas);
   }
   h1, h2, h3 {
     text-wrap: balance;
@@ -321,7 +332,7 @@
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: conic-gradient(from var(--beam-angle), transparent 0deg 240deg, rgb(91 91 214 / 0.5) 300deg, var(--color-accent) 335deg, transparent 360deg);
+    background: conic-gradient(from var(--beam-angle), transparent 0deg 240deg, rgb(110 139 255 / 0.55) 300deg, var(--color-accent) 335deg, transparent 360deg);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);

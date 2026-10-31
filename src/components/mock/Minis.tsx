@@ -9,7 +9,7 @@ import { Chip, StatusChip } from './Window';
 
 function MiniCard({ children, className = '', innerRef }: { children: ReactNode; className?: string; innerRef?: Ref<HTMLDivElement> }) {
   return (
-    <div ref={innerRef} className={`rounded-xl bg-white text-[12px] shadow-card ${className}`}>
+    <div ref={innerRef} className={`rounded-xl bg-surface text-[12px] shadow-card ${className}`}>
       {children}
     </div>
   );
@@ -98,17 +98,17 @@ const TILES = ['Passport', 'Transcripts', 'English test', 'Statement', 'Referenc
 export function MiniPackage() {
   return (
     <div className="grid grid-cols-4 gap-2.5">
-      <span className="size-16 rounded-xl bg-white opacity-40 shadow-card" />
+      <span className="size-16 rounded-xl bg-surface opacity-40 shadow-card" />
       {TILES.map((t, i) => (
         <div
           key={t}
-          className={`flex size-16 flex-col items-center justify-center gap-1 rounded-xl bg-white shadow-card ${i === 2 ? 'ring-2 ring-accent/60' : ''} ${i === 2 ? 'animate-float' : ''}`}
+          className={`flex size-16 flex-col items-center justify-center gap-1 rounded-xl bg-surface shadow-card ${i === 2 ? 'ring-2 ring-accent/60' : ''} ${i === 2 ? 'animate-float' : ''}`}
         >
           <Icon name="file" size={17} className={i === 2 ? 'text-accent' : 'text-ink-2'} />
           <span className="max-w-[3.6rem] truncate text-[9px] text-ink-3">{t}</span>
         </div>
       ))}
-      <span className="size-16 rounded-xl bg-white opacity-40 shadow-card" />
+      <span className="size-16 rounded-xl bg-surface opacity-40 shadow-card" />
     </div>
   );
 }
@@ -143,7 +143,7 @@ export function MiniNameMatch() {
         <svg viewBox="0 0 56 2" preserveAspectRatio="none" className="h-0.5 w-full">
           <line x1="0" y1="1" x2="56" y2="1" strokeWidth="2" strokeDasharray="4 4" className="animate-dash stroke-accent/60" />
         </svg>
-        <span className="absolute top-1/2 left-1/2 grid size-6 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-success text-white ring-4 ring-white">
+        <span className="absolute top-1/2 left-1/2 grid size-6 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-success text-canvas ring-4 ring-canvas">
           <Icon name="check" size={12} />
         </span>
       </div>
@@ -231,7 +231,7 @@ export function MiniSignoff() {
   return (
     <MiniCard className="w-full max-w-[290px]">
       <div className="flex items-center gap-2.5 border-b border-line px-3.5 py-3">
-        <span className="grid size-7 place-items-center rounded-full bg-ink text-[10px] font-semibold text-white">AT</span>
+        <span className="grid size-7 place-items-center rounded-full bg-ink text-[10px] font-semibold text-canvas">AT</span>
         <span>
           <span className="block font-medium text-ink">Admissions team</span>
           <span className="block text-[11px] text-ink-3">Reviewing SI-2043</span>
@@ -240,7 +240,7 @@ export function MiniSignoff() {
       <ul className="flex flex-col gap-2.5 px-3.5 py-3">
         {['Documents confirmed', 'Shortlist approved'].map((t) => (
           <li key={t} className="flex items-center gap-2 text-ink">
-            <span className="grid size-4 place-items-center rounded bg-ink text-white">
+            <span className="grid size-4 place-items-center rounded bg-ink text-canvas">
               <Icon name="check" size={11} />
             </span>
             {t}
@@ -282,7 +282,7 @@ export function MiniTimeline({ current = 3 }: { current?: number }) {
               <span className="relative grid size-4 place-items-center">
                 {i === current && !armed && <span className="absolute size-4 animate-ping-soft rounded-full bg-accent" />}
                 <span
-                  className={`relative size-3.5 rounded-full ring-2 ring-white ${enter(state, 'transition-colors duration-500')} ${i <= current && !armed ? 'bg-accent' : 'bg-line-2'}`}
+                  className={`relative size-3.5 rounded-full ring-2 ring-surface ${enter(state, 'transition-colors duration-500')} ${i <= current && !armed ? 'bg-accent' : 'bg-line-2'}`}
                   style={{ transitionDelay: `${i * 320}ms` }}
                 />
               </span>
@@ -297,7 +297,7 @@ export function MiniTimeline({ current = 3 }: { current?: number }) {
 
 function HubNode({ icon, label, style }: { icon: IconName; label: string; style: CSSProperties }) {
   return (
-    <span className="absolute flex h-7 w-[92px] items-center gap-1.5 rounded-full bg-white px-2.5 text-[11px] text-ink-2 shadow-card" style={style}>
+    <span className="absolute flex h-7 w-[92px] items-center gap-1.5 rounded-full bg-surface px-2.5 text-[11px] text-ink-2 shadow-card" style={style}>
       <Icon name={icon} size={12} /> {label}
     </span>
   );
@@ -322,7 +322,7 @@ export function MiniHub() {
       {ys.map((y) => (
         <HubNode key={`u${y}`} icon="building" label="University" style={{ right: 0, top: y }} />
       ))}
-      <span className="absolute top-1/2 left-1/2 grid size-[52px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl bg-white shadow-lift">
+      <span className="absolute top-1/2 left-1/2 grid size-[52px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-2xl bg-surface shadow-lift">
         <span className="absolute inset-0 animate-ping-soft rounded-2xl bg-accent/20" />
         <LogoMark size={28} />
       </span>
@@ -367,7 +367,7 @@ export function FlowDiagram() {
       {FLOW.map((step, i) => (
         <div key={step.title} className="contents">
           <div className="flex flex-col items-center gap-4 text-center">
-            <span className={`grid size-16 place-items-center rounded-2xl bg-white shadow-lift ${i === 1 ? 'text-accent' : 'text-ink'}`}>
+            <span className={`grid size-16 place-items-center rounded-2xl bg-surface shadow-lift ${i === 1 ? 'text-accent' : 'text-ink'}`}>
               <Icon name={step.icon} size={24} />
             </span>
             <p className="font-mono text-[11px] font-medium tracking-[0.08em] text-ink uppercase">{step.title}</p>
@@ -397,13 +397,13 @@ export function ChecklistPanel() {
     <div className="grid gap-6 pb-2 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-start md:gap-10">
       <ul className="flex flex-col gap-1 md:pt-6">
         {CHECKLIST.map((d, i) => (
-          <li key={d.name} className={`rounded-lg px-4 py-3 ${i === 3 ? 'bg-white shadow-card' : ''}`}>
+          <li key={d.name} className={`rounded-lg px-4 py-3 ${i === 3 ? 'bg-surface shadow-card' : ''}`}>
             <p className="font-mono text-[11px] font-medium tracking-[0.08em] text-ink uppercase">{d.name}</p>
             <p className="mt-0.5 font-mono text-[10px] tracking-[0.06em] text-ink-3 uppercase">{d.note}</p>
           </li>
         ))}
       </ul>
-      <div className="rounded-xl bg-white p-6 text-[13px] shadow-window">
+      <div className="rounded-xl bg-surface p-6 text-[13px] shadow-window">
         <p className="flex items-center gap-1.5 text-[11px] text-ink-3">
           <Icon name="file" size={12} /> SI-2043 · Statement of purpose
         </p>

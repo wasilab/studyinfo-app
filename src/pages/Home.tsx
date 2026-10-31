@@ -19,7 +19,7 @@ export function Home() {
   return (
     <>
       <section className="relative isolate overflow-clip pt-16 md:pt-24">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[900px] bg-[radial-gradient(48%_42%_at_72%_8%,rgb(91_91_214/0.11),transparent_70%)]" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[900px] bg-[radial-gradient(48%_42%_at_72%_8%,rgb(110_139_255/0.20),transparent_70%)]" />
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-0 -z-10 h-[760px] bg-[linear-gradient(to_right,var(--color-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-line)_1px,transparent_1px)] [mask-image:radial-gradient(60%_55%_at_50%_0%,black,transparent)] bg-[size:64px_64px] opacity-50"
@@ -28,7 +28,7 @@ export function Home() {
           <div className="flex flex-col gap-7">
             <Link
               to={HERO.pill.to}
-              className="group border-beam inline-flex w-fit animate-enter items-center gap-2 rounded-full bg-white/70 py-1 pr-3 pl-1 text-[13px] text-ink-2 ring-1 ring-line backdrop-blur transition-colors hover:text-ink hover:ring-line-2"
+              className="group border-beam inline-flex w-fit animate-enter items-center gap-2 rounded-full bg-surface/70 py-1 pr-3 pl-1 text-[13px] text-ink-2 ring-1 ring-line backdrop-blur transition-colors hover:text-ink hover:ring-line-2"
             >
               <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11.5px] font-medium text-accent">AI</span>
               {HERO.pill.label}
@@ -63,7 +63,7 @@ export function Home() {
               <Link
                 key={a.title}
                 to={a.to}
-                className="group reveal flex items-start gap-4 rounded-2xl bg-white p-5 ring-1 ring-line transition-[box-shadow,background-color] duration-300 hover:bg-subtle hover:shadow-lift"
+                className="group reveal flex items-start gap-4 rounded-2xl bg-surface/60 p-5 ring-1 ring-line transition-[box-shadow,background-color] duration-300 hover:bg-surface hover:shadow-lift"
               >
                 <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-subtle text-ink ring-1 ring-line transition-colors group-hover:text-accent">
                   <Icon name={ACCEPT_ICONS[i]} size={18} />
@@ -117,7 +117,7 @@ export function Home() {
               >
                 <div className="flex items-center justify-between gap-3">
                   <Label>{a.label}</Label>
-                  <span className="rounded-full bg-white px-2.5 py-0.5 text-[12px] text-ink-2 ring-1 ring-line">{a.note}</span>
+                  <span className="rounded-full bg-surface px-2.5 py-0.5 text-[12px] text-ink-2 ring-1 ring-line">{a.note}</span>
                 </div>
                 <h3 className="text-[1.6rem] leading-tight font-medium tracking-[-0.025em]">{a.title}</h3>
                 <ul className="flex flex-col gap-3 text-[15px] text-ink-2">

@@ -84,7 +84,7 @@ export function HowItWorks() {
             <div
               ref={panelRef}
               onPointerMove={onPointerMove}
-              className="group/spot sticky top-[calc(env(safe-area-inset-top,0px)+6rem)] isolate h-[560px] overflow-hidden rounded-2xl border border-line bg-[#fbfbfc]"
+              className="group/spot sticky top-[calc(env(safe-area-inset-top,0px)+6rem)] isolate h-[560px] overflow-hidden rounded-2xl border border-line bg-subtle"
             >
               <SpotlightGlow />
               {CHAPTERS.map((ch, i) => (

@@ -6,7 +6,7 @@ import { StatusIcon } from '../ui/StatusIcon';
 /** App-window frame for product illustrations. Every illustration is labelled as example data. */
 export function Window({ title, children, className = '' }: { title?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <figure className={`relative overflow-hidden rounded-xl bg-white text-left shadow-window ${className}`}>
+    <figure className={`relative overflow-hidden rounded-xl bg-surface text-left shadow-window ${className}`}>
       {title && (
         <div className="flex h-10 items-center justify-between gap-3 border-b border-line px-4">
           <div className="flex min-w-0 items-center gap-2 truncate text-[12.5px] font-medium text-ink">{title}</div>
@@ -41,9 +41,9 @@ export function Chip({ children, tone = 'plain' }: { children: ReactNode; tone?:
     plain: 'bg-muted text-ink-2',
     good: 'bg-success-soft text-success',
     accent: 'bg-accent-soft text-accent',
-    warn: 'bg-amber-50 text-amber-700',
-    bad: 'bg-red-50 text-red-700',
-    info: 'bg-indigo-50 text-indigo-700',
+    warn: 'bg-warn-soft text-warn',
+    bad: 'bg-danger-soft text-danger',
+    info: 'bg-accent-soft text-accent',
   } as const;
   return <span className={`inline-flex h-5 shrink-0 items-center gap-1 rounded-md px-1.5 text-[11px] font-medium ${tones[tone]}`}>{children}</span>;
 }

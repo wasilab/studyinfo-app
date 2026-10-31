@@ -1,7 +1,7 @@
 /** Generated line-art covers for articles, one motif per variant. */
 export function Cover({ variant, className = '' }: { variant: number; className?: string }) {
   return (
-    <div className={`overflow-hidden bg-[#f6f6f8] ${className}`} aria-hidden="true">
+    <div className={`overflow-hidden bg-subtle ${className}`} aria-hidden="true">
       <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" className="block size-full" fill="none" strokeWidth="1">
         <Motif variant={variant % 5} />
       </svg>
@@ -18,7 +18,7 @@ function Motif({ variant }: { variant: number }) {
           {Array.from({ length: 9 }, (_, i) => (
             <rect key={i} x={118 + i * 8} y={40 + i * 6} width="140" height="110" rx="8" className="stroke-ink/25" />
           ))}
-          <rect x="182" y="88" width="140" height="110" rx="8" className="fill-white stroke-ink/60" />
+          <rect x="182" y="88" width="140" height="110" rx="8" className="fill-surface stroke-ink/60" />
           {[0, 1, 2, 3].map((i) => (
             <line key={i} x1="200" y1={112 + i * 16} x2={i === 3 ? 260 : 300} y2={112 + i * 16} strokeLinecap="round" className="stroke-ink/30" />
           ))}

@@ -36,14 +36,14 @@ export function StatusIcon({ status, className = '' }: { status: Status; classNa
       return (
         <svg {...props}>
           <circle cx="7" cy="7" r="6.25" className="fill-st-submitted" />
-          <path d="M4.4 7h5M7.6 5l2 2-2 2" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <path d="M4.4 7h5M7.6 5l2 2-2 2" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="fill-none stroke-canvas" />
         </svg>
       );
     case 'decision':
       return (
         <svg {...props}>
           <circle cx="7" cy="7" r="6.25" className="fill-st-decision" />
-          <path d="M4.6 7.2l1.6 1.6 3.2-3.3" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <path d="M4.6 7.2l1.6 1.6 3.2-3.3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="fill-none stroke-canvas" />
         </svg>
       );
   }

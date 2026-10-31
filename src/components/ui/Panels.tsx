@@ -5,11 +5,11 @@ import { useSpotlight } from '../../lib/motion';
 export function SpotlightGlow() {
   return (
     <>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[75%] bg-[radial-gradient(55%_70%_at_50%_0%,rgb(91_91_214/0.11),rgb(91_91_214/0.03)_45%,transparent_75%)]" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(to_right,transparent,rgb(91_91_214/0.35),transparent)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[75%] bg-[radial-gradient(55%_70%_at_50%_0%,rgb(140_160_255/0.20),rgb(110_139_255/0.06)_45%,transparent_75%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(to_right,transparent,rgb(160_178_255/0.55),transparent)]" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-100 bg-[radial-gradient(460px_circle_at_var(--sx,50%)_var(--sy,0%),rgb(91_91_214/0.09),transparent_65%)]"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-100 bg-[radial-gradient(460px_circle_at_var(--sx,50%)_var(--sy,0%),rgb(110_139_255/0.13),transparent_65%)]"
       />
     </>
   );
@@ -38,7 +38,7 @@ export function SpotlightPanel({
     <figure
       ref={ref}
       onPointerMove={onPointerMove}
-      className={`reveal group/spot relative isolate overflow-hidden rounded-2xl border border-line bg-[#fbfbfc] ${className}`}
+      className={`reveal group/spot relative isolate overflow-hidden rounded-2xl border border-line bg-subtle ${className}`}
     >
       <SpotlightGlow />
       <div className={`px-3 pt-10 sm:px-10 md:pt-16 ${title || text ? '' : 'pb-10 md:pb-16'}`}>
@@ -65,7 +65,7 @@ export function FeatureGrid({ items }: { items: Feature[] }) {
   return (
     <div className="mt-3 grid gap-px overflow-clip rounded-2xl border border-line bg-line md:grid-cols-2">
       {items.map((f, i) => (
-        <div key={f.title} className={`group/cell bg-white ${items.length % 2 === 1 && i === items.length - 1 ? 'md:col-span-2' : ''}`}>
+        <div key={f.title} className={`group/cell bg-canvas ${items.length % 2 === 1 && i === items.length - 1 ? 'md:col-span-2' : ''}`}>
           <div className="reveal flex h-full flex-col">
             <div className="relative grid h-[230px] place-items-center overflow-hidden px-5 pt-6 [mask-image:linear-gradient(to_bottom,black_78%,transparent)] sm:h-[250px]">
               <div className="grid w-full place-items-center transition-transform duration-700 ease-out-expo group-hover/cell:-translate-y-1.5">{f.visual}</div>

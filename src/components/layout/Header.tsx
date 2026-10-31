@@ -48,7 +48,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-[env(safe-area-inset-top,0px)] z-50 border-b bg-white/80 backdrop-blur-xl backdrop-saturate-150 transition-colors ${
+      className={`sticky top-[env(safe-area-inset-top,0px)] z-50 border-b bg-canvas/75 backdrop-blur-xl backdrop-saturate-150 transition-colors ${
         scrolled || open ? 'border-line' : 'border-transparent'
       }`}
     >
@@ -84,10 +84,10 @@ export function Header() {
                 product ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
               }`}
             >
-              <div className="rounded-2xl bg-white p-2 shadow-window">
+              <div className="rounded-2xl bg-surface-2 p-2 shadow-window">
                 {PRODUCT_MENU.map((item) => (
-                  <Link key={item.to} to={item.to} className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-subtle">
-                    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white text-ink ring-1 ring-line transition-colors group-hover:text-accent">
+                  <Link key={item.to} to={item.to} className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-white/5">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-surface text-ink ring-1 ring-line transition-colors group-hover:text-accent">
                       <Icon name={item.icon} size={16} />
                     </span>
                     <span className="pt-0.5">
@@ -131,7 +131,7 @@ export function Header() {
       </Container>
 
       {open && (
-        <div id="mobile-nav" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-white md:hidden">
+        <div id="mobile-nav" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-canvas md:hidden">
           <Container className="flex flex-col py-3">
             <p className="pt-2 pb-1 text-[12px] font-medium text-ink-3">Product</p>
             {PRODUCT_MENU.map((item) => (

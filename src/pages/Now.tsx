@@ -53,7 +53,7 @@ export function Now() {
                   role="tab"
                   aria-selected={filter === f}
                   onClick={() => setFilter(f)}
-                  className={`rounded-full px-3 py-1.5 text-[13px] transition-colors ${filter === f ? 'bg-ink text-white' : 'text-ink-2 hover:bg-muted hover:text-ink'}`}
+                  className={`rounded-full px-3 py-1.5 text-[13px] transition-colors ${filter === f ? 'bg-ink text-canvas' : 'text-ink-2 hover:bg-muted hover:text-ink'}`}
                 >
                   {FILTER_LABEL[f]}
                 </button>
@@ -68,7 +68,7 @@ export function Now() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search…"
-                className="h-9 w-full rounded-full bg-subtle pr-3 pl-9 text-[13px] text-ink ring-1 ring-line outline-none ring-inset placeholder:text-ink-3 focus:bg-white focus:ring-accent/50"
+                className="h-9 w-full rounded-full bg-subtle pr-3 pl-9 text-[13px] text-ink ring-1 ring-line outline-none ring-inset placeholder:text-ink-3 focus:bg-surface focus:ring-accent/50"
               />
             </label>
           </div>

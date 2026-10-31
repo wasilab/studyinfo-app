@@ -139,7 +139,7 @@ export function BoardMock() {
                 {STATUS_LABEL[status]} <span className="font-normal text-ink-3">{files.length}</span>
               </p>
               {files.map((f) => (
-                <div key={f.id} className="flex flex-col gap-1.5 rounded-lg bg-white p-3 text-[12px] shadow-card">
+                <div key={f.id} className="flex flex-col gap-1.5 rounded-lg bg-surface-2 p-3 text-[12px] shadow-card">
                   <span className="font-mono text-[10.5px] text-ink-3">{f.id}</span>
                   <span className="truncate font-medium text-ink">{f.programme}</span>
                   <span className="flex items-center justify-between gap-2 text-ink-3">
@@ -189,10 +189,10 @@ export function FileCheckMock() {
         {FINDINGS.map((f) => (
           <li key={f.doc} className="flex items-center gap-2.5 px-3 py-2.5 text-[12.5px]">
             {f.tone === 'good' && <Icon name="check" size={14} className="text-success" />}
-            {f.tone === 'warn' && <span className="grid size-3.5 place-items-center rounded-full bg-amber-500 text-[9px] font-bold text-white">!</span>}
-            {f.tone === 'bad' && <Icon name="close" size={14} className="text-red-600" />}
+            {f.tone === 'warn' && <span className="grid size-3.5 place-items-center rounded-full bg-st-review text-[9px] font-bold text-canvas">!</span>}
+            {f.tone === 'bad' && <Icon name="close" size={14} className="text-danger" />}
             <span className="min-w-0 flex-1 truncate text-ink">{f.doc}</span>
-            <span className={f.tone === 'good' ? 'text-ink-3' : f.tone === 'warn' ? 'text-amber-700' : 'text-red-700'}>{f.text}</span>
+            <span className={f.tone === 'good' ? 'text-ink-3' : f.tone === 'warn' ? 'text-warn' : 'text-danger'}>{f.text}</span>
           </li>
         ))}
       </ul>
@@ -276,7 +276,7 @@ export function ReviewMock() {
           <ul className="flex flex-col gap-3 text-[12.5px]">
             {REVIEW_STEPS.map((t) => (
               <li key={t} className="flex items-start gap-2 text-ink">
-                <span className="mt-px grid size-4 shrink-0 place-items-center rounded bg-ink text-white">
+                <span className="mt-px grid size-4 shrink-0 place-items-center rounded bg-ink text-canvas">
                   <Icon name="check" size={11} />
                 </span>
                 {t}

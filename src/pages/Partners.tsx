@@ -37,9 +37,9 @@ export function Partners() {
                   <h2 className="text-[2rem] leading-tight font-medium tracking-[-0.03em]">{t.title}</h2>
                   <p className="text-[16px] leading-relaxed text-ink-2">{t.text}</p>
                 </div>
-                <ul className="border-t border-ink/10">
+                <ul className="border-t border-line">
                   {t.gets.map((g) => (
-                    <li key={g} className="flex items-center gap-3 border-b border-ink/10 py-3.5 text-[15px]">
+                    <li key={g} className="flex items-center gap-3 border-b border-line py-3.5 text-[15px]">
                       <Icon name="check" size={16} className="text-accent" />
                       {g}
                     </li>
@@ -61,7 +61,7 @@ export function Partners() {
           <Label>Our partners</Label>
           <div className="mt-8 grid grid-cols-2 gap-px overflow-clip rounded-2xl border border-line bg-line sm:grid-cols-3 lg:grid-cols-5">
             {logos.map((l) => (
-              <div key={l.name} className="grid h-24 place-items-center bg-white p-6">
+              <div key={l.name} className="grid h-24 place-items-center bg-canvas p-6">
                 <img src={l.src} alt={l.name} className="max-h-8 w-auto opacity-80 grayscale" />
               </div>
             ))}
@@ -85,7 +85,7 @@ export function Partners() {
           <SectionHeader title="From partnership to decision in four steps" text="Partnership terms are agreed once. After that, every student file follows the same path." />
           <ol className="mt-12 grid gap-px overflow-clip rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {PARTNERS.steps.map((s, i) => (
-              <li key={s.title} className="bg-white">
+              <li key={s.title} className="bg-canvas">
                 <div className="reveal flex flex-col gap-2 p-6">
                   <span className="font-mono text-[12px] text-ink-3">{String(i + 1).padStart(2, '0')}</span>
                   <h3 className="text-[15px] font-medium tracking-[-0.01em]">{s.title}</h3>
@@ -117,7 +117,7 @@ export function Partners() {
           <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {stories.map((s) => (
               <figure key={s.partner + s.person} className="reveal flex flex-col gap-6 rounded-2xl bg-subtle p-7 ring-1 ring-line">
-                <span className="w-fit rounded-full bg-white px-2.5 py-0.5 text-[12px] text-ink-2 ring-1 ring-line">{s.kind}</span>
+                <span className="w-fit rounded-full bg-surface px-2.5 py-0.5 text-[12px] text-ink-2 ring-1 ring-line">{s.kind}</span>
                 <blockquote className="text-[17px] leading-relaxed tracking-[-0.01em]">“{s.quote}”</blockquote>
                 <figcaption className="mt-auto text-sm">
                   <span className="font-medium">{s.person}</span>

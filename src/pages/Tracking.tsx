@@ -25,7 +25,7 @@ export function Tracking() {
           <SectionHeader title="Six statuses, one meaning" text="Every file carries exactly one status, and it means the same thing to the agency, the university and our team." />
           <div className="mt-12 grid gap-px overflow-clip rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {STATUSES.map((s) => (
-              <div key={s.id} className="bg-white">
+              <div key={s.id} className="bg-canvas">
                 <div className="reveal flex flex-col gap-2 p-6">
                   <span className="flex items-center gap-2 text-[15px] font-medium tracking-[-0.01em]">
                     <StatusIcon status={s.id} className="size-4" />

@@ -8,8 +8,8 @@ const BASE =
   'group/btn inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full font-medium tracking-[-0.01em] transition-[background-color,box-shadow,color,scale] duration-200 active:scale-[0.97]';
 
 const VARIANTS: Record<Variant, string> = {
-  primary: 'bg-ink text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.12)] hover:bg-ink/85',
-  secondary: 'bg-white text-ink ring-1 ring-inset ring-line-2 hover:bg-subtle hover:ring-ink/20',
+  primary: 'bg-ink text-canvas shadow-[0_8px_24px_-10px_rgb(110_139_255/0.6)] hover:bg-white',
+  secondary: 'bg-white/[0.04] text-ink ring-1 ring-inset ring-line-2 hover:bg-white/[0.08] hover:ring-white/25',
   ghost: 'text-ink-2 hover:text-ink',
 };
 

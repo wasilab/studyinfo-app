@@ -16,7 +16,7 @@ const isType = (v: string | null): v is EnquiryType => v !== null && v in ENQUIR
 const NEXT_STEPS = ['We read your message and reply by email.', 'We agree partnership terms with you.', 'You start sending or receiving student files.'];
 
 const FIELD =
-  'h-10 w-full rounded-lg bg-white px-3 text-[14px] text-ink ring-1 ring-line-2 outline-none ring-inset placeholder:text-ink-3 focus:ring-2 focus:ring-ink';
+  'h-10 w-full rounded-lg bg-canvas px-3 text-[14px] text-ink ring-1 ring-line-2 outline-none ring-inset placeholder:text-ink-3 focus:ring-2 focus:ring-accent';
 
 export function Contact() {
   usePageMeta('Contact', 'Talk to the StudyInfo partnerships team about submitting student files or becoming an agency or university partner.');
@@ -62,7 +62,7 @@ export function Contact() {
 
   return (
     <section className="relative overflow-clip pt-14 pb-20 md:pt-24 md:pb-28">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(60%_60%_at_50%_0%,rgb(14_15_17/0.045),transparent_70%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(60%_60%_at_50%_0%,rgb(110_139_255/0.14),transparent_70%)]" />
       <Container className="relative">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-20">
           <div className="flex flex-col gap-6">
@@ -81,7 +81,7 @@ export function Contact() {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md bg-white px-2.5 text-[12.5px] ring-1 ring-line-2 hover:bg-muted"
+                  className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md bg-surface-2 px-2.5 text-[12.5px] ring-1 ring-line-2 hover:bg-muted"
                 >
                   <Icon name={copied ? 'check' : 'copy'} size={13} /> {copied ? 'Copied' : 'Copy'}
                 </button>
@@ -101,7 +101,7 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 shadow-window md:p-8">
+          <div className="rounded-2xl bg-surface p-6 shadow-window md:p-8">
             {sent ? (
               <div className="flex min-h-[420px] flex-col items-start justify-center gap-4">
                 <span className="grid size-10 place-items-center rounded-full bg-accent-soft text-accent">
@@ -124,7 +124,7 @@ export function Contact() {
                       <label
                         key={t}
                         className={`flex cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13.5px] ring-1 transition-colors ring-inset ${
-                          type === t ? 'bg-subtle text-ink ring-ink' : 'text-ink-2 ring-line-2 hover:bg-subtle'
+                          type === t ? 'bg-accent-soft text-ink ring-accent/60' : 'text-ink-2 ring-line-2 hover:bg-subtle'
                         }`}
                       >
                         <input
@@ -134,7 +134,7 @@ export function Contact() {
                           value={t}
                           checked={type === t}
                           onChange={() => setType(t)}
-                          className="size-3.5 accent-ink"
+                          className="size-3.5 accent-accent"
                         />
                         {ENQUIRY_TYPES[t].label}
                       </label>
