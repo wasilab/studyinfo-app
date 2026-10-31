@@ -24,6 +24,9 @@ export const NAV: NavLink[] = [
   { to: '/contact', label: 'Contact' },
 ];
 
+/** Shown in the top bar beside "Join the network", and in the mobile menu. */
+export const GROW_LINK: NavLink = { to: '/grow-with-us', label: 'Grow with Us' };
+
 export type EnquiryType = 'files' | 'universities' | 'join' | 'other';
 
 export const ENQUIRY_TYPES: Record<EnquiryType, { label: string; subject: string }> = {

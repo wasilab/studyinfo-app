@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import { NAV, PRODUCT_MENU, contactLink } from '../../content/site';
+import { GROW_LINK, NAV, PRODUCT_MENU, contactLink } from '../../content/site';
 import { Button } from '../ui/Button';
 import { Container } from '../ui/Container';
 import { Icon } from '../ui/Icon';
 import { Logo } from '../ui/Logo';
 
-const LINK = 'rounded-full px-3 py-1.5 text-[13.5px] transition-colors';
+// Tighter padding between md and lg keeps the whole top bar on one line at tablet widths.
+const LINK = 'rounded-full px-2 py-1.5 text-[13.5px] whitespace-nowrap transition-colors lg:px-3';
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -105,13 +106,14 @@ export function Header() {
             </NavLink>
           ))}
         </nav>
-        <span aria-hidden="true" className="mx-2 hidden h-4 w-px bg-line-2 md:block" />
+        <span aria-hidden="true" className="mx-1 hidden h-4 w-px bg-line-2 md:block lg:mx-2" />
         <div className="ml-auto flex items-center gap-2 md:ml-0">
-          <span className="hidden lg:block">
-            <Button to="/send-files" variant="ghost" size="sm">
-              Send student files
-            </Button>
-          </span>
+          <NavLink
+            to={GROW_LINK.to}
+            className={({ isActive }) => `${LINK} hidden md:block ${isActive ? 'text-ink' : 'text-ink-2 hover:text-ink'}`}
+          >
+            {GROW_LINK.label}
+          </NavLink>
           <span className="hidden sm:block">
             <Button to={contactLink('join')} size="sm">
               Join the network
@@ -143,16 +145,13 @@ export function Header() {
                 </span>
               </Link>
             ))}
-            {NAV.map((item) => (
+            {[...NAV, GROW_LINK].map((item) => (
               <NavLink key={item.to} to={item.to} className={({ isActive }) => `border-b border-line py-3 text-[15px] ${isActive ? 'text-ink' : 'text-ink-2'}`}>
                 {item.label}
               </NavLink>
             ))}
             <div className="flex flex-col gap-2 pt-4 pb-2">
               <Button to={contactLink('join')}>Join the network</Button>
-              <Button to="/send-files" variant="secondary">
-                Send student files
-              </Button>
             </div>
           </Container>
         </div>
