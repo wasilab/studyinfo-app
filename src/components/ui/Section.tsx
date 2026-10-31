@@ -49,20 +49,3 @@ export function SectionHeader({ title, text, link, label }: { title: ReactNode; 
     </div>
   );
 }
-
-/** Short numbered points in columns separated by hairlines. */
-export function PointRow({ points }: { points: { num?: string; title: string; text: string }[] }) {
-  return (
-    <div className="grid gap-px overflow-clip rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-      {points.map((p) => (
-        <div key={p.title} className="bg-white">
-          <div className="reveal flex flex-col gap-2 p-6">
-            {p.num && <span className="font-mono text-[12px] text-ink-3">{p.num}</span>}
-            <h3 className="text-[15px] font-medium tracking-[-0.01em]">{p.title}</h3>
-            <p className="text-sm leading-relaxed text-ink-2">{p.text}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}

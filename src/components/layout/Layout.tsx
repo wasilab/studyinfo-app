@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
 export function Layout() {
   const { pathname } = useLocation();
+  const [firstPath] = useState(pathname);
+  const [navigated, setNavigated] = useState(false);
+
+  // Fade pages in on navigation, but not on the first load (the hero has its own entrance).
+  if (!navigated && pathname !== firstPath) setNavigated(true);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -20,7 +25,9 @@ export function Layout() {
       </a>
       <Header />
       <main id="main" className="flex-1">
-        <Outlet />
+        <div key={pathname} className={navigated ? 'animate-page' : undefined}>
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

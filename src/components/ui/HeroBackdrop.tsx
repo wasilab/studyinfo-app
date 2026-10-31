@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import { EXAMPLE_FILES, type Status } from '../../content/files';
+import { useOnScreen } from '../../lib/motion';
 import { StatusIcon } from './StatusIcon';
 
 export type Backdrop = 'cards' | 'inbox' | 'particles' | 'board' | 'network';
@@ -13,15 +14,25 @@ function seeded(seed: number) {
   };
 }
 
-/** Ambient, slowly moving artwork behind a page hero. Purely decorative. */
+/**
+ * Ambient, slowly moving artwork behind a page hero. Purely decorative. It drifts with a parallax
+ * on scroll, and its animations pause while the hero is off screen.
+ */
 export function HeroBackdrop({ variant }: { variant: Backdrop }) {
+  const [ref, onScreen] = useOnScreen<HTMLDivElement>();
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden select-none">
-      {variant === 'cards' && <Cards />}
-      {variant === 'inbox' && <Inbox />}
-      {variant === 'particles' && <Particles />}
-      {variant === 'board' && <Board />}
-      {variant === 'network' && <Network />}
+    <div
+      ref={ref}
+      aria-hidden="true"
+      className={`pointer-events-none absolute inset-0 -z-10 overflow-hidden select-none ${onScreen ? '' : '[&_*]:[animation-play-state:paused]'}`}
+    >
+      <div className="parallax absolute inset-0">
+        {variant === 'cards' && <Cards />}
+        {variant === 'inbox' && <Inbox />}
+        {variant === 'particles' && <Particles />}
+        {variant === 'board' && <Board />}
+        {variant === 'network' && <Network />}
+      </div>
       {/* Fades the artwork out behind the text in the bottom-left. */}
       <div className="absolute inset-0 bg-[linear-gradient(to_top,#fff_6%,rgb(255_255_255/0.7)_38%,rgb(255_255_255/0)_72%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff_8%,rgb(255_255_255/0.55)_40%,rgb(255_255_255/0)_70%)]" />

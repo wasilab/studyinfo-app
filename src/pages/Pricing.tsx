@@ -9,6 +9,7 @@ import { H2, SectionHeader } from '../components/ui/Section';
 import { COMPARE, PLANS, PRICING_FAQ } from '../content/pricing';
 import { contactLink } from '../content/site';
 import { usePageMeta } from '../lib/usePageMeta';
+import { WordReveal } from '../components/ui/WordReveal';
 
 function Included({ on }: { on: boolean }) {
   return on ? (
@@ -33,8 +34,8 @@ export function Pricing() {
         <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(50%_60%_at_50%_0%,rgb(91_91_214/0.10),transparent_70%)]" />
         <Container className="flex flex-col items-center gap-5">
           <p className="animate-enter text-[13px] font-medium text-ink-2">Pricing</p>
-          <h1 className="animate-enter text-[2.75rem] leading-[1.02] font-medium tracking-[-0.04em] [animation-delay:80ms] sm:text-6xl md:text-[4.5rem]">
-            Free for agencies
+          <h1 className="text-[2.75rem] leading-[1.02] font-medium tracking-[-0.04em] sm:text-6xl md:text-[4.5rem]">
+            <WordReveal text="Free for agencies" delay={80} />
           </h1>
           <p className="max-w-xl animate-enter text-[17px] leading-relaxed text-ink-2 [animation-delay:160ms] md:text-lg">
             Agency partners join StudyInfo for free. Universities partner with us on terms agreed for each partnership.
@@ -47,9 +48,8 @@ export function Pricing() {
           {PLANS.map((p) => (
             <article
               key={p.name}
-              className={`relative flex flex-col gap-7 overflow-hidden rounded-2xl p-7 md:p-9 ${p.featured ? 'bg-white shadow-window' : 'bg-subtle ring-1 ring-line'}`}
+              className={`relative flex flex-col gap-7 overflow-hidden rounded-2xl p-7 md:p-9 ${p.featured ? 'border-beam bg-white shadow-window' : 'bg-subtle ring-1 ring-line'}`}
             >
-              {p.featured && <div aria-hidden="true" className="absolute inset-x-0 top-0 h-0.5 bg-[linear-gradient(to_right,transparent,var(--color-accent),transparent)]" />}
               <div className="flex flex-col gap-1.5">
                 <h2 className="text-[15px] font-medium tracking-[-0.01em]">{p.name}</h2>
                 <p className="text-sm text-ink-2">{p.audience}</p>

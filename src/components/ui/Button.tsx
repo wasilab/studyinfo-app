@@ -5,7 +5,7 @@ type Variant = 'primary' | 'secondary' | 'ghost';
 type Size = 'sm' | 'md';
 
 const BASE =
-  'group/btn inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full font-medium tracking-[-0.01em] transition-[background-color,box-shadow,color] duration-200';
+  'group/btn inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full font-medium tracking-[-0.01em] transition-[background-color,box-shadow,color,scale] duration-200 active:scale-[0.97]';
 
 const VARIANTS: Record<Variant, string> = {
   primary: 'bg-ink text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.12)] hover:bg-ink/85',

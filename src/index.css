@@ -49,6 +49,79 @@
     }
   }
 
+  /* Headlines: each word sharpens into place. */
+  --animate-word: word 0.9s var(--ease-out-expo) both;
+  @keyframes word {
+    from {
+      opacity: 0;
+      translate: 0 0.32em;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+      filter: blur(0);
+    }
+  }
+
+  /* Route changes. */
+  --animate-page: page 0.6s var(--ease-out-expo) both;
+  @keyframes page {
+    from {
+      opacity: 0;
+      translate: 0 10px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  /* Small UI state changes inside the product illustrations. */
+  --animate-pop: pop 0.5s var(--ease-out-expo) both;
+  @keyframes pop {
+    from {
+      opacity: 0;
+      scale: 0.5;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  --animate-toast: toast 0.6s var(--ease-out-expo) both;
+  @keyframes toast {
+    from {
+      opacity: 0;
+      translate: 0 14px;
+      scale: 0.96;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+    }
+  }
+  --animate-fill: fill 2.2s cubic-bezier(0.65, 0, 0.35, 1) both;
+  @keyframes fill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  /* No fill mode: the row returns to its own background afterwards. */
+  --animate-flash: flash 1.8s ease-out;
+  @keyframes flash {
+    from {
+      background-color: var(--color-accent-soft);
+    }
+    to {
+      background-color: transparent;
+    }
+  }
+
   /* The home page's product window settling into place. */
   --animate-tilt-in: tilt-in 1.4s var(--ease-out-expo) 0.25s both;
   @keyframes tilt-in {
@@ -207,6 +280,54 @@
   to {
     opacity: 1;
     translate: 0 0;
+  }
+}
+
+/* Hero artwork drifts down slower than the page scrolls. */
+@utility parallax {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      animation: parallax-y linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 100vh;
+    }
+  }
+}
+
+@keyframes parallax-y {
+  to {
+    transform: translate3d(0, 22vh, 0);
+  }
+}
+
+/* A light that travels around an element's rounded border. */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+@utility border-beam {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--beam-angle), transparent 0deg 240deg, rgb(91 91 214 / 0.5) 300deg, var(--color-accent) 335deg, transparent 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    animation: beam-spin 5s linear infinite;
+    pointer-events: none;
   }
 }
 

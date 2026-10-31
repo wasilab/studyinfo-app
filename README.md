@@ -33,11 +33,19 @@ npm run dev
 
 ## Motion
 
-Animations are CSS only and switch off for visitors who ask for reduced motion.
+Animations switch off for visitors who ask for reduced motion, and nothing is hidden waiting for an animation.
 
-- Hero text fades in on load (`animate-enter`), and each product page has an animated backdrop (`src/components/ui/HeroBackdrop.tsx`).
-- Sections fade in as they scroll into view through the `reveal` class, which uses scroll-driven animations. Browsers without support show the content straight away.
-- A `reveal` element measures scrolling from its nearest scrollable ancestor, and `overflow-hidden` makes an element scrollable. Wrap revealed content in `overflow-clip` instead, or the reveal never finishes.
+- **Headlines** sharpen in word by word (`WordReveal`), and pages fade in on navigation (`Layout.tsx`).
+- **Home hero:** the workspace runs a short looping demo. A file is checked, verified and moves to its new group, then a toast appears (`src/components/mock/Workspace.tsx`). The loop pauses while the hero is off screen.
+- **How it works** (home) is a scroll story: the steps scroll while a pinned product window crossfades between them (`src/components/sections/HowItWorks.tsx`).
+- **Product-page heroes** have animated backdrops with a scroll parallax, paused off screen (`src/components/ui/HeroBackdrop.tsx`).
+- **Scroll reveals:** sections fade in through the `reveal` class, which uses scroll-driven animations. Browsers without support show the content straight away.
+  - A `reveal` element measures scrolling from its nearest scrollable ancestor, and `overflow-hidden` makes an element scrollable. Wrap revealed content in `overflow-clip` instead, or the reveal never finishes.
+- **Small charts** in the feature grids animate once when scrolled into view (`useInView` in `src/lib/motion.ts`). Elements that start on screen are left in their final state.
+- **Details:**
+  - A moving light around the AI pill and the featured pricing card (`border-beam`).
+  - An animated FAQ.
+  - Button press feedback, and hover lifts on feature illustrations.
 
 ## Hosting
 

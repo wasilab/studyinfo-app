@@ -37,8 +37,8 @@ function StatementCard({ statement, tone }: { statement: Statement; tone: 'neutr
     sky: 'bg-[linear-gradient(160deg,var(--color-tint-sky),var(--color-tint-lavender)_70%,#fdf2f4)] ring-accent/10',
   } as const;
   return (
-    <figure className={`reveal relative isolate flex min-h-[280px] flex-col justify-between gap-12 overflow-hidden rounded-2xl p-7 ring-1 md:min-h-[340px] md:p-9 ${tones[tone]}`}>
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="absolute -right-12 -bottom-16 -z-10 size-80 text-ink/[0.08]">
+    <figure className={`group reveal relative isolate flex min-h-[280px] flex-col justify-between gap-12 overflow-hidden rounded-2xl p-7 ring-1 md:min-h-[340px] md:p-9 ${tones[tone]}`}>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="absolute -right-12 -bottom-16 -z-10 size-80 text-ink/[0.08] transition-transform duration-1000 ease-out-expo group-hover:scale-105 group-hover:rotate-6">
         {[0.5, 2.25, 4].map((inset) => (
           <rect key={inset} x={inset} y={inset} width={24 - inset * 2} height={24 - inset * 2} rx={6 - inset / 2} stroke="currentColor" strokeWidth="0.12" />
         ))}

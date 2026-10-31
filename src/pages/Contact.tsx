@@ -8,6 +8,7 @@ import { CONTACT_EMAIL } from '../config';
 import { ENQUIRY_TYPES, type EnquiryType } from '../content/site';
 import { mailto } from '../lib/mailto';
 import { usePageMeta } from '../lib/usePageMeta';
+import { WordReveal } from '../components/ui/WordReveal';
 
 const TYPES = Object.keys(ENQUIRY_TYPES) as EnquiryType[];
 const isType = (v: string | null): v is EnquiryType => v !== null && v in ENQUIRY_TYPES;
@@ -66,7 +67,9 @@ export function Contact() {
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-20">
           <div className="flex flex-col gap-6">
             <Label>Contact</Label>
-            <h1 className="text-[2.6rem] leading-[1.04] font-medium tracking-[-0.04em] sm:text-[3.4rem]">Talk to our partnerships team</h1>
+            <h1 className="text-[2.6rem] leading-[1.04] font-medium tracking-[-0.04em] sm:text-[3.4rem]">
+              <WordReveal text="Talk to our partnerships team" />
+            </h1>
             <p className="max-w-md text-[17px] leading-relaxed text-ink-2">
               Tell us who you are and what you need. We’ll reply by email with the next steps.
             </p>

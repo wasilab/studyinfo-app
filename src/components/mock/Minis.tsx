@@ -1,14 +1,27 @@
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
 import { CHECKLIST, STATUSES, type Status } from '../../content/files';
+import { useInView, type InViewState } from '../../lib/motion';
 import { Icon, type IconName } from '../ui/Icon';
 import { LogoMark } from '../ui/Logo';
 import { StatusIcon } from '../ui/StatusIcon';
 import { FileCheckMock, IntakeMock, ReviewMock } from './Mocks';
 import { Chip, StatusChip } from './Window';
 
-function MiniCard({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <div className={`rounded-xl bg-white text-[12px] shadow-card ${className}`}>{children}</div>;
+function MiniCard({ children, className = '', innerRef }: { children: ReactNode; className?: string; innerRef?: Ref<HTMLDivElement> }) {
+  return (
+    <div ref={innerRef} className={`rounded-xl bg-white text-[12px] shadow-card ${className}`}>
+      {children}
+    </div>
+  );
 }
+
+/**
+ * Classes for an in-view entrance: the start state is applied instantly while 'armed', and the
+ * transition only runs once the element is 'in' view.
+ */
+const enter = (state: InViewState, transition: string) => (state === 'in' ? transition : '');
+const pop = (state: InViewState) =>
+  state === 'armed' ? 'scale-50 opacity-0' : `${enter(state, 'transition-[opacity,scale] duration-500 ease-out-expo')} scale-100 opacity-100`;
 
 function MiniHead({ icon, title, meta }: { icon: IconName; title: string; meta?: string }) {
   return (
@@ -22,13 +35,16 @@ function MiniHead({ icon, title, meta }: { icon: IconName; title: string; meta?:
 }
 
 export function MiniChecklist() {
+  const [ref, state] = useInView<HTMLDivElement>();
   return (
-    <MiniCard className="w-full max-w-[300px]">
+    <MiniCard innerRef={ref} className="w-full max-w-[300px]">
       <MiniHead icon="file" title="Documents" meta="SI-2041" />
       <ul className="divide-y divide-line">
-        {CHECKLIST.slice(0, 5).map((d) => (
+        {CHECKLIST.slice(0, 5).map((d, i) => (
           <li key={d.name} className="flex items-center gap-2.5 px-3.5 py-2">
-            <Icon name="check" size={13} className="text-success" />
+            <span className={pop(state)} style={{ transitionDelay: `${150 + i * 140}ms` }}>
+              <Icon name="check" size={13} className="text-success" />
+            </span>
             <span className="flex-1 truncate text-ink">{d.name}</span>
             <span className="text-ink-3">Checked</span>
           </li>
@@ -136,7 +152,7 @@ export function MiniNameMatch() {
   );
 }
 
-function ValidityRow({ label, until, fill, marker }: { label: string; until: string; fill: number; marker: number }) {
+function ValidityRow({ label, until, fill, marker, state, delay }: { label: string; until: string; fill: number; marker: number; state: InViewState; delay: number }) {
   return (
     <div className="flex flex-col gap-2 px-3.5 py-3">
       <div className="flex items-center justify-between gap-3">
@@ -146,7 +162,10 @@ function ValidityRow({ label, until, fill, marker }: { label: string; until: str
         </span>
       </div>
       <div className="relative h-1.5 rounded-full bg-muted">
-        <div className="absolute inset-y-0 left-0 rounded-full bg-success/70" style={{ width: `${fill}%` }} />
+        <div
+          className={`absolute inset-y-0 left-0 rounded-full bg-success/70 ${enter(state, 'transition-[width] duration-[1400ms] ease-out-expo')}`}
+          style={{ width: state === 'armed' ? 0 : `${fill}%`, transitionDelay: `${delay}ms` }}
+        />
         <div className="absolute -top-1 h-3.5 w-0.5 rounded bg-ink" style={{ left: `${marker}%` }} />
       </div>
     </div>
@@ -154,12 +173,13 @@ function ValidityRow({ label, until, fill, marker }: { label: string; until: str
 }
 
 export function MiniExpiry() {
+  const [ref, state] = useInView<HTMLDivElement>();
   return (
-    <MiniCard className="w-full max-w-[300px]">
+    <MiniCard innerRef={ref} className="w-full max-w-[300px]">
       <MiniHead icon="lock" title="Validity check" meta="SI-2041" />
       <div className="divide-y divide-line">
-        <ValidityRow label="Passport" until="Jun 2032" fill={92} marker={58} />
-        <ValidityRow label="English test" until="Feb 2028" fill={64} marker={40} />
+        <ValidityRow label="Passport" until="Jun 2032" fill={92} marker={58} state={state} delay={100} />
+        <ValidityRow label="English test" until="Feb 2028" fill={64} marker={40} state={state} delay={300} />
       </div>
       <p className="border-t border-line px-3.5 py-2 text-[11px] text-ink-3">Marker shows when the application is assessed.</p>
     </MiniCard>
@@ -174,10 +194,11 @@ const SCORES = [
 ];
 
 export function MiniScores() {
+  const [ref, state] = useInView<HTMLDivElement>();
   const min = 6.5;
   const h = (s: number) => `${(s / 9) * 100}%`;
   return (
-    <MiniCard className="w-full max-w-[280px] p-4">
+    <MiniCard innerRef={ref} className="w-full max-w-[280px] p-4">
       <div className="flex items-center justify-between">
         <span className="font-medium text-ink">IELTS sections</span>
         <Chip tone="warn">Writing below 6.5</Chip>
@@ -186,8 +207,13 @@ export function MiniScores() {
         <div className="absolute inset-x-0 border-t border-dashed border-ink/50" style={{ bottom: h(min) }}>
           <span className="absolute -top-4 right-0 font-mono text-[9.5px] text-ink-3">min {min}</span>
         </div>
-        {SCORES.map((s) => (
-          <div key={s.label} className={`w-7 rounded-t-md ${s.score < min ? 'bg-st-review' : 'bg-accent/80'}`} style={{ height: h(s.score) }} title={`${s.name} ${s.score}`} />
+        {SCORES.map((s, i) => (
+          <div
+            key={s.label}
+            className={`w-7 rounded-t-md ${enter(state, 'transition-[height] duration-[1200ms] ease-out-expo')} ${s.score < min ? 'bg-st-review' : 'bg-accent/80'}`}
+            style={{ height: state === 'armed' ? 0 : h(s.score), transitionDelay: `${i * 110}ms` }}
+            title={`${s.name} ${s.score}`}
+          />
         ))}
       </div>
       <div className="mt-1.5 flex justify-around font-mono text-[10px] text-ink-3">
@@ -236,21 +262,29 @@ const STEPS: Status[] = ['received', 'review', 'verified', 'submitted', 'decisio
 const STEP_LABELS: Record<string, string> = { received: 'Received', review: 'In review', verified: 'Verified', submitted: 'Submitted', decision: 'Decision' };
 
 export function MiniTimeline({ current = 3 }: { current?: number }) {
+  const [ref, state] = useInView<HTMLDivElement>();
+  const armed = state === 'armed';
   return (
-    <MiniCard className="w-full max-w-[340px] px-4 py-5">
+    <MiniCard innerRef={ref} className="w-full max-w-[340px] px-4 py-5">
       <div className="flex items-center justify-between">
         <span className="font-medium text-ink">SI-2044 · MSc Public Health</span>
         <span className="font-mono text-[10.5px] text-ink-3">Sep 2027</span>
       </div>
       <div className="relative mt-6 mb-1">
         <div className="absolute inset-x-2 top-[7px] h-0.5 rounded bg-muted" />
-        <div className="absolute top-[7px] left-2 h-0.5 rounded bg-accent" style={{ width: `calc(${(current / (STEPS.length - 1)) * 100}% - ${(current / (STEPS.length - 1)) * 16}px)` }} />
+        <div
+          className={`absolute top-[7px] left-2 h-0.5 rounded bg-accent ${enter(state, 'transition-[width] duration-[1600ms] ease-out-expo')}`}
+          style={{ width: armed ? 0 : `calc(${(current / (STEPS.length - 1)) * 100}% - ${(current / (STEPS.length - 1)) * 16}px)` }}
+        />
         <ol className="relative flex justify-between">
           {STEPS.map((s, i) => (
             <li key={s} className="flex w-12 flex-col items-center gap-2 first:items-start last:items-end">
               <span className="relative grid size-4 place-items-center">
-                {i === current && <span className="absolute size-4 animate-ping-soft rounded-full bg-accent" />}
-                <span className={`relative size-3.5 rounded-full ring-2 ring-white ${i <= current ? 'bg-accent' : 'bg-line-2'}`} />
+                {i === current && !armed && <span className="absolute size-4 animate-ping-soft rounded-full bg-accent" />}
+                <span
+                  className={`relative size-3.5 rounded-full ring-2 ring-white ${enter(state, 'transition-colors duration-500')} ${i <= current && !armed ? 'bg-accent' : 'bg-line-2'}`}
+                  style={{ transitionDelay: `${i * 320}ms` }}
+                />
               </span>
               <span className={`text-[10px] whitespace-nowrap ${i <= current ? 'text-ink' : 'text-ink-3'}`}>{STEP_LABELS[s]}</span>
             </li>

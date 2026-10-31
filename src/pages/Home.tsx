@@ -1,13 +1,13 @@
 import { Link } from 'react-router';
-import { ChapterMock } from '../components/mock/Mocks';
 import { Workspace } from '../components/mock/Workspace';
 import { Arrow, Button } from '../components/ui/Button';
 import { CtaSection, ExploreRow, StatementCards } from '../components/ui/Closers';
 import { Container } from '../components/ui/Container';
 import { Icon, type IconName } from '../components/ui/Icon';
-import { SpotlightPanel } from '../components/ui/Panels';
-import { Label, PointRow, SectionHeader } from '../components/ui/Section';
-import { ACCEPT, AUDIENCES, CHAPTERS, HERO, INTRO } from '../content/home';
+import { Label, SectionHeader } from '../components/ui/Section';
+import { WordReveal } from '../components/ui/WordReveal';
+import { HowItWorks } from '../components/sections/HowItWorks';
+import { ACCEPT, AUDIENCES, HERO, INTRO } from '../content/home';
 import { contactLink } from '../content/site';
 import { usePageMeta } from '../lib/usePageMeta';
 
@@ -28,14 +28,14 @@ export function Home() {
           <div className="flex flex-col gap-7">
             <Link
               to={HERO.pill.to}
-              className="group inline-flex w-fit animate-enter items-center gap-2 rounded-full bg-white/70 py-1 pr-3 pl-1 text-[13px] text-ink-2 ring-1 ring-line backdrop-blur transition-colors hover:text-ink hover:ring-line-2"
+              className="group border-beam inline-flex w-fit animate-enter items-center gap-2 rounded-full bg-white/70 py-1 pr-3 pl-1 text-[13px] text-ink-2 ring-1 ring-line backdrop-blur transition-colors hover:text-ink hover:ring-line-2"
             >
               <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[11.5px] font-medium text-accent">AI</span>
               {HERO.pill.label}
               <Arrow size={12} />
             </Link>
-            <h1 className="max-w-5xl animate-enter text-[2.75rem] leading-[1.02] font-medium tracking-[-0.04em] [animation-delay:80ms] sm:text-6xl md:text-[4.75rem]">
-              {HERO.title}
+            <h1 className="max-w-5xl text-[2.75rem] leading-[1.02] font-medium tracking-[-0.04em] sm:text-6xl md:text-[4.75rem]">
+              <WordReveal text={HERO.title} delay={80} />
             </h1>
             <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
               <p className="max-w-xl animate-enter text-[17px] leading-relaxed text-ink-2 [animation-delay:160ms] md:text-lg">{HERO.lead}</p>
@@ -100,29 +100,7 @@ export function Home() {
         </Container>
       </section>
 
-      {CHAPTERS.map((ch) => (
-        <section key={ch.num} className="py-20 md:py-28">
-          <Container>
-            <SectionHeader
-              label={
-                <Label to={ch.to}>
-                  {ch.num} {ch.label}
-                </Label>
-              }
-              title={ch.title}
-              text={ch.text}
-            />
-            <div className="mt-12 md:mt-16">
-              <SpotlightPanel>
-                <ChapterMock name={ch.mock} />
-              </SpotlightPanel>
-              <div className="mt-3">
-                <PointRow points={ch.points} />
-              </div>
-            </div>
-          </Container>
-        </section>
-      ))}
+      <HowItWorks />
 
       <section className="py-20 md:py-28">
         <Container>

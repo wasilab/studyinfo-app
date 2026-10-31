@@ -6,6 +6,7 @@ import { Cover } from '../components/ui/Cover';
 import { Icon } from '../components/ui/Icon';
 import { POSTS, readingTime, type Post } from '../content/posts';
 import { usePageMeta } from '../lib/usePageMeta';
+import { WordReveal } from '../components/ui/WordReveal';
 
 type Filter = 'All' | Post['category'];
 const FILTERS: Filter[] = ['All', 'Guide', 'How we work'];
@@ -37,7 +38,9 @@ export function Now() {
     <>
       <section className="pt-16 md:pt-24">
         <Container>
-          <h1 className="animate-enter text-[2.75rem] leading-none font-medium tracking-[-0.04em] md:text-[3.5rem]">Now</h1>
+          <h1 className="text-[2.75rem] leading-none font-medium tracking-[-0.04em] md:text-[3.5rem]">
+            <WordReveal text="Now" />
+          </h1>
           <p className="mt-4 max-w-xl animate-enter text-[17px] text-ink-2 [animation-delay:80ms]">
             Practical guidance for agencies and universities, and notes on how we work.
           </p>

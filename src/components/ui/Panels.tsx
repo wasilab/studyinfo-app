@@ -1,4 +1,19 @@
-import { useRef, type PointerEvent, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { useSpotlight } from '../../lib/motion';
+
+/** Top spotlight, a hairline highlight and a pointer-following light. Needs a `group/spot` parent. */
+export function SpotlightGlow() {
+  return (
+    <>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[75%] bg-[radial-gradient(55%_70%_at_50%_0%,rgb(91_91_214/0.11),rgb(91_91_214/0.03)_45%,transparent_75%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(to_right,transparent,rgb(91_91_214/0.35),transparent)]" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-100 bg-[radial-gradient(460px_circle_at_var(--sx,50%)_var(--sy,0%),rgb(91_91_214/0.09),transparent_65%)]"
+      />
+    </>
+  );
+}
 
 /**
  * Large rounded panel with a soft top spotlight and a light that follows the pointer,
@@ -17,15 +32,7 @@ export function SpotlightPanel({
   inner?: string;
   className?: string;
 }) {
-  const ref = useRef<HTMLElement>(null);
-
-  const onPointerMove = (e: PointerEvent<HTMLElement>) => {
-    const el = ref.current;
-    if (!el || e.pointerType !== 'mouse') return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--sx', `${e.clientX - r.left}px`);
-    el.style.setProperty('--sy', `${e.clientY - r.top}px`);
-  };
+  const { ref, onPointerMove } = useSpotlight<HTMLElement>();
 
   return (
     <figure
@@ -33,12 +40,7 @@ export function SpotlightPanel({
       onPointerMove={onPointerMove}
       className={`reveal group/spot relative isolate overflow-hidden rounded-2xl border border-line bg-[#fbfbfc] ${className}`}
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[75%] bg-[radial-gradient(55%_70%_at_50%_0%,rgb(91_91_214/0.11),rgb(91_91_214/0.03)_45%,transparent_75%)]" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(to_right,transparent,rgb(91_91_214/0.35),transparent)]" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-100 bg-[radial-gradient(460px_circle_at_var(--sx,50%)_var(--sy,0%),rgb(91_91_214/0.09),transparent_65%)]"
-      />
+      <SpotlightGlow />
       <div className={`px-3 pt-10 sm:px-10 md:pt-16 ${title || text ? '' : 'pb-10 md:pb-16'}`}>
         <div className={`mx-auto ${inner}`}>{children}</div>
       </div>
@@ -63,10 +65,10 @@ export function FeatureGrid({ items }: { items: Feature[] }) {
   return (
     <div className="mt-3 grid gap-px overflow-clip rounded-2xl border border-line bg-line md:grid-cols-2">
       {items.map((f, i) => (
-        <div key={f.title} className={`bg-white ${items.length % 2 === 1 && i === items.length - 1 ? 'md:col-span-2' : ''}`}>
+        <div key={f.title} className={`group/cell bg-white ${items.length % 2 === 1 && i === items.length - 1 ? 'md:col-span-2' : ''}`}>
           <div className="reveal flex h-full flex-col">
             <div className="relative grid h-[230px] place-items-center overflow-hidden px-5 pt-6 [mask-image:linear-gradient(to_bottom,black_78%,transparent)] sm:h-[250px]">
-              {f.visual}
+              <div className="grid w-full place-items-center transition-transform duration-700 ease-out-expo group-hover/cell:-translate-y-1.5">{f.visual}</div>
             </div>
             <div className="px-6 pt-2 pb-7 sm:px-8">
               <p className="text-[14px] font-medium text-ink">{f.title}</p>

@@ -7,6 +7,7 @@ import { POSTS } from '../content/posts';
 import { usePageMeta } from '../lib/usePageMeta';
 import { NotFound } from './NotFound';
 import { PostMeta } from './Now';
+import { WordReveal } from '../components/ui/WordReveal';
 
 export function Post() {
   const { slug } = useParams();
@@ -29,7 +30,9 @@ export function Post() {
             <div className="animate-enter">
               <PostMeta post={post} />
             </div>
-            <h1 className="mt-4 animate-enter text-[2.4rem] leading-[1.08] font-medium tracking-[-0.035em] [animation-delay:80ms] md:text-5xl">{post.title}</h1>
+            <h1 className="mt-4 text-[2.4rem] leading-[1.08] font-medium tracking-[-0.035em] md:text-5xl">
+              <WordReveal text={post.title} delay={80} step={40} />
+            </h1>
             <p className="mt-5 animate-enter text-lg leading-relaxed text-ink-2 [animation-delay:160ms]">{post.excerpt}</p>
             <Cover variant={index} className="mt-10 aspect-[16/8] rounded-2xl ring-1 ring-line" />
             <div className="mt-6">
