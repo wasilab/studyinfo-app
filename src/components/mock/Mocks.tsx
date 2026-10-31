@@ -102,17 +102,27 @@ export function ApplicationPdfMock() {
 
 type Finding = { doc: string; tone: 'good' | 'bad'; text: string };
 
-const FINDINGS: Finding[] = [
-  { doc: 'Student profile', tone: 'good', text: 'Complete' },
-  { doc: 'Passport', tone: 'good', text: 'Clear copy, valid' },
-  { doc: 'Academic transcripts', tone: 'good', text: 'Certified copies' },
-  { doc: 'English test score', tone: 'bad', text: 'Result expired' },
-  { doc: 'University fields', tone: 'good', text: '2 of 2 answered' },
-];
+const FINDINGS: Record<'passed' | 'returned', Finding[]> = {
+  passed: [
+    { doc: 'Student profile', tone: 'good', text: 'Complete' },
+    { doc: 'Passport', tone: 'good', text: 'Clear copy, valid' },
+    { doc: 'Academic transcripts', tone: 'good', text: 'Certified copies' },
+    { doc: 'English test score', tone: 'good', text: 'IELTS 7.0, valid' },
+    { doc: 'University fields', tone: 'good', text: '2 of 2 answered' },
+  ],
+  returned: [
+    { doc: 'Student profile', tone: 'good', text: 'Complete' },
+    { doc: 'Passport', tone: 'good', text: 'Clear copy, valid' },
+    { doc: 'Academic transcripts', tone: 'good', text: 'Certified copies' },
+    { doc: 'English test score', tone: 'bad', text: 'Result expired' },
+    { doc: 'University fields', tone: 'good', text: '2 of 2 answered' },
+  ],
+};
 
-/** A document check done by a person on the StudyInfo team. */
-export function DocCheckMock() {
-  const file = byId('SI-2042');
+/** A document check done by a person on the StudyInfo team: a file that passed, or one returned with a reason. */
+export function DocCheckMock({ variant = 'returned' }: { variant?: 'passed' | 'returned' }) {
+  const passed = variant === 'passed';
+  const file = byId(passed ? 'SI-2041' : 'SI-2042');
   return (
     <Window title={<Title icon="shield">Document Check · {file.id}</Title>}>
       <div className="flex flex-wrap items-center justify-between gap-3 px-4 pt-4 pb-3">
@@ -122,7 +132,7 @@ export function DocCheckMock() {
         <StatusChip file={file} />
       </div>
       <ul className="mx-4 divide-y divide-line rounded-lg ring-1 ring-line">
-        {FINDINGS.map((f) => (
+        {FINDINGS[variant].map((f) => (
           <li key={f.doc} className="flex items-center gap-2.5 px-3 py-2.5 text-[12.5px]">
             {f.tone === 'good' ? <Icon name="check" size={14} className="text-success" /> : <Icon name="close" size={14} className="text-danger" />}
             <span className="min-w-0 flex-1 truncate text-ink">{f.doc}</span>
@@ -132,7 +142,13 @@ export function DocCheckMock() {
       </ul>
       <div className="flex flex-wrap items-center gap-2 px-4 py-3.5 text-[12px] text-ink-3">
         <Icon name="userCheck" size={14} /> Checked by StudyInfo team
-        <Chip tone="bad">Reason: expired document</Chip>
+        {passed ? (
+          <Chip tone="good">
+            <Icon name="check" size={11} /> Ready to forward
+          </Chip>
+        ) : (
+          <Chip tone="bad">Reason: expired document</Chip>
+        )}
       </div>
     </Window>
   );
@@ -534,7 +550,7 @@ export function ChapterMock({ name }: { name: MockName }) {
     case 'submission':
       return <ApplicationPdfMock />;
     case 'check':
-      return <DocCheckMock />;
+      return <DocCheckMock variant="passed" />;
     case 'received':
       return <ReceivedMock />;
     case 'thread':
