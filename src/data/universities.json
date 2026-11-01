@@ -1,0 +1,19 @@
+{
+  "sample": true,
+  "universities": [
+    { "name": "Northbridge University", "country": "United Kingdom", "cities": ["London", "Cambridge"] },
+    { "name": "Kingsfield College", "country": "United Kingdom", "cities": ["Manchester"] },
+    { "name": "Westmere University", "country": "United Kingdom", "cities": ["Bristol", "Bath", "Exeter"] },
+    { "name": "Lakeshore University", "country": "Canada", "cities": ["Toronto", "Mississauga"] },
+    { "name": "Pacific Ridge University", "country": "Canada", "cities": ["Vancouver", "Burnaby"] },
+    { "name": "Maple Crown College", "country": "Canada", "cities": ["Montreal"] },
+    { "name": "Southern Cross University of Technology", "country": "Australia", "cities": ["Sydney", "Parramatta"] },
+    { "name": "Harbourview University", "country": "Australia", "cities": ["Melbourne", "Geelong"] },
+    { "name": "Outback State College", "country": "Australia", "cities": ["Brisbane"] },
+    { "name": "Redwood State University", "country": "United States", "cities": ["San Francisco", "San Jose"] },
+    { "name": "Lakeland Institute of Technology", "country": "United States", "cities": ["Chicago"] },
+    { "name": "Hudson Valley University", "country": "United States", "cities": ["New York", "Albany"] },
+    { "name": "Emerald Isle University", "country": "Ireland", "cities": ["Dublin", "Maynooth"] },
+    { "name": "Liffey College", "country": "Ireland", "cities": ["Cork"] }
+  ]
+}

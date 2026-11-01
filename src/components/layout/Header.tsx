@@ -7,7 +7,7 @@ import { Icon } from '../ui/Icon';
 import { Logo } from '../ui/Logo';
 
 // Tighter padding between md and lg keeps the whole top bar on one line at tablet widths.
-const LINK = 'rounded-full px-2 py-1.5 text-[13.5px] whitespace-nowrap transition-colors lg:px-3';
+const LINK = 'rounded-full px-3 py-1.5 text-[13.5px] whitespace-nowrap transition-colors';
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -55,7 +55,7 @@ export function Header() {
     >
       <Container className="flex h-16 items-center gap-4">
         <Logo />
-        <nav aria-label="Main" className="ml-auto hidden items-center gap-0.5 md:flex">
+        <nav aria-label="Main" className="ml-auto hidden items-center gap-0.5 lg:flex">
           <div
             ref={menuRef}
             className="relative"
@@ -106,11 +106,11 @@ export function Header() {
             </NavLink>
           ))}
         </nav>
-        <span aria-hidden="true" className="mx-1 hidden h-4 w-px bg-line-2 md:block lg:mx-2" />
-        <div className="ml-auto flex items-center gap-2 md:ml-0">
+        <span aria-hidden="true" className="mx-2 hidden h-4 w-px bg-line-2 lg:block" />
+        <div className="ml-auto flex items-center gap-2 lg:ml-0">
           <NavLink
             to={GROW_LINK.to}
-            className={({ isActive }) => `${LINK} hidden md:block ${isActive ? 'text-ink' : 'text-ink-2 hover:text-ink'}`}
+            className={({ isActive }) => `${LINK} hidden lg:block ${isActive ? 'text-ink' : 'text-ink-2 hover:text-ink'}`}
           >
             {GROW_LINK.label}
           </NavLink>
@@ -121,7 +121,7 @@ export function Header() {
           </span>
           <button
             type="button"
-            className="-mr-1.5 grid size-9 place-items-center rounded-full text-ink md:hidden"
+            className="-mr-1.5 grid size-9 place-items-center rounded-full text-ink lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -133,7 +133,7 @@ export function Header() {
       </Container>
 
       {open && (
-        <div id="mobile-nav" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-canvas md:hidden">
+        <div id="mobile-nav" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-canvas lg:hidden">
           <Container className="flex flex-col py-3">
             <p className="pt-2 pb-1 text-[12px] font-medium text-ink-3">Services</p>
             {PRODUCT_MENU.map((item) => (

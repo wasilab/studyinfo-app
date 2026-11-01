@@ -30,7 +30,7 @@ export const WAYS: { icon: IconName; title: string; text: string; to: string; ct
     icon: 'building',
     title: 'Have university partners?',
     text: 'Add your universities to the catalog and receive verified student files from agencies across the network.',
-    to: '/universities',
+    to: '/add-universities',
     cta: 'Add your universities',
   },
   {
@@ -82,7 +82,7 @@ export const CHAPTERS: Chapter[] = [
   {
     num: '3.0',
     label: 'Apply',
-    to: '/universities',
+    to: '/add-universities',
     title: 'An agency with the relationship applies',
     text: 'We forward the verified file to an applying agency, by default the university’s owner agency. It applies, uploads the offer letter and moves the university-side steps.',
     mock: 'received',
@@ -127,7 +127,7 @@ export const AUDIENCES = [
       'Receive files already checked by our team',
       'Share the commission on every placement',
     ],
-    cta: { label: 'Add your universities', to: '/universities' },
+    cta: { label: 'Add your universities', to: '/add-universities' },
     note: 'You have universities',
   },
 ];

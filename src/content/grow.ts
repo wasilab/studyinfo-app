@@ -51,7 +51,7 @@ export const GROW = {
     label: 'Add your universities',
     title: 'Add your universities. Receive more students.',
     text: 'Request each partner university once. Agencies across the network send you verified files for it.',
-    link: { to: '/universities', label: 'Add your universities' },
+    link: { to: '/add-universities', label: 'Add your universities' },
     panel: { title: 'Verified files, straight to you', text: 'Our team checks every file before it reaches you.' },
     points: [
       { icon: 'building', title: 'One request', text: 'Website, campus country, platform share.' },

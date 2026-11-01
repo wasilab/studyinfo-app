@@ -11,7 +11,8 @@ import { Post } from './pages/Post';
 import { SendFiles } from './pages/SendFiles';
 import { Toolkit } from './pages/Toolkit';
 import { Tracking } from './pages/Tracking';
-import { Universities } from './pages/Universities';
+import { AddUniversities } from './pages/AddUniversities';
+import { UniversityList } from './pages/UniversityList';
 
 /** Pages that were renamed or removed, and where their old links now go. */
 const REDIRECTS: Record<string, string> = {
@@ -27,7 +28,8 @@ export function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="send-files" element={<SendFiles />} />
-        <Route path="universities" element={<Universities />} />
+        <Route path="universities" element={<UniversityList />} />
+        <Route path="add-universities" element={<AddUniversities />} />
         <Route path="tracking" element={<Tracking />} />
         <Route path="toolkit" element={<Toolkit />} />
         <Route path="network" element={<Network />} />

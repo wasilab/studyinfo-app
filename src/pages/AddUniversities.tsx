@@ -6,7 +6,7 @@ import { ProductHero } from '../components/ui/ProductHero';
 import { UNIVERSITIES } from '../content/universities';
 import { usePageMeta } from '../lib/usePageMeta';
 
-export function Universities() {
+export function AddUniversities() {
   usePageMeta();
   const [request, received, commission] = UNIVERSITIES.blocks;
 

@@ -15,7 +15,8 @@ npm run dev
 |---|---|
 | `/` | Home |
 | `/send-files` | Sending student files and our document check |
-| `/universities` | Adding your universities and receiving verified files |
+| `/universities` | Browse universities by country and city, and send a student file for one |
+| `/add-universities` | Adding your universities and receiving verified files |
 | `/tracking` | Case steps, the three-party thread and commission status |
 | `/toolkit` | CRM, recommendations, AI tools, marketing and the branded portal |
 | `/network` | How the network works, anonymity and FAQ |
@@ -29,6 +30,7 @@ The old routes `/intake`, `/ai`, `/partners` and `/pricing` redirect to `/send-f
 ## Where to edit
 
 - Brand name, email, phone, WhatsApp link and address: `src/config.ts`
+- University list on `/universities`: `src/data/universities.json`, an array of `{ "name", "country", "cities": [] }` (or `{ "sample": true, "universities": [...] }`). Replace the file with real data; remove `"sample"` to hide the "Sample list" tag. The country filter is built from the data.
 - Logo: `src/components/ui/Logo.tsx`, with copies of the same shapes in `public/logo.svg` (for use outside the site) and `public/favicon.svg` (browser tab). Change all three together.
 - Demo app link for every "Try Demo" button: `DEMO_URL` in `src/config.ts`. While it is empty, the buttons open the contact form with "Book a demo" selected.
 - Page copy: `src/content/*.ts`

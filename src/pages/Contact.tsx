@@ -32,6 +32,7 @@ export function Contact() {
   usePageMeta();
   const [params] = useSearchParams();
   const requested = params.get('type');
+  const university = params.get('university');
 
   // Starts at the default so it matches the pre-rendered page; the effect below applies ?type= right after.
   const [type, setType] = useState<EnquiryType>('join');
@@ -42,6 +43,11 @@ export function Contact() {
   useEffect(() => {
     if (isType(requested)) setType(requested);
   }, [requested]);
+
+  // Arriving from the university list: start the message for that university.
+  useEffect(() => {
+    if (university) setForm((f) => (f.message ? f : { ...f, message: `I’d like to send a student file for ${university}.` }));
+  }, [university]);
 
   const update = (key: keyof typeof form) => (e: { target: { value: string } }) => setForm({ ...form, [key]: e.target.value });
 

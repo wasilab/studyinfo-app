@@ -14,13 +14,14 @@ export interface ProductLink extends NavLink {
 /** Items in the header's Product menu. */
 export const PRODUCT_MENU: ProductLink[] = [
   { to: '/send-files', label: 'Send student files', text: 'For agencies with students', icon: 'send' },
-  { to: '/universities', label: 'Add your universities', text: 'For agencies with university partners', icon: 'building' },
+  { to: '/add-universities', label: 'Add your universities', text: 'For agencies with university partners', icon: 'building' },
   { to: '/tracking', label: 'Case tracking', text: 'From document check to commission', icon: 'track' },
   { to: '/toolkit', label: 'Agency toolkit', text: 'CRM, recommendations and AI tools', icon: 'layers' },
 ];
 
 export const NAV: NavLink[] = [
   { to: '/network', label: 'How it works' },
+  { to: '/universities', label: 'Universities' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -47,7 +48,7 @@ export const demoLink = (): { href: string; external: true } | { to: string } =>
 /** The row of product pages near the end of each page. */
 export const EXPLORE: { to: string; title: string; label: string }[] = [
   { to: '/send-files', title: 'Every student has a place, even where you can’t apply', label: 'Send student files' },
-  { to: '/universities', title: 'Turn university partnerships into a steady flow of students', label: 'Add your universities' },
+  { to: '/add-universities', title: 'Turn university partnerships into a steady flow of students', label: 'Add your universities' },
   { to: '/tracking', title: 'Every step, from document check to commission', label: 'Case tracking' },
   { to: '/toolkit', title: 'Everything your agency runs on, in one place', label: 'Agency toolkit' },
 ];
@@ -71,7 +72,7 @@ export const FOOTER: { title: string; links: NavLink[] }[] = [
     title: 'Network',
     links: [
       { to: '/send-files', label: 'Send student files' },
-      { to: '/universities', label: 'Add your universities' },
+      { to: '/add-universities', label: 'Add your universities' },
       { to: '/tracking', label: 'Case tracking' },
       { to: '/network', label: 'How it works' },
     ],

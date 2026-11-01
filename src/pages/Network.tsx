@@ -108,7 +108,7 @@ export function Network() {
 
       <section className="py-20 md:py-28">
         <Container>
-          <SectionHeader title={catalog.title} text={catalog.text} link={{ to: '/universities', label: 'Add your universities' }} />
+          <SectionHeader title={catalog.title} text={catalog.text} link={{ to: '/add-universities', label: 'Add your universities' }} />
           <div className="mt-12 grid gap-px overflow-clip rounded-2xl border border-line bg-line md:mt-16 md:grid-cols-3">
             {CATALOG_FACTS.map((f) => (
               <div key={f.title} className="bg-canvas">

@@ -29,6 +29,11 @@ const PAGES: Record<string, { title: string; description: string }> = {
       'Submit a student’s file once. Our team checks every document and forwards it to an agency that can apply to the university. Your student stays yours.',
   },
   '/universities': {
+    title: `Universities for Your Students · ${BRAND}`,
+    description:
+      'Browse universities by country and city, then send your student’s file through StudyInfo to an agency that can apply.',
+  },
+  '/add-universities': {
     title: `Add Your Partner Universities · ${BRAND}`,
     description:
       'Request each partner university once and receive verified student files from agencies across the StudyInfo network, with commission tracked on every case.',
