@@ -1,19 +1,127 @@
 {
   "sample": true,
   "universities": [
-    { "name": "Northbridge University", "country": "United Kingdom", "cities": ["London", "Cambridge"] },
-    { "name": "Kingsfield College", "country": "United Kingdom", "cities": ["Manchester"] },
-    { "name": "Westmere University", "country": "United Kingdom", "cities": ["Bristol", "Bath", "Exeter"] },
-    { "name": "Lakeshore University", "country": "Canada", "cities": ["Toronto", "Mississauga"] },
-    { "name": "Pacific Ridge University", "country": "Canada", "cities": ["Vancouver", "Burnaby"] },
-    { "name": "Maple Crown College", "country": "Canada", "cities": ["Montreal"] },
-    { "name": "Southern Cross University of Technology", "country": "Australia", "cities": ["Sydney", "Parramatta"] },
-    { "name": "Harbourview University", "country": "Australia", "cities": ["Melbourne", "Geelong"] },
-    { "name": "Outback State College", "country": "Australia", "cities": ["Brisbane"] },
-    { "name": "Redwood State University", "country": "United States", "cities": ["San Francisco", "San Jose"] },
-    { "name": "Lakeland Institute of Technology", "country": "United States", "cities": ["Chicago"] },
-    { "name": "Hudson Valley University", "country": "United States", "cities": ["New York", "Albany"] },
-    { "name": "Emerald Isle University", "country": "Ireland", "cities": ["Dublin", "Maynooth"] },
-    { "name": "Liffey College", "country": "Ireland", "cities": ["Cork"] }
+    {
+      "name": "Northbridge University",
+      "country": "United Kingdom",
+      "cities": [
+        "London",
+        "Cambridge"
+      ],
+      "description": "A research-focused university with strong programmes in data science, finance and engineering. Known for small-group teaching and an active careers service."
+    },
+    {
+      "name": "Kingsfield College",
+      "country": "United Kingdom",
+      "cities": [
+        "Manchester"
+      ],
+      "description": "A city-centre college offering business, media and computing degrees, with foundation years for international students."
+    },
+    {
+      "name": "Westmere University",
+      "country": "United Kingdom",
+      "cities": [
+        "Bristol",
+        "Bath",
+        "Exeter"
+      ],
+      "description": "A multi-campus university across the South West, popular for health sciences, design and environmental studies."
+    },
+    {
+      "name": "Lakeshore University",
+      "country": "Canada",
+      "cities": [
+        "Toronto",
+        "Mississauga"
+      ],
+      "description": "A large public university with co-op programmes that place students in paid work terms alongside their studies."
+    },
+    {
+      "name": "Pacific Ridge University",
+      "country": "Canada",
+      "cities": [
+        "Vancouver",
+        "Burnaby"
+      ],
+      "description": "A coastal university known for technology, business and sustainability programmes, with a large international community."
+    },
+    {
+      "name": "Maple Crown College",
+      "country": "Canada",
+      "cities": [
+        "Montreal"
+      ],
+      "description": "A bilingual college focused on applied programmes in business, hospitality and information technology."
+    },
+    {
+      "name": "Southern Cross University of Technology",
+      "country": "Australia",
+      "cities": [
+        "Sydney",
+        "Parramatta"
+      ],
+      "description": "A technology-focused university with strong links to industry, offering engineering, IT and health courses."
+    },
+    {
+      "name": "Harbourview University",
+      "country": "Australia",
+      "cities": [
+        "Melbourne",
+        "Geelong"
+      ],
+      "description": "A research university with highly ranked business and public health schools, plus a second campus on the coast."
+    },
+    {
+      "name": "Outback State College",
+      "country": "Australia",
+      "cities": [
+        "Brisbane"
+      ],
+      "description": "A state college offering practical, career-oriented diplomas and degrees in nursing, education and trades."
+    },
+    {
+      "name": "Redwood State University",
+      "country": "United States",
+      "cities": [
+        "San Francisco",
+        "San Jose"
+      ],
+      "description": "A public university in the heart of the technology industry, strong in computer science, engineering and entrepreneurship."
+    },
+    {
+      "name": "Lakeland Institute of Technology",
+      "country": "United States",
+      "cities": [
+        "Chicago"
+      ],
+      "description": "An institute of technology offering engineering, architecture and applied science programmes with a hands-on approach."
+    },
+    {
+      "name": "Hudson Valley University",
+      "country": "United States",
+      "cities": [
+        "New York",
+        "Albany"
+      ],
+      "description": "A university with a main campus in New York and a smaller campus upstate, known for business, media and the arts."
+    },
+    {
+      "name": "Emerald Isle University",
+      "country": "Ireland",
+      "cities": [
+        "Dublin",
+        "Maynooth"
+      ],
+      "description": "A university with a historic city campus and a modern suburban campus, strong in computing, science and law."
+    },
+    {
+      "name": "Liffey College",
+      "country": "Ireland",
+      "cities": [
+        "Cork"
+      ],
+      "description": "A college offering undergraduate and postgraduate programmes in business, finance and the creative industries."
+    }
   ]
 }

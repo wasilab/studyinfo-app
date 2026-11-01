@@ -2,26 +2,42 @@ import raw from '../data/universities.json';
 
 /**
  * The universities agencies can browse on /universities, read from src/data/universities.json.
- * The file is either an array of { name, country, cities } or { "sample": true, "universities": [...] }.
+ * The file is either an array of { name, country, campuses (or cities), description? } or { "sample": true, "universities": [...] }.
  * Set "sample" to true to show a "Sample list" tag on the page; leave it out for real data.
  */
 export interface University {
   name: string;
   country: string;
-  cities: string[];
+  /** The campuses, usually city names. The JSON may call this "campuses" or "cities". */
+  campuses: string[];
+  /** Optional short description, shown when the university is selected. */
+  description?: string;
+}
+
+interface RawUniversity {
+  name: string;
+  country: string;
+  campuses?: string[];
+  cities?: string[];
+  description?: string;
 }
 
 interface Source {
   sample?: boolean;
-  universities: University[];
+  universities: RawUniversity[];
 }
 
-const source: Source = Array.isArray(raw) ? { universities: raw as University[] } : (raw as Source);
+const source: Source = Array.isArray(raw) ? { universities: raw as RawUniversity[] } : (raw as Source);
 
 export const IS_SAMPLE = source.sample === true;
 
 export const UNIVERSITIES_LIST: University[] = source.universities
-  .map((u) => ({ name: u.name.trim(), country: u.country.trim(), cities: (u.cities ?? []).map((c) => c.trim()).filter(Boolean) }))
+  .map((u) => ({
+    name: u.name.trim(),
+    country: u.country.trim(),
+    campuses: (u.campuses ?? u.cities ?? []).map((c) => c.trim()).filter(Boolean),
+    description: u.description?.trim() || undefined,
+  }))
   .sort((a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name));
 
 /** Countries with how many universities each has, sorted by name. */
