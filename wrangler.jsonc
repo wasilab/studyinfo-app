@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "studyinfo",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    // The build (npm run build) writes the pre-rendered site here.
+    "directory": "./dist",
+    // Unknown addresses get the pre-rendered dist/404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  },
+  "routes": [{ "pattern": "www.studyinfo.app", "custom_domain": true }]
+}

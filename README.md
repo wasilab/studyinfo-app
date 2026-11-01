@@ -64,12 +64,14 @@ Every page is pre-rendered to static HTML at build time, so search engines and s
 
 ## Hosting
 
-The build is plain static files. `public/_redirects` (Netlify) and `vercel.json` (Vercel) already:
+Every push to `main` builds the site and deploys it to **Cloudflare Workers** (static assets) at https://www.studyinfo.app, through `.github/workflows/deploy.yml` and `wrangler.jsonc`. You can also deploy by hand with `npm run build && npm run deploy` (needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in your environment).
 
-- redirect `studyinfo.app` to `www.studyinfo.app`;
-- send the old addresses `/intake`, `/ai`, `/partners` and `/pricing` to their new pages with permanent (301) redirects;
-- answer unknown addresses with `404.html` and a real 404 status.
+One-time setup:
 
-On another host, serve each folder's `index.html` for its path (for example `/send-files` → `send-files/index.html`) and use `404.html` for unknown paths. The site is not deployed anywhere yet.
+1. **GitHub secrets:** Settings → Secrets and variables → Actions → Repository secrets, add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. The token needs the "Edit Cloudflare Workers" permission, plus Zone → DNS → Edit on `studyinfo.app` so the first deploy can create the custom domain.
+2. **DNS:** `studyinfo.app` must be a zone in the same Cloudflare account. The deploy attaches `www.studyinfo.app` to the Worker automatically.
+3. **Apex redirect:** in Cloudflare, add a Redirect Rule from `studyinfo.app/*` to `https://www.studyinfo.app/${1}` (301), because Workers redirect files can't match a host.
+
+How it behaves: pre-rendered pages are served from `dist/<page>/index.html`; the old addresses `/intake`, `/ai`, `/partners` and `/pricing` redirect (301) through `public/_redirects`; unknown addresses get `dist/404.html` with a real 404 status (`not_found_handling: "404-page"`). `vercel.json` is kept for hosting on Vercel instead.
 
 The contact form has no backend: it opens the visitor's email app with the message addressed to the contact email. Connect it to a form service when you have one.

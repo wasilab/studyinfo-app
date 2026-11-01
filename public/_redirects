@@ -1,13 +1,10 @@
-# Netlify. Pre-rendered pages (dist/<page>/index.html) are served before these rules.
-
-# The site lives on www.
-https://studyinfo.app/*  https://www.studyinfo.app/:splat  301!
+# Redirects for the pre-rendered site. Cloudflare Workers (this deployment) and Netlify both read this file.
+# Cloudflare supports path-based redirects only, so the www redirect and the 404 page are set up elsewhere:
+#   - Unknown addresses: wrangler.jsonc ("not_found_handling": "404-page") serves 404.html with a 404 status.
+#   - studyinfo.app -> www.studyinfo.app: a Cloudflare Redirect Rule (see README, Hosting).
 
 # Pages that were renamed or removed.
 /intake    /send-files  301
 /ai        /toolkit     301
 /partners  /network     301
 /pricing   /            301
-
-# Any other address gets the not-found page with a real 404 status.
-/*  /404.html  404
