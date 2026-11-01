@@ -74,7 +74,7 @@ export function Header() {
               onClick={() => setProduct((p) => !p)}
               className={`${LINK} flex items-center gap-1 ${productActive || product ? 'text-ink' : 'text-ink-2 hover:text-ink'}`}
             >
-              Product
+              Services
               <svg viewBox="0 0 12 12" aria-hidden="true" className={`size-3 transition-transform duration-200 ${product ? 'rotate-180' : ''}`}>
                 <path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -135,7 +135,7 @@ export function Header() {
       {open && (
         <div id="mobile-nav" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-canvas md:hidden">
           <Container className="flex flex-col py-3">
-            <p className="pt-2 pb-1 text-[12px] font-medium text-ink-3">Product</p>
+            <p className="pt-2 pb-1 text-[12px] font-medium text-ink-3">Services</p>
             {PRODUCT_MENU.map((item) => (
               <Link key={item.to} to={item.to} className="flex items-center gap-3 border-b border-line py-3">
                 <Icon name={item.icon} size={16} className="text-ink-3" />
