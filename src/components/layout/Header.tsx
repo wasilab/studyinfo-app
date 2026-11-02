@@ -49,9 +49,8 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-[env(safe-area-inset-top,0px)] z-50 border-b bg-canvas/75 backdrop-blur-xl backdrop-saturate-150 transition-colors ${
-        scrolled || open ? 'border-line' : 'border-transparent'
-      }`}
+      className={`sticky top-[env(safe-area-inset-top,0px)] z-50 border-b bg-canvas/75 backdrop-blur-xl backdrop-saturate-150 transition-colors ${scrolled || open ? 'border-line' : 'border-transparent'
+        }`}
     >
       <Container className="flex h-16 items-center gap-4">
         <Logo />
@@ -81,13 +80,12 @@ export function Header() {
             </button>
             <div
               id="product-menu"
-              className={`absolute top-full left-1/2 w-[340px] -translate-x-1/2 pt-3 transition-[opacity,translate,visibility] duration-200 ${
-                product ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
-              }`}
+              className={`absolute top-full left-1/2 w-[340px] -translate-x-1/2 pt-3 transition-[opacity,translate,visibility] duration-200 ${product ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
+                }`}
             >
               <div className="rounded-2xl bg-surface-2 p-2 shadow-window">
                 {PRODUCT_MENU.map((item) => (
-                  <Link key={item.to} to={item.to} className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-white/5">
+                  <Link key={item.to} to={item.to} className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-subtle">
                     <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-surface text-ink ring-1 ring-line transition-colors group-hover:text-accent">
                       <Icon name={item.icon} size={16} />
                     </span>

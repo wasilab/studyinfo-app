@@ -17,7 +17,7 @@ export function Home() {
   return (
     <>
       <section className="relative isolate overflow-clip pt-16 md:pt-24">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[900px] bg-[radial-gradient(48%_42%_at_72%_8%,rgb(110_139_255/0.20),transparent_70%)]" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-[900px] bg-[radial-gradient(48%_42%_at_72%_8%,rgb(67_97_238/0.12),transparent_70%)]" />
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-0 -z-10 h-[760px] bg-[linear-gradient(to_right,var(--color-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-line)_1px,transparent_1px)] [mask-image:radial-gradient(60%_55%_at_50%_0%,black,transparent)] bg-[size:64px_64px] opacity-50"

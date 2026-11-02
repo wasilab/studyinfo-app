@@ -73,7 +73,7 @@ export function Contact() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       },
-      () => {},
+      () => { },
     );
   };
 
@@ -170,9 +170,8 @@ export function Contact() {
                     {TYPES.map((t) => (
                       <label
                         key={t}
-                        className={`flex cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13.5px] ring-1 transition-colors ring-inset ${
-                          type === t ? 'bg-accent-soft text-ink ring-accent/60' : 'text-ink-2 ring-line-2 hover:bg-subtle'
-                        }`}
+                        className={`flex cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13.5px] ring-1 transition-colors ring-inset ${type === t ? 'bg-accent-soft text-ink ring-accent/60' : 'text-ink-2 ring-line-2 hover:bg-subtle'
+                          }`}
                       >
                         <input
                           type="radio"

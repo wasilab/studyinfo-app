@@ -34,8 +34,8 @@ export function HeroBackdrop({ variant }: { variant: Backdrop }) {
         {variant === 'network' && <Network />}
       </div>
       {/* Fades the artwork out behind the text in the bottom-left. */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-canvas)_6%,rgb(10_16_34/0.75)_38%,rgb(10_16_34/0)_72%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-canvas)_8%,rgb(10_16_34/0.6)_40%,rgb(10_16_34/0)_70%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-canvas)_10%,color-mix(in_oklab,var(--color-canvas)_60%,transparent)_40%,transparent_72%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-canvas)_8%,color-mix(in_oklab,var(--color-canvas)_50%,transparent)_40%,transparent_70%)]" />
     </div>
   );
 }
@@ -82,8 +82,8 @@ function Inbox() {
         {[...INBOX_ROWS, ...INBOX_ROWS].map((r, i) => (
           <div
             key={i}
-            className="flex items-center gap-5 rounded-2xl bg-surface/80 px-6 py-5 shadow-card"
-            style={{ filter: `blur(${(i % 3) * 0.6}px)`, opacity: 1 - (i % 4) * 0.12 }}
+            className="flex items-center gap-5 rounded-2xl bg-surface px-6 py-5 shadow-card"
+            style={{ filter: `blur(${(i % 3) * 0.6}px)`, opacity: 1 - (i % 4) * 0.1 }}
           >
             <StatusIcon status={r.status} className="size-6" />
             <span className="font-mono text-xl text-ink-3">{r.id}</span>
@@ -109,7 +109,7 @@ function Particles() {
   }));
   return (
     <div className="absolute inset-0">
-      <div className="absolute top-[-20%] right-[-10%] size-[640px] rounded-full bg-[radial-gradient(circle,rgb(110_139_255/0.20),transparent_65%)]" />
+      <div className="absolute top-[-20%] right-[-10%] size-[640px] rounded-full bg-[radial-gradient(circle,rgb(67_97_238/0.10),transparent_65%)]" />
       {dots.map((d, i) => (
         <span
           key={i}
