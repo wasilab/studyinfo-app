@@ -22,7 +22,7 @@ const NEXT_STEPS = [
 const CHANNELS: { icon: IconName; label: string; value: string; href?: string; external?: boolean }[] = [
   { icon: 'phone', label: 'Phone', value: CONTACT_PHONE, href: CONTACT_PHONE_LINK },
   { icon: 'message', label: 'WhatsApp', value: 'Message us on WhatsApp', href: CONTACT_WHATSAPP, external: true },
-  { icon: 'pin', label: 'Office', value: CONTACT_ADDRESS },
+  { icon: 'pin', label: 'Office', value: CONTACT_ADDRESS, href: 'https://maps.app.goo.gl/CogiG3wzftwh33YH6', external: true },
 ];
 
 const FIELD =
