@@ -5,11 +5,11 @@ import { useSpotlight } from '../../lib/motion';
 export function SpotlightGlow() {
   return (
     <>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[75%] bg-[radial-gradient(55%_70%_at_50%_0%,rgb(140_160_255/0.20),rgb(110_139_255/0.06)_45%,transparent_75%)]" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(to_right,transparent,rgb(160_178_255/0.55),transparent)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[75%] bg-[radial-gradient(55%_70%_at_50%_0%,rgb(67_97_238/0.08),rgb(67_97_238/0.03)_45%,transparent_75%)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(to_right,transparent,rgb(67_97_238/0.30),transparent)]" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-100 bg-[radial-gradient(460px_circle_at_var(--sx,50%)_var(--sy,0%),rgb(110_139_255/0.13),transparent_65%)]"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-100 bg-[radial-gradient(460px_circle_at_var(--sx,50%)_var(--sy,0%),rgb(67_97_238/0.08),transparent_65%)]"
       />
     </>
   );

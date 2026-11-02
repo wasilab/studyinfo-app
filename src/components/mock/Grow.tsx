@@ -71,9 +71,8 @@ export function FileJourney() {
             {COMMISSION.map((c, i) => (
               <span
                 key={c}
-                className={`inline-flex h-6 items-center gap-1 rounded-md px-2 font-medium ring-1 ring-inset ${
-                  i === 0 ? 'bg-success-soft text-success ring-success/30' : i === 1 ? 'bg-accent-soft text-ink ring-accent/50' : 'text-ink-3 ring-line'
-                } ${i === 1 ? `${enter(state, 'transition-[opacity,scale] delay-[1500ms] duration-500 ease-out-expo')} ${armed ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}` : ''}`}
+                className={`inline-flex h-6 items-center gap-1 rounded-md px-2 font-medium ring-1 ring-inset ${i === 0 ? 'bg-success-soft text-success ring-success/30' : i === 1 ? 'bg-accent-soft text-ink ring-accent/50' : 'text-ink-3 ring-line'
+                  } ${i === 1 ? `${enter(state, 'transition-[opacity,scale] delay-[1500ms] duration-500 ease-out-expo')} ${armed ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}` : ''}`}
               >
                 {i === 0 && <Icon name="check" size={11} />}
                 {c}

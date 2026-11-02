@@ -15,9 +15,8 @@ export function ExploreRow() {
             <Link
               key={item.to}
               to={item.to}
-              className={`group reveal flex flex-col justify-between gap-6 border-line py-6 lg:min-h-[9.5rem] lg:py-0 ${
-                i > 0 ? 'border-t lg:border-t-0 lg:border-l lg:pl-7' : 'lg:pr-7'
-              } ${i > 0 && i < EXPLORE.length - 1 ? 'lg:pr-7' : ''}`}
+              className={`group reveal flex flex-col justify-between gap-6 border-line py-6 lg:min-h-[9.5rem] lg:py-0 ${i > 0 ? 'border-t lg:border-t-0 lg:border-l lg:pl-7' : 'lg:pr-7'
+                } ${i > 0 && i < EXPLORE.length - 1 ? 'lg:pr-7' : ''}`}
             >
               <span className="max-w-[15rem] text-[17px] leading-snug font-medium tracking-[-0.015em] text-ink">{item.title}</span>
               <span className="inline-flex items-center gap-1.5 text-[13px] text-ink-3 transition-colors group-hover:text-ink">
@@ -81,7 +80,7 @@ export function StatementCards({ pick = [0, 1], tone = 'lavender' }: { pick?: [n
 export function CtaSection({ title = ['Place every student.', 'Fill every university.'] }: { title?: [string, string] }) {
   return (
     <section className="relative isolate overflow-clip border-t border-line py-28 md:py-40">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(45%_70%_at_50%_100%,rgb(110_139_255/0.18),transparent_70%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(45%_70%_at_50%_100%,rgb(67_97_238/0.10),transparent_70%)]" />
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-line)_1px,transparent_1px)] [mask-image:radial-gradient(60%_60%_at_50%_100%,black,transparent)] bg-[size:56px_56px] opacity-60"

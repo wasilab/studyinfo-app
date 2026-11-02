@@ -22,7 +22,7 @@ const NEXT_STEPS = [
 const CHANNELS: { icon: IconName; label: string; value: string; href?: string; external?: boolean }[] = [
   { icon: 'phone', label: 'Phone', value: CONTACT_PHONE, href: CONTACT_PHONE_LINK },
   { icon: 'message', label: 'WhatsApp', value: 'Message us on WhatsApp', href: CONTACT_WHATSAPP, external: true },
-  { icon: 'pin', label: 'Office', value: CONTACT_ADDRESS },
+  { icon: 'pin', label: 'Office', value: CONTACT_ADDRESS, href: 'https://maps.app.goo.gl/CogiG3wzftwh33YH6', external: true },
 ];
 
 const FIELD =
@@ -73,7 +73,7 @@ export function Contact() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       },
-      () => {},
+      () => { },
     );
   };
 
@@ -170,9 +170,8 @@ export function Contact() {
                     {TYPES.map((t) => (
                       <label
                         key={t}
-                        className={`flex cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13.5px] ring-1 transition-colors ring-inset ${
-                          type === t ? 'bg-accent-soft text-ink ring-accent/60' : 'text-ink-2 ring-line-2 hover:bg-subtle'
-                        }`}
+                        className={`flex cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13.5px] ring-1 transition-colors ring-inset ${type === t ? 'bg-accent-soft text-ink ring-accent/60' : 'text-ink-2 ring-line-2 hover:bg-subtle'
+                          }`}
                       >
                         <input
                           type="radio"

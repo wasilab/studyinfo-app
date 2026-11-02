@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { BRAND, CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_LINK, CONTACT_WHATSAPP } from '../../config';
+import { BRAND, CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_LINK } from '../../config';
 import { FOOTER } from '../../content/site';
 import { Container } from '../ui/Container';
 import { LogoMark } from '../ui/Logo';
@@ -35,10 +35,30 @@ export function Footer() {
             <a href={CONTACT_PHONE_LINK} className={EXTERNAL}>
               {CONTACT_PHONE}
             </a>
-            <a href={CONTACT_WHATSAPP} target="_blank" rel="noopener noreferrer" className={EXTERNAL}>
-              WhatsApp
+            {/* Address — hover reveals "Visit our Office" link */}
+            <a
+              href="https://maps.app.goo.gl/CogiG3wzftwh33YH6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/addr relative w-fit cursor-pointer"
+            >
+              <span className="text-[13px] text-ink-3 transition-colors duration-200 group-hover/addr:text-ink">
+                {CONTACT_ADDRESS}
+              </span>
+              {/* "Visit our Office" pill — hidden until address is hovered */}
+              <span
+                className="
+                  mt-1.5 flex items-center gap-1 overflow-hidden
+                  text-[11px] font-medium text-accent
+                  max-h-0 opacity-0
+                  transition-all duration-300 ease-out
+                  group-hover/addr:max-h-6 group-hover/addr:opacity-100
+                "
+              >
+                <span className="inline-block h-px w-3 rounded-full bg-accent" aria-hidden="true" />
+                Visit our office ↗
+              </span>
             </a>
-            <span className="text-ink-3">{CONTACT_ADDRESS}</span>
           </address>
         </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 text-[12px] text-ink-3">

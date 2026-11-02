@@ -81,9 +81,8 @@ export function UniversityList() {
                         role="tab"
                         aria-selected={on}
                         onClick={() => choose(c.name)}
-                        className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors ${
-                          on ? 'bg-surface-2 text-ink shadow-card' : 'text-ink-2 hover:bg-white/5 hover:text-ink'
-                        }`}
+                        className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors ${on ? 'bg-surface-2 text-ink shadow-card' : 'text-ink-2 hover:bg-white/5 hover:text-ink'
+                          }`}
                       >
                         <Icon name={c.name === ALL ? 'globe' : 'pin'} size={14} className={on ? 'text-accent' : 'text-ink-3'} />
                         <span className="flex-1">{c.name === ALL ? 'All countries' : c.name}</span>
