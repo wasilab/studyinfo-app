@@ -2,9 +2,9 @@ export const BRAND = 'StudyInfo';
 /** The live address of the site, without a trailing slash. Used for canonical links, the sitemap and social previews. */
 export const SITE_URL = 'https://www.studyinfo.app';
 export const CONTACT_EMAIL = 'contact@studyinfo.app';
-export const CONTACT_PHONE = '+880 1727-091557';
-export const CONTACT_PHONE_LINK = 'tel:+8801727091557';
-export const CONTACT_WHATSAPP = 'https://wa.me/message/L26ONCSYW7ORJ1';
+export const CONTACT_PHONE = '+880';
+export const CONTACT_PHONE_LINK = 'tel:+880';
+export const CONTACT_WHATSAPP = 'https://wa.me/message/';
 export const CONTACT_ADDRESS = 'Lift-8, Global Desire Office, Symphony Height, Zindabazar, Sylhet';
 
 /**

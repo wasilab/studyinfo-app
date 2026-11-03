@@ -21,7 +21,6 @@ const CEO = {
   persona: 'The Vision',
   photo: visionImg,
   email: 'ceo.rupak@studyinfo.app',
-  phone: '+880 1727-091557',
   bio: 'Rupak built StudyInfo to give every agency no matter where they operate a trusted, anonymous route to place students at the right university.',
 };
 
@@ -32,7 +31,6 @@ const PARTNER = {
   persona: 'The Partner',
   photo: partnerImg,
   email: 'director.sultan@studyinfo.app',
-  phone: '+44 7405 120621',
   bio: 'Based in the UK, Sultan leads our institutional partnerships and ensures every university in the network is verified, current, and ready to welcome your students.',
 };
 
@@ -43,7 +41,6 @@ const CTO = {
   persona: 'The Coder',
   photo: coderImg,
   email: 'cto.rifat@studyinfo.app',
-  phone: '+880 1814-297793',
   bio: 'Rifat designed the file-routing engine, document-check pipeline, and real-time case-tracking system that keep every submission secure and every agency in sync.',
 };
 
@@ -110,13 +107,6 @@ function TeamCard({
           >
             <Icon name="mail" size={13} className="shrink-0 text-accent" />
             <span className="break-all">{member.email}</span>
-          </a>
-          <a
-            href={`tel:${member.phone.replace(/\s/g, '')}`}
-            className="inline-flex items-center gap-2 text-[12.5px] text-ink-3 transition-colors hover:text-ink"
-          >
-            <Icon name="phone" size={13} className="shrink-0 text-ink-3" />
-            {member.phone}
           </a>
         </div>
       </div>
