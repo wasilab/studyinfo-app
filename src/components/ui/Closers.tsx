@@ -30,7 +30,7 @@ export function ExploreRow() {
   );
 }
 
-function StatementCard({ statement, tone }: { statement: Statement; tone: 'neutral' | 'lavender' | 'sky' }) {
+function StatementCard({ statement, tone, compact = false }: { statement: Statement; tone: 'neutral' | 'lavender' | 'sky'; compact?: boolean }) {
   const artId = useId();
   const tones = {
     neutral: 'bg-subtle ring-line',
@@ -38,7 +38,7 @@ function StatementCard({ statement, tone }: { statement: Statement; tone: 'neutr
     sky: 'bg-[linear-gradient(160deg,rgb(56_189_248/0.12),rgb(110_139_255/0.12)_60%,rgb(236_72_153/0.08))] ring-accent/25',
   } as const;
   return (
-    <figure className={`group reveal relative isolate flex min-h-[280px] flex-col justify-between gap-12 overflow-hidden rounded-2xl p-7 ring-1 md:min-h-[340px] md:p-9 ${tones[tone]}`}>
+    <figure className={`group reveal relative isolate flex min-h-[280px] flex-col justify-between gap-12 overflow-hidden rounded-2xl ring-1 ${compact ? 'px-7 py-5 md:min-h-[300px] md:px-9 md:py-6' : 'p-7 md:min-h-[340px] md:p-9'} ${tones[tone]}`}>
       <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" className="absolute -right-14 -bottom-20 -z-10 size-80 text-ink/[0.05] transition-transform duration-1000 ease-out-expo group-hover:scale-105 group-hover:rotate-6">
         <LogoGlyph id={artId} />
       </svg>
@@ -55,13 +55,13 @@ function StatementCard({ statement, tone }: { statement: Statement; tone: 'neutr
 }
 
 /** Two statement cards in Linear's testimonial slot. These are our own standards, not quotes. */
-export function StatementCards({ pick = [0, 1], tone = 'lavender' }: { pick?: [number, number]; tone?: 'lavender' | 'sky' }) {
+export function StatementCards({ pick = [0, 1], tone = 'lavender', compact = false }: { pick?: [number, number]; tone?: 'lavender' | 'sky'; compact?: boolean }) {
   return (
-    <section className="py-16 md:py-24">
+    <section className={compact ? 'py-12 md:py-16' : 'py-16 md:py-24'}>
       <Container>
         <div className="grid gap-3 md:grid-cols-[1.55fr_1fr]">
-          <StatementCard statement={STATEMENTS[pick[0]]} tone="neutral" />
-          <StatementCard statement={STATEMENTS[pick[1]]} tone={tone} />
+          <StatementCard statement={STATEMENTS[pick[0]]} tone="neutral" compact={compact} />
+          <StatementCard statement={STATEMENTS[pick[1]]} tone={tone} compact={compact} />
         </div>
         <div className="reveal mt-6 flex flex-wrap items-center justify-between gap-3 text-[13px] text-ink-3">
           <p>
@@ -77,9 +77,9 @@ export function StatementCards({ pick = [0, 1], tone = 'lavender' }: { pick?: [n
 }
 
 /** Centred closing call to action. */
-export function CtaSection({ title = ['Place every student.', 'Fill every university.'] }: { title?: [string, string] }) {
+export function CtaSection({ title = ['Place every student.', 'Fill every university.'], compact = false }: { title?: [string, string]; compact?: boolean }) {
   return (
-    <section className="relative isolate overflow-clip border-t border-line py-28 md:py-40">
+    <section className={`relative isolate overflow-clip border-t border-line ${compact ? 'py-20 md:py-28' : 'py-28 md:py-40'}`}>
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(45%_70%_at_50%_100%,rgb(67_97_238/0.10),transparent_70%)]" />
       <div
         aria-hidden="true"
