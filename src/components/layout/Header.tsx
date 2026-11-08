@@ -12,6 +12,7 @@ const LINK = 'rounded-full px-3 py-1.5 text-[13.5px] whitespace-nowrap transitio
 export function Header() {
   const [open, setOpen] = useState(false);
   const [product, setProduct] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname, search } = useLocation();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -55,6 +56,14 @@ export function Header() {
       <Container className="flex h-16 items-center gap-4">
         <Logo />
         <nav aria-label="Main" className="ml-auto hidden items-center gap-0.5 lg:flex">
+          {/* Home link */}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => `${LINK} ${isActive ? 'text-ink' : 'text-ink-2 hover:text-ink'}`}
+          >
+            Home
+          </NavLink>
           <div
             ref={menuRef}
             className="relative"
@@ -133,16 +142,47 @@ export function Header() {
       {open && (
         <div id="mobile-nav" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-canvas lg:hidden">
           <Container className="flex flex-col py-3">
-            <p className="pt-2 pb-1 text-[12px] font-medium text-ink-3">Services</p>
-            {PRODUCT_MENU.map((item) => (
-              <Link key={item.to} to={item.to} className="flex items-center gap-3 border-b border-line py-3">
-                <Icon name={item.icon} size={16} className="text-ink-3" />
-                <span>
-                  <span className="block text-[15px] text-ink">{item.label}</span>
-                  <span className="block text-[13px] text-ink-3">{item.text}</span>
-                </span>
-              </Link>
-            ))}
+
+            {/* Home link */}
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) => `border-b border-line py-3 text-[15px] ${isActive ? 'text-ink' : 'text-ink-2'}`}
+            >
+              Home
+            </NavLink>
+
+            {/* Services — collapsible toggle */}
+            <div className="border-b border-line">
+              <button
+                type="button"
+                onClick={() => setServicesOpen((s) => !s)}
+                className="flex w-full items-center justify-between py-3 text-[15px] text-ink"
+              >
+                <span>Services</span>
+                <svg
+                  viewBox="0 0 12 12"
+                  aria-hidden="true"
+                  className={`size-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
+                >
+                  <path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              {servicesOpen && (
+                <div className="pb-2">
+                  {PRODUCT_MENU.map((item) => (
+                    <Link key={item.to} to={item.to} className="flex items-center gap-3 border-t border-line/60 py-3 pl-2">
+                      <Icon name={item.icon} size={16} className="text-ink-3" />
+                      <span>
+                        <span className="block text-[15px] text-ink">{item.label}</span>
+                        <span className="block text-[13px] text-ink-3">{item.text}</span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {[...NAV, GROW_LINK].map((item) => (
               <NavLink key={item.to} to={item.to} className={({ isActive }) => `border-b border-line py-3 text-[15px] ${isActive ? 'text-ink' : 'text-ink-2'}`}>
                 {item.label}

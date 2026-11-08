@@ -33,7 +33,7 @@ function CompanyCard({ company, index }: { company: Company; index: number }) {
 export function PartnershipVisual() {
   const [tablab, gde] = ABOUT.partnership.companies;
   return (
-    <div className="flex flex-col items-center gap-8 pb-4">
+    <div className="flex flex-col items-center gap-6">
       <div className="grid w-full items-center justify-items-center gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-0">
         <CompanyCard company={tablab} index={0} />
         <div className="flex flex-col items-center gap-3 lg:flex-row lg:gap-1">
