@@ -12,6 +12,7 @@ import { usePageMeta } from '../lib/usePageMeta';
 import visionImg from '../media/the_vision.png';
 import partnerImg from '../media/the_partner.png';
 import coderImg from '../media/the_coder.png';
+import artistImg from '../media/the_artist.png';
 
 /* ─── Team data ────────────────────────────────────────────────────────────── */
 const CEO = {
@@ -30,7 +31,7 @@ const PARTNER = {
   badge: 'CFO',
   persona: 'The Partner',
   photo: partnerImg,
-  email: 'director.sultan@studyinfo.app',
+  email: 'cfo.sultan@studyinfo.app',
   bio: 'Based in the UK, Sultan leads our institutional partnerships and ensures every university in the network is verified, current, and ready to welcome your students.',
 };
 
@@ -42,6 +43,16 @@ const CTO = {
   photo: coderImg,
   email: 'cto.rifat@studyinfo.app',
   bio: 'Rifat designed the file-routing engine, document-check pipeline, and real-time case-tracking system that keep every submission secure and every agency in sync.',
+};
+
+const CMO = {
+  name: 'Sudip Das',
+  title: 'Chief Marketing Officer',
+  badge: 'CMO',
+  persona: 'The Artist',
+  photo: artistImg,
+  email: 'cmo.sudip@studyinfo.app',
+  bio: 'Sudip shapes the StudyInfo brand and brings our story to agencies worldwide turning a complex network into a message that every recruiter immediately understands.',
 };
 
 /* ─── Horizontal team card: photo left, content right ───────────────────────── */
@@ -152,8 +163,11 @@ export function About() {
               <TeamCard member={PARTNER} />
             </div>
 
-            {/* Bottom row: CTO full width */}
-            <TeamCard member={CTO} />
+            {/* Bottom row: CTO + CMO side-by-side on desktop, stacked on mobile */}
+            <div className="grid gap-4 md:grid-cols-2">
+              <TeamCard member={CTO} />
+              <TeamCard member={CMO} />
+            </div>
 
           </div>
 
@@ -165,8 +179,9 @@ export function About() {
             </blockquote>
             <div className="mt-6 flex flex-wrap items-center gap-6 border-t border-accent/15 pt-6 text-[13px] text-ink-3">
               <span><span className="font-medium text-ink">Rupak Kanti Deb</span> · CEO</span>
-              <span><span className="font-medium text-ink">Sultan Ahmed</span> · Director</span>
+              <span><span className="font-medium text-ink">Sultan Ahmed</span> · CFO</span>
               <span><span className="font-medium text-ink">Khandokar Rifat Muhtasim</span> · CTO</span>
+              <span><span className="font-medium text-ink">Sudip Das</span> · CMO</span>
             </div>
           </div>
         </Container>
