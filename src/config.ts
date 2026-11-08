@@ -5,7 +5,7 @@ export const CONTACT_EMAIL = 'contact@studyinfo.app';
 export const CONTACT_PHONE = '+880';
 export const CONTACT_PHONE_LINK = 'tel:+880';
 export const CONTACT_WHATSAPP = 'https://wa.me/message/';
-export const CONTACT_ADDRESS = 'Lift-8, Global Desire Office, Symphony Height, Zindabazar, Sylhet';
+export const CONTACT_ADDRESS = 'Lift-8, Symphony Heights, Zindabazar, Sylhet';
 
 /**
  * Link to the StudyInfo demo app, opened by every "Try Demo" button in a new tab.
