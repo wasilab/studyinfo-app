@@ -26,8 +26,8 @@ const CEO = {
 
 const PARTNER = {
   name: 'Sultan Ahmed',
-  title: 'Director',
-  badge: 'Director',
+  title: 'Cheif Financial Officer',
+  badge: 'CFO',
   persona: 'The Partner',
   photo: partnerImg,
   email: 'director.sultan@studyinfo.app',
