@@ -71,10 +71,7 @@ function TeamCard({
           alt={member.name}
           className="absolute inset-0 h-full w-full object-cover object-[center_10%] transition-transform duration-500 ease-out group-hover:scale-105"
         />
-        {/* Mobile: bottom white gradient blend into card body */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/40 to-transparent sm:hidden" />
-        {/* Desktop: right-side white gradient dissolve into text panel */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-r from-transparent to-white sm:block" />
+
       </div>
 
       {/* ── Right: name, badge, bio, contacts ── */}
