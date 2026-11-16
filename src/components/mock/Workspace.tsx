@@ -19,8 +19,12 @@ const PHASE_MS: Record<Phase, number> = { 0: 2600, 1: 2600, 2: 4200 };
 const NOTES: Record<Phase, string> = { 0: 'Document check in progress', 1: 'Documents checked', 2: 'Forwarded just now' };
 const SELECTED = 'SI-2041';
 
-/** The large hero illustration: an agency's Sent Applications, with a short, looping demo. */
-export function Workspace() {
+/**
+ * The large product illustration: an agency's Sent Applications, with a short, looping demo.
+ * With `replayOnView`, the demo restarts from the document check the first time it scrolls into
+ * view, for use below the fold where the loop would otherwise start mid-way.
+ */
+export function Workspace({ replayOnView = false }: { replayOnView?: boolean }) {
   const reduced = usePrefersReducedMotion();
   const [figureRef, onScreen] = useOnScreen<HTMLElement>();
   const [phase, setPhase] = useState<Phase>(1);
@@ -44,6 +48,22 @@ export function Workspace() {
   const files = EXAMPLE_FILES.map((f) => (f.id === SELECTED ? { ...f, status, note: NOTES[phase] } : f));
   const selected = files.find((f) => f.id === SELECTED)!;
   const groups = STATUSES.map((s) => ({ ...s, files: files.filter((f) => f.status === s.id) }));
+
+  useEffect(() => {
+    const el = figureRef.current;
+    if (!replayOnView || reduced || !el || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setPhase(0);
+        setCycle((c) => c + 1);
+        io.disconnect();
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [replayOnView, reduced, figureRef]);
 
   // FLIP: when a row changes group, glide it from its old position to the new one.
   const listRef = useRef<HTMLDivElement>(null);

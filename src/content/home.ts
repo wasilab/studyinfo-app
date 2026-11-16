@@ -18,6 +18,11 @@ export const HERO = {
   lead: 'StudyInfo is the network for international education agencies. Send your students’ files to agencies that can apply where you can’t, add your universities to receive verified files from across the network, and share the commission.',
 };
 
+/** Screen-reader heading for the university browser in the hero. */
+export const BROWSER_INTRO = { heading: 'Browse the universities in the network' };
+
+export const WAYS_INTRO = { lead: 'One network, two sides.', rest: 'Use either, or both.' };
+
 export const WAYS: { icon: IconName; title: string; text: string; to: string; cta: string }[] = [
   {
     icon: 'send',
@@ -140,3 +145,44 @@ export const TOOLKIT_TEASER: { icon: IconName; title: string; text: string }[] =
   { icon: 'chart', title: 'Daily ad boost', text: 'Your best post, boosted every day within your budget.' },
   { icon: 'globe', title: 'Your own portal', text: 'Your brand, on your own domain.' },
 ];
+
+/** Section anchors for aria-labelledby, so every heading id on the page is unique. */
+export const HOME_IDS = {
+  hero: 'home-hero-title',
+  ways: 'home-ways-title',
+  intro: 'home-intro-title',
+  how: 'home-how-title',
+  audiences: 'home-audiences-title',
+  workspace: 'home-workspace-title',
+  toolkit: 'home-toolkit-title',
+} as const;
+
+export const HOW_HEADER = {
+  label: 'How it works',
+  title: 'From student file to commission',
+  text: 'Follow one student file from the agency that holds the student, through our team, to the agency that applies.',
+};
+
+export const AUDIENCES_HEADER = {
+  title: 'Built for both sides of the network',
+  text: 'Agencies with students send files. Agencies with universities receive them. Many agencies do both.',
+  link: { to: '/network', label: 'How it works' },
+};
+
+export const WORKSPACE_SHOWCASE = {
+  label: 'The workspace',
+  title: 'Every file, one step at a time',
+  text: 'See the agency workspace in action: files are grouped by step, our team checks every document, and each verified file is forwarded without names changing hands.',
+  link: { to: '/tracking', label: 'Track every case' },
+  highlights: [
+    { icon: 'layers', title: 'Grouped by step', text: 'Submitted, checked, forwarded and beyond, so you always know where a file stands.' },
+    { icon: 'shield', title: 'Verified before it moves', text: 'A person reviews every document before anything is forwarded.' },
+    { icon: 'send', title: 'Forwarded anonymously', text: 'The applying agency receives the file by role label, never your name.' },
+  ] satisfies { icon: IconName; title: string; text: string }[],
+};
+
+export const TOOLKIT_HEADER = {
+  title: 'More than a network',
+  text: 'Around the network sits a full toolkit, so your agency can find, convert and manage its students in one place.',
+  link: { to: '/toolkit', label: 'Agency toolkit' },
+};

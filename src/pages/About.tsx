@@ -13,9 +13,22 @@ import visionImg from '../media/the_vision.png';
 import partnerImg from '../media/the_partner.png';
 import coderImg from '../media/the_coder.png';
 import artistImg from '../media/the_artist.png';
+import fahmidaImg from '../media/fahmida_akther_mili.png';
+import nahidImg from '../media/mohammad_nahid.png';
 
 /* ─── Team data ────────────────────────────────────────────────────────────── */
-const CEO = {
+interface TeamMember {
+  name: string;
+  title: string;
+  badge: string;
+  persona: string;
+  photo: string;
+  /** Optional: the contact row is hidden when no email is given. */
+  email?: string;
+  bio: string;
+}
+
+const CEO: TeamMember = {
   name: 'Rupak Kanti Deb',
   title: 'Chief Executive Officer',
   badge: 'CEO',
@@ -25,7 +38,7 @@ const CEO = {
   bio: 'Rupak built StudyInfo to give every agency no matter where they operate a trusted, anonymous route to place students at the right university.',
 };
 
-const PARTNER = {
+const PARTNER: TeamMember = {
   name: 'Sultan Ahmed',
   title: 'Cheif Financial Officer',
   badge: 'CFO',
@@ -35,7 +48,7 @@ const PARTNER = {
   bio: 'Based in the UK, Sultan leads our institutional partnerships and ensures every university in the network is verified, current, and ready to welcome your students.',
 };
 
-const CTO = {
+const CTO: TeamMember = {
   name: 'Khandokar Rifat Muhtasim',
   title: 'Chief Technology Officer',
   badge: 'CTO',
@@ -45,7 +58,7 @@ const CTO = {
   bio: 'Rifat designed the file-routing engine, document-check pipeline, and real-time case-tracking system that keep every submission secure and every agency in sync.',
 };
 
-const CMO = {
+const CMO: TeamMember = {
   name: 'Sudip Das',
   title: 'Chief Marketing Officer',
   badge: 'CMO',
@@ -55,12 +68,26 @@ const CMO = {
   bio: 'Sudip shapes the StudyInfo brand and brings our story to agencies worldwide turning a complex network into a message that every recruiter immediately understands.',
 };
 
+const RESEARCHER: TeamMember = {
+  name: 'Fahmida Akther Mili',
+  title: 'Data Research Executive',
+  badge: 'Research',
+  persona: 'The Scholar',
+  photo: fahmidaImg,
+  bio: 'Fahmida researches and keeps current the university data behind StudyInfo, so the programmes, requirements, and deadlines agencies rely on are accurate before they submit a file.',
+};
+
+const OPERATOR: TeamMember = {
+  name: 'Mohammad Nahid',
+  title: 'Operation Executive',
+  badge: 'Operations',
+  persona: 'The Engine',
+  photo: nahidImg,
+  bio: 'Nahid keeps day-to-day operations running smoothly, from checking student files to moving every case between agencies, so nothing stalls between submission and offer.',
+};
+
 /* ─── Horizontal team card: photo left, content right ───────────────────────── */
-function TeamCard({
-  member,
-}: {
-  member: typeof CEO | typeof PARTNER | typeof CTO;
-}) {
+function TeamCard({ member }: { member: TeamMember }) {
   return (
     <article className="reveal group flex flex-col overflow-hidden rounded-2xl bg-surface ring-1 ring-line shadow-card sm:flex-row">
 
@@ -107,16 +134,18 @@ function TeamCard({
         {/* One-sentence bio */}
         <p className="text-[13.5px] leading-relaxed text-ink-2">{member.bio}</p>
 
-        {/* Contact links */}
-        <div className="flex flex-col gap-1.5 border-t border-line pt-4">
-          <a
-            href={`mailto:${member.email}`}
-            className="inline-flex items-center gap-2 text-[12.5px] text-ink-3 transition-colors hover:text-accent"
-          >
-            <Icon name="mail" size={13} className="shrink-0 text-accent" />
-            <span className="break-all">{member.email}</span>
-          </a>
-        </div>
+        {/* Contact links — only when an email is provided */}
+        {member.email && (
+          <div className="flex flex-col gap-1.5 border-t border-line pt-4">
+            <a
+              href={`mailto:${member.email}`}
+              className="inline-flex items-center gap-2 text-[12.5px] text-ink-3 transition-colors hover:text-accent"
+            >
+              <Icon name="mail" size={13} className="shrink-0 text-accent" />
+              <span className="break-all">{member.email}</span>
+            </a>
+          </div>
+        )}
       </div>
 
     </article>
@@ -149,8 +178,9 @@ export function About() {
 
           {/*
             Layout (horizontal cards):
-              Row 1 → CEO left  |  Partner right   (2-col grid)
-              Row 2 → CTO spanning full width
+              Row 1 → CEO left         |  Partner right    (2-col grid)
+              Row 2 → CTO left         |  CMO right        (2-col grid)
+              Row 3 → Researcher left  |  Operator right   (2-col grid)
           */}
           <div className="flex flex-col gap-4">
 
@@ -160,10 +190,16 @@ export function About() {
               <TeamCard member={PARTNER} />
             </div>
 
-            {/* Bottom row: CTO + CMO side-by-side on desktop, stacked on mobile */}
+            {/* Middle row: CTO + CMO side-by-side on desktop, stacked on mobile */}
             <div className="grid gap-4 md:grid-cols-2">
               <TeamCard member={CTO} />
               <TeamCard member={CMO} />
+            </div>
+
+            {/* Bottom row: Researcher + Operator side-by-side on desktop, stacked on mobile */}
+            <div className="grid gap-4 md:grid-cols-2">
+              <TeamCard member={RESEARCHER} />
+              <TeamCard member={OPERATOR} />
             </div>
 
           </div>

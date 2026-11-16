@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CHAPTERS } from '../../content/home';
+import { CHAPTERS, HOME_IDS, HOW_HEADER } from '../../content/home';
 import { ChapterMock } from '../mock/Mocks';
 import { Container } from '../ui/Container';
 import { Icon } from '../ui/Icon';
@@ -54,13 +54,9 @@ export function HowItWorks() {
   }, [panelRef]);
 
   return (
-    <section className="py-20 md:py-28">
+    <section aria-labelledby={HOME_IDS.how} className="border-t border-line py-20 md:py-28">
       <Container>
-        <SectionHeader
-          label={<Label>How it works</Label>}
-          title="From student file to commission"
-          text="Follow one student file from the agency that holds the student, through our team, to the agency that applies."
-        />
+        <SectionHeader label={<Label>{HOW_HEADER.label}</Label>} title={HOW_HEADER.title} titleId={HOME_IDS.how} text={HOW_HEADER.text} />
         <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-16">
           <div className="relative min-w-0">
             <div aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-px bg-line lg:block">
