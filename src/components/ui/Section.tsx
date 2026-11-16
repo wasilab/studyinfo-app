@@ -4,9 +4,22 @@ import { Arrow } from './Button';
 import { Container } from './Container';
 
 /** A page band, optionally with a hairline top border. */
-export function Section({ children, className = '', border = false, id }: { children: ReactNode; className?: string; border?: boolean; id?: string }) {
+export function Section({
+  children,
+  className = '',
+  border = false,
+  id,
+  labelledBy,
+}: {
+  children: ReactNode;
+  className?: string;
+  border?: boolean;
+  id?: string;
+  /** Id of the heading that names this section for assistive technology. */
+  labelledBy?: string;
+}) {
   return (
-    <section id={id} className={`${border ? 'border-t border-line' : ''} py-20 md:py-28 ${className}`}>
+    <section id={id} aria-labelledby={labelledBy} className={`${border ? 'border-t border-line' : ''} py-20 md:py-28 ${className}`}>
       <Container>{children}</Container>
     </section>
   );
@@ -26,17 +39,17 @@ export function Label({ children, to, className = '' }: { children: ReactNode; t
   return <p className={cls}>{children}</p>;
 }
 
-export function H2({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <h2 className={`text-[2rem] leading-[1.1] font-medium tracking-[-0.028em] sm:text-[2.4rem] md:text-[2.6rem] ${className}`}>{children}</h2>;
+export function H2({ children, className = '', id }: { children: ReactNode; className?: string; id?: string }) {
+  return <h2 id={id} className={`text-[2rem] leading-[1.1] font-medium tracking-[-0.028em] sm:text-[2.4rem] md:text-[2.6rem] ${className}`}>{children}</h2>;
 }
 
 /** Linear-style section header: heading on the left; text and a link on the right. */
-export function SectionHeader({ title, text, link, label }: { title: ReactNode; text: ReactNode; link?: { to: string; label: string }; label?: ReactNode }) {
+export function SectionHeader({ title, text, link, label, titleId }: { title: ReactNode; text: ReactNode; link?: { to: string; label: string }; label?: ReactNode; titleId?: string }) {
   return (
     <div className="reveal grid gap-6 md:grid-cols-2 md:gap-12">
       <div className="flex flex-col gap-4">
         {label}
-        <H2>{title}</H2>
+        <H2 id={titleId}>{title}</H2>
       </div>
       <div className="flex flex-col items-start gap-5 md:pt-1">
         <p className="max-w-md text-[17px] leading-relaxed text-ink-2">{text}</p>
