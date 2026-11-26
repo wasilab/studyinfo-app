@@ -9,7 +9,6 @@
     },
     { "source": "/intake", "destination": "/send-files", "permanent": true },
     { "source": "/ai", "destination": "/toolkit", "permanent": true },
-    { "source": "/partners", "destination": "/network", "permanent": true },
-    { "source": "/pricing", "destination": "/", "permanent": true }
+    { "source": "/partners", "destination": "/network", "permanent": true }
   ]
 }

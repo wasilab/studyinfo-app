@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
-import { BRAND, CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_LINK } from '../../config';
-import { FOOTER } from '../../content/site';
+import { BRAND, LEGAL_ENTITY, CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_LINK } from '../../config';
+import { FOOTER, LEGAL_LINKS } from '../../content/site';
 import { Container } from '../ui/Container';
 import { LogoMark } from '../ui/Logo';
 
@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line pt-14 pb-10 md:pt-16">
       <Container>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(4,1fr)]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(5,1fr)]">
           <div className="flex flex-col gap-3">
             <Link to="/" aria-label={`${BRAND} home`} className="w-fit">
               <LogoMark size={24} />
@@ -63,9 +63,15 @@ export function Footer() {
         </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 text-[12px] text-ink-3">
           <p>
-            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {BRAND}. All rights reserved.
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {BRAND} · {LEGAL_ENTITY}. All rights reserved.
           </p>
-          <p>Send student files · Add your universities · One network</p>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-5 gap-y-2">
+            {LEGAL_LINKS.map((l) => (
+              <Link key={l.to} to={l.to} className="transition-colors hover:text-ink">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </Container>
     </footer>

@@ -22,6 +22,7 @@ export const PRODUCT_MENU: ProductLink[] = [
 export const NAV: NavLink[] = [
   { to: '/network', label: 'How it works' },
   { to: '/universities', label: 'Universities' },
+  { to: '/pricing', label: 'Pricing' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -94,4 +95,20 @@ export const FOOTER: { title: string; links: NavLink[] }[] = [
       { to: '/now/planning-for-the-september-and-january-intakes', label: 'Intake planning' },
     ],
   },
+  {
+    title: 'Legal',
+    links: [
+      { to: '/pricing', label: 'Pricing' },
+      { to: '/terms-of-service', label: 'Terms of service' },
+      { to: '/privacy-policy', label: 'Privacy policy' },
+      { to: '/refund-policy', label: 'Refund policy' },
+    ],
+  },
+];
+
+/** Shown in the footer's bottom bar. */
+export const LEGAL_LINKS: NavLink[] = [
+  { to: '/terms-of-service', label: 'Terms' },
+  { to: '/privacy-policy', label: 'Privacy' },
+  { to: '/refund-policy', label: 'Refunds' },
 ];

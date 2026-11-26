@@ -13,13 +13,16 @@ import { Toolkit } from './pages/Toolkit';
 import { Tracking } from './pages/Tracking';
 import { AddUniversities } from './pages/AddUniversities';
 import { UniversityList } from './pages/UniversityList';
+import { Pricing } from './pages/Pricing';
+import { RefundPolicy } from './pages/RefundPolicy';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
 
 /** Pages that were renamed or removed, and where their old links now go. */
 const REDIRECTS: Record<string, string> = {
   intake: '/send-files',
   ai: '/toolkit',
   partners: '/network',
-  pricing: '/',
 };
 
 export function App() {
@@ -38,6 +41,10 @@ export function App() {
         <Route path="now" element={<Now />} />
         <Route path="now/:slug" element={<Post />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="pricing" element={<Pricing />} />
+        <Route path="refund-policy" element={<RefundPolicy />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="terms-of-service" element={<TermsOfService />} />
         {Object.entries(REDIRECTS).map(([from, to]) => (
           <Route key={from} path={from} element={<Navigate to={to} replace />} />
         ))}

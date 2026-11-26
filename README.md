@@ -24,8 +24,10 @@ npm run dev
 | `/about` | The problem we solve, mission and vision, and the Tablab Research and Global Desire Education partnership |
 | `/now`, `/now/:slug` | Guides and notes |
 | `/contact` | Contact form (opens the visitor's email app), phone, WhatsApp and address |
+| `/pricing` | Pay-as-you-go AI credits (rate `CREDITS_PER_USD` in `src/config.ts`), credit calculator, what uses credits and FAQ (`src/content/pricing.ts`) |
+| `/terms-of-service`, `/privacy-policy`, `/refund-policy` | Legal pages, sharing one layout (`src/components/legal/LegalPage.tsx`); copy in `src/content/legal.ts` |
 
-The old routes `/intake`, `/ai`, `/partners` and `/pricing` redirect to `/send-files`, `/toolkit`, `/network` and `/` (`src/App.tsx`).
+The old routes `/intake`, `/ai` and `/partners` redirect to `/send-files`, `/toolkit` and `/network` (`src/App.tsx`).
 
 ## Where to edit
 
@@ -39,6 +41,7 @@ The old routes `/intake`, `/ai`, `/partners` and `/pricing` redirect to `/send-f
   - `public/og-image.png`: the social preview.
 - Demo app link for every "Try Demo" button: `DEMO_URL` in `src/config.ts`. While it is empty, the buttons open the contact form with "Book a demo" selected.
 - Page copy: `src/content/*.ts`
+- Legal operator, payment provider (Paddle) and refund window used by Pricing and the legal pages: `LEGAL_ENTITY`, `PAYMENT_PROVIDER` and `REFUND_DAYS` in `src/config.ts`. Bump `UPDATED` in `src/content/legal.ts` whenever a policy changes.
 - Example data shown in the product illustrations: `src/content/files.ts`
 - Colours, fonts and animations: the `@theme` block in `src/index.css`. The site uses a deep navy palette: page and panel colours are `--color-canvas`, `--color-surface` and `--color-surface-2`; text is `--color-ink` to `--color-ink-3`; the accent is `--color-accent`.
 - Statements shown in the coloured cards and the product links near the end of each page: `src/content/site.ts`
@@ -79,6 +82,6 @@ One-time setup:
 2. **DNS:** `studyinfo.app` must be a zone in the same Cloudflare account. The deploy attaches `www.studyinfo.app` to the Worker automatically.
 3. **Apex redirect:** in Cloudflare, add a Redirect Rule from `studyinfo.app/*` to `https://www.studyinfo.app/${1}` (301), because Workers redirect files can't match a host.
 
-How it behaves: pre-rendered pages are served from `dist/<page>/index.html`; the old addresses `/intake`, `/ai`, `/partners` and `/pricing` redirect (301) through `public/_redirects`; unknown addresses get `dist/404.html` with a real 404 status (`not_found_handling: "404-page"`). `vercel.json` is kept for hosting on Vercel instead.
+How it behaves: pre-rendered pages are served from `dist/<page>/index.html`; the old addresses `/intake`, `/ai` and `/partners` redirect (301) through `public/_redirects`; unknown addresses get `dist/404.html` with a real 404 status (`not_found_handling: "404-page"`). `vercel.json` is kept for hosting on Vercel instead.
 
 The contact form has no backend: it opens the visitor's email app with the message addressed to the contact email. Connect it to a form service when you have one.
