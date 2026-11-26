@@ -1,127 +1,154 @@
 {
-  "sample": true,
   "universities": [
     {
-      "name": "Northbridge University",
-      "country": "United Kingdom",
-      "cities": [
-        "London",
-        "Cambridge"
-      ],
-      "description": "A research-focused university with strong programmes in data science, finance and engineering. Known for small-group teaching and an active careers service."
+      "name": "European College of Innovation (ECI)",
+      "country": "Malta",
+      "cities": ["Qormi"]
     },
     {
-      "name": "Kingsfield College",
-      "country": "United Kingdom",
-      "cities": [
-        "Manchester"
-      ],
-      "description": "A city-centre college offering business, media and computing degrees, with foundation years for international students."
+      "name": "Cross College English Language School",
+      "country": "Malta",
+      "cities": ["Qormi"]
     },
     {
-      "name": "Westmere University",
-      "country": "United Kingdom",
-      "cities": [
-        "Bristol",
-        "Bath",
-        "Exeter"
-      ],
-      "description": "A multi-campus university across the South West, popular for health sciences, design and environmental studies."
+      "name": "Avanza Training Academy",
+      "country": "Malta",
+      "cities": ["Birkirkara"]
     },
     {
-      "name": "Lakeshore University",
-      "country": "Canada",
-      "cities": [
-        "Toronto",
-        "Mississauga"
-      ],
-      "description": "A large public university with co-op programmes that place students in paid work terms alongside their studies."
+      "name": "Gateway Institute of Learning",
+      "country": "Malta",
+      "cities": ["Birkirkara"]
     },
     {
-      "name": "Pacific Ridge University",
-      "country": "Canada",
-      "cities": [
-        "Vancouver",
-        "Burnaby"
-      ],
-      "description": "A coastal university known for technology, business and sustainability programmes, with a large international community."
+      "name": "Larnaca College",
+      "country": "Cyprus",
+      "cities": ["Larnaca"]
     },
     {
-      "name": "Maple Crown College",
-      "country": "Canada",
-      "cities": [
-        "Montreal"
-      ],
-      "description": "A bilingual college focused on applied programmes in business, hospitality and information technology."
+      "name": "P.A. College",
+      "country": "Cyprus",
+      "cities": ["Larnaca"]
     },
     {
-      "name": "Southern Cross University of Technology",
-      "country": "Australia",
-      "cities": [
-        "Sydney",
-        "Parramatta"
-      ],
-      "description": "A technology-focused university with strong links to industry, offering engineering, IT and health courses."
+      "name": "University of Limassol",
+      "country": "Cyprus",
+      "cities": ["Limassol", "Nicosia"]
     },
     {
-      "name": "Harbourview University",
-      "country": "Australia",
-      "cities": [
-        "Melbourne",
-        "Geelong"
-      ],
-      "description": "A research university with highly ranked business and public health schools, plus a second campus on the coast."
+      "name": "American University of Cyprus (AUCY)",
+      "country": "Cyprus",
+      "cities": ["Larnaca"]
     },
     {
-      "name": "Outback State College",
-      "country": "Australia",
-      "cities": [
-        "Brisbane"
-      ],
-      "description": "A state college offering practical, career-oriented diplomas and degrees in nursing, education and trades."
+      "name": "Atlantis College",
+      "country": "Cyprus",
+      "cities": ["Liopetri"]
     },
     {
-      "name": "Redwood State University",
-      "country": "United States",
-      "cities": [
-        "San Francisco",
-        "San Jose"
-      ],
-      "description": "A public university in the heart of the technology industry, strong in computer science, engineering and entrepreneurship."
+      "name": "University of Nicosia (UNIC)",
+      "country": "Cyprus",
+      "cities": ["Nicosia"]
     },
     {
-      "name": "Lakeland Institute of Technology",
-      "country": "United States",
-      "cities": [
-        "Chicago"
-      ],
-      "description": "An institute of technology offering engineering, architecture and applied science programmes with a hands-on approach."
+      "name": "University of Central Lancashire Cyprus (UCLan Cyprus)",
+      "country": "Cyprus",
+      "cities": ["Pyla"]
     },
     {
-      "name": "Hudson Valley University",
-      "country": "United States",
-      "cities": [
-        "New York",
-        "Albany"
-      ],
-      "description": "A university with a main campus in New York and a smaller campus upstate, known for business, media and the arts."
+      "name": "Asia Pacific University of Technology & Innovation (APU)",
+      "country": "Malaysia",
+      "cities": ["Kuala Lumpur"]
     },
     {
-      "name": "Emerald Isle University",
-      "country": "Ireland",
-      "cities": [
-        "Dublin",
-        "Maynooth"
-      ],
-      "description": "A university with a historic city campus and a modern suburban campus, strong in computing, science and law."
+      "name": "SEGi University",
+      "country": "Malaysia",
+      "cities": ["Kota Damansara", "Subang Jaya", "Kuala Lumpur", "Penang", "Kuching"]
     },
     {
-      "name": "Liffey College",
-      "country": "Ireland",
-      "cities": [
-        "Cork"
-      ],
-      "description": "A college offering undergraduate and postgraduate programmes in business, finance and the creative industries."
+      "name": "Universiti Tun Abdul Razak (UNIRAZAK)",
+      "country": "Malaysia",
+      "cities": ["Kuala Lumpur"]
+    },
+    {
+      "name": "UCSI University",
+      "country": "Malaysia",
+      "cities": ["Kuala Lumpur", "Port Dickson", "Kuching"]
+    },
+    {
+      "name": "Lincoln University College",
+      "country": "Malaysia",
+      "cities": ["Petaling Jaya", "Kota Bharu"]
+    },
+    {
+      "name": "International University College of Management and Sports (ICMS)",
+      "country": "Malaysia",
+      "cities": ["Petaling Jaya"]
+    },
+    {
+      "name": "City University Malaysia",
+      "country": "Malaysia",
+      "cities": ["Petaling Jaya", "Cyberjaya", "Johor Bahru", "Kota Kinabalu"]
+    },
+    {
+      "name": "INTI International University",
+      "country": "Malaysia",
+      "cities": ["Nilai", "Subang Jaya", "Penang", "Kota Kinabalu"]
+    },
+    {
+      "name": "University of Cyberjaya (UoC)",
+      "country": "Malaysia",
+      "cities": ["Cyberjaya"]
+    },
+    {
+      "name": "Universiti Kuala Lumpur (UniKL)",
+      "country": "Malaysia",
+      "cities": ["Kuala Lumpur", "Gombak", "Cheras", "Bangi", "Kajang", "Sepang", "Subang", "Alor Gajah", "Pasir Gudang", "Ipoh", "Lumut", "Kulim"]
+    },
+    {
+      "name": "Nilai University",
+      "country": "Malaysia",
+      "cities": ["Nilai"]
+    },
+    {
+      "name": "Taylor's University",
+      "country": "Malaysia",
+      "cities": ["Subang Jaya"]
+    },
+    {
+      "name": "Universiti Tenaga Nasional (UNITEN)",
+      "country": "Malaysia",
+      "cities": ["Kajang", "Muadzam Shah"]
+    },
+    {
+      "name": "University College of Aviation Malaysia (UniCAM)",
+      "country": "Malaysia",
+      "cities": ["Dengkil"]
+    },
+    {
+      "name": "Kuala Lumpur University of Science and Technology (KLUST)",
+      "country": "Malaysia",
+      "cities": ["Kajang"]
+    },
+    {
+      "name": "University of Wollongong Malaysia (UOW Malaysia)",
+      "country": "Malaysia",
+      "cities": ["Shah Alam", "Batu Kawan", "George Town"]
+    },
+    {
+      "name": "Asia Metropolitan University (AMU)",
+      "country": "Malaysia",
+      "cities": ["Subang Jaya", "Cyberjaya", "Johor Bahru"]
+    },
+    {
+      "name": "Universiti Teknologi Malaysia (UTM)",
+      "country": "Malaysia",
+      "cities": ["Johor Bahru", "Kuala Lumpur", "Pagoh"]
+    },
+    {
+      "name": "International Islamic University Malaysia (IIUM)",
+      "country": "Malaysia",
+      "cities": ["Gombak", "Kuantan", "Pagoh", "Gambang"]
     }
   ]
 }

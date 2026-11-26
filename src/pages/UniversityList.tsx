@@ -13,7 +13,7 @@ import { usePageMeta } from '../lib/usePageMeta';
 const ALL = 'All';
 
 /** Same columns for the header and every row: university, country, campuses. */
-const COLUMNS = 'grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 sm:grid-cols-[minmax(0,1.25fr)_minmax(0,0.8fr)_minmax(0,1.1fr)]';
+const COLUMNS = 'grid grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-center gap-x-4 sm:grid-cols-[minmax(0,1.25fr)_minmax(0,0.8fr)_minmax(0,1.1fr)]';
 
 interface UniversityBrowserProps {
   /** Keep the chosen country in `?country=`. Only the /universities page should do this. */

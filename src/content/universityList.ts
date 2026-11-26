@@ -47,7 +47,7 @@ export const COUNTRIES: { name: string; count: number }[] = [...UNIVERSITIES_LIS
 
 /** Two-letter-style badge for a country, such as "UK" or "CA". */
 export function countryCode(country: string) {
-  const known: Record<string, string> = { 'united kingdom': 'UK', 'united states': 'US', 'united arab emirates': 'AE', 'new zealand': 'NZ' };
+  const known: Record<string, string> = { 'united kingdom': 'UK', 'united states': 'US', 'united arab emirates': 'AE', 'new zealand': 'NZ', malta: 'MT', malaysia: 'MY' };
   const k = known[country.toLowerCase()];
   if (k) return k;
   const words = country.split(/\s+/).filter(Boolean);
