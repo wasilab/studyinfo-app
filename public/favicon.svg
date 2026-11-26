@@ -1,16 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
   <title>StudyInfo</title>
+  <style>
+    .mark { fill: url(#paint); }
+    @media (prefers-color-scheme: dark) { .mark { fill: url(#paint-dark); } }
+  </style>
   <defs>
-    <linearGradient id="paint" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#a7b5ff"/>
-      <stop offset="1" stop-color="#4c5fe4"/>
+    <linearGradient id="paint" x1="10" y1="2" x2="38" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6f8dff"/>
+      <stop offset=".5" stop-color="#4361ee"/>
+      <stop offset="1" stop-color="#2638b8"/>
     </linearGradient>
-    <mask id="folds" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48">
-      <rect width="48" height="48" fill="#fff"/>
-      <path d="M7.9 16.6A8.5 8.5 0 0 1 19.4 19.75M7.9 31.4A8.5 8.5 0 0 0 19.4 28.25" stroke="#000" stroke-width="2.8" stroke-linecap="round"/>
-    </mask>
+    <linearGradient id="paint-dark" x1="10" y1="2" x2="38" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c3ceff"/>
+      <stop offset=".5" stop-color="#8ea2ff"/>
+      <stop offset="1" stop-color="#5f7cff"/>
+    </linearGradient>
   </defs>
-  <g fill="url(#paint)" mask="url(#folds)"><circle cx="16.5" cy="14" r="9"/><circle cx="12" cy="24" r="8.5"/><circle cx="16.5" cy="34" r="9"/><rect x="16.5" y="5" width="7" height="38"/></g>
-  <path d="M27.6 7.2V40.8M27.6 13.5H35M27.6 24H41.5M27.6 34.5H35M35 13.5L41.5 24L35 34.5" stroke="url(#paint)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="url(#paint)"><circle cx="35" cy="13.5" r="3.9"/><circle cx="41.5" cy="24" r="3.9"/><circle cx="35" cy="34.5" r="3.9"/><circle cx="27.6" cy="7.2" r="2.9"/><circle cx="27.6" cy="40.8" r="2.9"/></g>
+  <path class="mark" d="M15.11 10.75L11.97 13.9A9.3 9.3 0 0 0 11.97 27.05A9.3 9.3 0 0 0 25.12 27.05L27.05 25.12A3.4 3.4 0 0 1 31.86 25.12A3.4 3.4 0 0 1 31.86 29.93L28.72 33.08A2.95 2.95 0 0 0 28.72 37.25A2.95 2.95 0 0 0 32.89 37.25L36.03 34.1A9.3 9.3 0 0 0 36.03 20.95A9.3 9.3 0 0 0 22.88 20.95L20.95 22.88A3.4 3.4 0 0 1 16.14 22.88A3.4 3.4 0 0 1 16.14 18.07L19.28 14.92A2.95 2.95 0 0 0 19.28 10.75A2.95 2.95 0 0 0 15.11 10.75ZM24 2A4.04 4.04 0 0 1 28.04 6.04A4.04 4.04 0 0 1 24 10.07A4.04 4.04 0 0 1 19.96 6.04A4.04 4.04 0 0 1 24 2ZM24 37.93A4.04 4.04 0 0 1 28.04 41.96A4.04 4.04 0 0 1 24 46A4.04 4.04 0 0 1 19.96 41.96A4.04 4.04 0 0 1 24 37.93Z"/>
 </svg>

@@ -1,6 +1,6 @@
 import { ABOUT, type Company } from '../../content/about';
 import { Icon } from '../ui/Icon';
-import { LogoMark } from '../ui/Logo';
+import { LogoLockup } from '../ui/Logo';
 import { Connector } from './Grow';
 
 const BADGE = ['bg-[linear-gradient(150deg,#8ba2ff,#4c5fe4)]', 'bg-[linear-gradient(150deg,#5eead4,#0f9f86)]'];
@@ -49,11 +49,10 @@ export function PartnershipVisual() {
         </div>
         <CompanyCard company={gde} index={1} />
       </div>
-      <p className="flex items-center gap-2.5 text-[14px] text-ink-2">
-        <LogoMark size={24} />
-        <span>
-          <span className="font-medium text-ink">StudyInfo</span> · a partnership project
-        </span>
+      <p className="text-[14px] text-ink-2">
+        <LogoLockup>
+          <span className="font-semibold text-ink">StudyInfo</span> · a partnership project
+        </LogoLockup>
       </p>
     </div>
   );

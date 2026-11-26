@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { EXAMPLE_FILES, REQUIRED_DOCUMENTS, STATUSES, type Status } from '../../content/files';
 import { useIsomorphicLayoutEffect, useOnScreen, usePrefersReducedMotion } from '../../lib/motion';
 import { Icon, type IconName } from '../ui/Icon';
-import { LogoMark } from '../ui/Logo';
+import { LogoLockup } from '../ui/Logo';
 import { StatusIcon } from '../ui/StatusIcon';
 import { ExampleTag, FileRow, StatusChip } from './Window';
 
@@ -93,8 +93,8 @@ export function Workspace({ replayOnView = false }: { replayOnView?: boolean }) 
     >
       <div className="grid h-[420px] md:h-[540px] md:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-[200px_minmax(0,1fr)_290px]">
         <aside className="hidden flex-col gap-0.5 border-r border-line bg-subtle p-3 text-[12.5px] md:flex">
-          <div className="mb-3 flex items-center gap-2 px-2 py-1 font-medium text-ink">
-            <LogoMark size={18} /> StudyInfo
+          <div className="mb-3 px-2 py-1 font-semibold tracking-[-0.01em] text-ink">
+            <LogoLockup />
           </div>
           {NAV.map((n) => (
             <div key={n.label} className={`flex items-center gap-2 rounded-md px-2 py-1.5 ${n.active ? 'bg-surface-2 text-ink shadow-card' : 'text-ink-2'}`}>
