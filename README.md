@@ -31,7 +31,12 @@ The old routes `/intake`, `/ai`, `/partners` and `/pricing` redirect to `/send-f
 
 - Brand name, email, phone, WhatsApp link and address: `src/config.ts`
 - University list on `/universities`: `src/data/universities.json`, an array of `{ "name", "country", "cities": [] }` (or `{ "sample": true, "universities": [...] }`). Replace the file with real data; remove `"sample"` to hide the "Sample list" tag. The country filter is built from the data.
-- Logo: `src/components/ui/Logo.tsx`, with copies of the same shapes in `public/logo.svg` (for use outside the site) and `public/favicon.svg` (browser tab). Change all three together.
+- Logo: `src/components/ui/Logo.tsx`, with copies of the same shapes in `public/logo.svg` (for use outside the site) and `public/favicon.svg` (browser tab). Change all three together. Wherever the mark sits beside the name, use `LogoLockup`. It makes the mark exactly as tall as "StudyInfo" (0.95em, from the top of the S to the foot of the y) and sits it on the text baseline. `LogoMark` is the mark alone, in a square. These are exports of the same mark, so re-export them when it changes:
+  - `public/favicon.ico`: 16, 32 and 48px, for browsers and crawlers that ask for it.
+  - `public/logo-512.png`: the logo for search results.
+  - `public/apple-touch-icon.png`: a full-bleed square with no rounded corners.
+  - `public/icon-192.png`, `public/icon-512.png` and `public/icon-maskable-512.png`: listed in `public/site.webmanifest`.
+  - `public/og-image.png`: the social preview.
 - Demo app link for every "Try Demo" button: `DEMO_URL` in `src/config.ts`. While it is empty, the buttons open the contact form with "Book a demo" selected.
 - Page copy: `src/content/*.ts`
 - Example data shown in the product illustrations: `src/content/files.ts`

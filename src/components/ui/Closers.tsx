@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import { Link } from 'react-router';
 import { EXPLORE, STATEMENTS, contactLink, type Statement } from '../../content/site';
 import { Arrow, Button } from './Button';
@@ -31,7 +30,6 @@ export function ExploreRow() {
 }
 
 function StatementCard({ statement, tone, compact = false }: { statement: Statement; tone: 'neutral' | 'lavender' | 'sky'; compact?: boolean }) {
-  const artId = useId();
   const tones = {
     neutral: 'bg-subtle ring-line',
     lavender: 'bg-tint-lavender ring-accent/25',
@@ -40,7 +38,7 @@ function StatementCard({ statement, tone, compact = false }: { statement: Statem
   return (
     <figure className={`group reveal relative isolate flex min-h-[280px] flex-col justify-between gap-12 overflow-hidden rounded-2xl ring-1 ${compact ? 'px-7 py-5 md:min-h-[300px] md:px-9 md:py-6' : 'p-7 md:min-h-[340px] md:p-9'} ${tones[tone]}`}>
       <svg aria-hidden="true" viewBox="0 0 48 48" fill="none" className="absolute -right-14 -bottom-20 -z-10 size-80 text-ink/[0.05] transition-transform duration-1000 ease-out-expo group-hover:scale-105 group-hover:rotate-6">
-        <LogoGlyph id={artId} />
+        <LogoGlyph />
       </svg>
       <blockquote className="max-w-xl text-[1.5rem] leading-[1.22] font-medium tracking-[-0.025em] text-ink md:text-[1.75rem]">{statement.text}</blockquote>
       <figcaption className="flex items-center gap-3">

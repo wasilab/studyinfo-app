@@ -4,7 +4,7 @@ import { Arrow, Button } from '../components/ui/Button';
 import { CtaSection, ExploreRow } from '../components/ui/Closers';
 import { Container } from '../components/ui/Container';
 import { Icon } from '../components/ui/Icon';
-import { LogoMark } from '../components/ui/Logo';
+import { LogoLockup } from '../components/ui/Logo';
 import { ProductHero } from '../components/ui/ProductHero';
 import { COUNTRIES, IS_SAMPLE, UNIVERSITIES_LIST, countryCode } from '../content/universityList';
 import { contactLink } from '../content/site';
@@ -64,8 +64,8 @@ export function UniversityBrowser({ syncUrl = false, headingLevel = 2, embedded 
     <div className="overflow-hidden rounded-xl bg-surface text-left shadow-window">
       <div className="grid md:grid-cols-[210px_minmax(0,1fr)] lg:grid-cols-[210px_minmax(0,1fr)_300px]">
         <aside className="flex flex-col gap-0.5 border-b border-line bg-subtle p-3 text-[12.5px] md:border-r md:border-b-0">
-          <div className="mb-2 hidden items-center gap-2 px-2 py-1 font-medium text-ink md:flex">
-            <LogoMark size={18} /> StudyInfo
+          <div className="mb-2 hidden px-2 py-1 font-semibold tracking-[-0.01em] text-ink md:block">
+            <LogoLockup />
           </div>
           <p className="hidden px-2 pb-1 text-[11px] font-medium text-ink-3 md:block">Country</p>
           <div role="tablist" aria-label="Filter by country" className="flex flex-wrap gap-1 md:flex-col md:gap-0.5">
