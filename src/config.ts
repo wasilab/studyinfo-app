@@ -12,3 +12,14 @@ export const CONTACT_ADDRESS = 'Lift-8, Symphony Heights, Zindabazar, Sylhet';
  * While it is empty, "Try Demo" opens the contact form with "Book a demo" selected.
  */
 export const DEMO_URL = '';
+
+/** The company that runs StudyInfo and sells its paid plans (under an exclusive license from Tablab Research). */
+export const LEGAL_ENTITY = 'Global Desire Education';
+/** The company that builds and hosts the platform. */
+export const TECH_PROVIDER = 'Tablab Research';
+/** Paddle (Paddle.com Market Ltd) is the merchant of record for paid plans. */
+export const PAYMENT_PROVIDER = 'Paddle';
+/** Days after buying AI credits in which unused credits can be refunded. */
+export const REFUND_DAYS = 14;
+/** AI credits bought per 1 USD. Shown on /pricing and in the terms and refund policy. */
+export const CREDITS_PER_USD = 100;

@@ -73,6 +73,26 @@ const PAGES: Record<string, { title: string; description: string }> = {
     description:
       'Talk to the StudyInfo team about joining the network, sending student files, adding your universities or booking a demo. Email, phone or WhatsApp.',
   },
+  '/pricing': {
+    title: `Pricing · Pay As You Go AI Credits · ${BRAND}`,
+    description:
+      'No subscription. 1 USD buys 100 AI credits, deducted as your agency uses the AI tools. Joining the network, sending files and case tracking are free.',
+  },
+  '/refund-policy': {
+    title: `Refund Policy · ${BRAND}`,
+    description:
+      'Unused StudyInfo AI credits can be refunded within 14 days of purchase. How credit refunds work and how to request one through Paddle.',
+  },
+  '/privacy-policy': {
+    title: `Privacy Policy · ${BRAND}`,
+    description:
+      'What personal data StudyInfo collects from agencies and student files, how it is used, protected and shared, how long it is kept and your rights.',
+  },
+  '/terms-of-service': {
+    title: `Terms of Service · ${BRAND}`,
+    description:
+      'The terms for using the StudyInfo network and paid plans: accounts, agency responsibilities, anonymity, commission, billing through Paddle and more.',
+  },
 };
 
 const NOT_FOUND = { title: `Page not found · ${BRAND}`, description: 'This page does not exist.' };
